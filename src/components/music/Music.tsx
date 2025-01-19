@@ -1,11 +1,10 @@
 "use client";
 
-import { Flex, Heading, Tag, Text } from '@/once-ui/components';
+import { Flex, Heading, SmartImage, Tag, Text } from '@/once-ui/components';
 import { useEffect, useState } from "react";
 import type { TopMusicResponseSuccess } from "@/pages/api/topMusic";
 import { TrackList } from "@/components";
 import Masonry from 'react-masonry-css';
-import { SmartImage } from "@/once-ui/components";
 import musStyles from "@/components/gallery/Gallery.module.scss";
 import { renderContent } from '@/app/resources';
 
