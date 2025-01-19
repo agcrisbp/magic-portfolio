@@ -1,6 +1,6 @@
 # **About**
 
-Originally made by [Once UI - Magic Portfolio](https://magic-portfolio.com/), my main aim with this fork is to extend the project and introduce some new features. It is predominantly in Bahasa Indonesia, so feel free to use and edit what you need to.
+Originally made by [Once UI - Magic Portfolio](https://aghea.vercel.app/once-ui), my main aim with this fork is to extend the project and introduce some new features. It is predominantly in Bahasa Indonesia, so feel free to use and edit what you need to.
 
 View the [demo here](https://magic-rose.vercel.app).
 
@@ -12,13 +12,13 @@ Magic Portfolio was built with [Once UI](https://once-ui.com) for [Next.js](http
 
 **1. Build This Project**
 
-[Fork this repository](https://github.com/CharisID/magic-portfolio/fork). Or run the following command to create a new project with this template:
+[Fork this repository](https://github.com/agcrisbp/magic-portfolio/fork). Or run the following command to create a new project with this template:
 ```
-yarn create next-app app -e https://github.com/CharisID/magic-portfolio
+yarn create next-app app -e https://github.com/agcrisbp/magic-portfolio
 
 # or npm
 
-npx create-next-app app --example https://github.com/CharisID/magic-portfolio
+npx create-next-app app --example https://github.com/agcrisbp/magic-portfolio
 ```
 
 **2. Run dev server**
@@ -72,7 +72,9 @@ Add a new .mdx file to `src/app/[locale]/blog/posts` or `src/app/[locale]/work/p
 - Automatically update the list of recently played tracks.
 - Sync with Spotify to show real-time updates of what you're listening to.
 - Customize the display of music information based on preferences.
-  - Read [Setting up Spotify Dev](https://github.com/agcrisbp/ADTify?tab=readme-ov-file#setting-up-spotify-dev).
+
+> [!TIP]
+> Read [Setting up Spotify Dev](https://github.com/agcrisbp/ADTify?tab=readme-ov-file#setting-up-spotify-dev).
 
 ## **Disqus Comments Integration**
 - Integrate the Disqus comment system into your website for easy commenting.
@@ -114,5 +116,5 @@ To integrate Disqus into your page, follow these steps:
 
 ---
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https://github.com/CharisID/magic-portfolio)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/CharisID/magic-portfolio)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https://github.com/agcrisbp/magic-portfolio)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/agcrisbp/magic-portfolio)
