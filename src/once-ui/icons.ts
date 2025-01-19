@@ -52,9 +52,11 @@ import {
 	FaGithub,
 	FaLinkedin,
 	FaXTwitter,
+	FaFacebook,
 	FaYoutube,
 	FaEye,
 	FaEyeSlash,
+	FaWhatsapp,
 } from "react-icons/fa6";
 
 import {
@@ -69,9 +71,12 @@ import {
 } from "react-icons/md";
 
 export const iconLibrary: Record<string, IconType> = {
-  bluesky: SiBluesky,
-  signal: SiSignal,
-	chevronUp: HiChevronUp,
+  
+  // Hero Icons (hi)
+  download: HiDownload,
+  
+  // Hero Icons 2 (hi2)
+  chevronUp: HiChevronUp,
   chevronDown: HiChevronDown,
 	chevronRight: HiChevronRight,
 	chevronLeft: HiChevronLeft,
@@ -86,32 +91,45 @@ export const iconLibrary: Record<string, IconType> = {
 	checkCircle: HiCheckCircle,
 	email: HiEnvelope,
 	globe: HiMiniGlobeAsiaAustralia,
-	person: LuCircleUser,
-	grid: PiGridFourDuotone,
-	bag: PiBagDuotone,
-	work: LuBox,
-	book: PiBooksDuotone,
-	device: PiDevicesDuotone,
-	blog: LuBookMarked,
+	calendar: HiCalendarDays,
+	clipboard: HiClipboard,
 	close: HiMiniXMark,
 	openLink: HiOutlineLink,
 	externalLink: HiArrowTopRightOnSquare,
-	calendar: HiCalendarDays,
-	home: LuHouse,
-	gallery: PiImageDuotone,
-	discord: FaDiscord,
+	resume: HiDocumentText,
+  table: HiTableCells,
+  
+  // Font Awesome 6
+  discord: FaDiscord,
 	github: FaGithub,
 	linkedin: FaLinkedin,
 	x: FaXTwitter,
 	youtube: FaYoutube,
-	clipboard: HiClipboard,
-	music: LuMusic,
-	download: HiDownload,
-	resume: HiDocumentText,
+	facebook: FaFacebook,
 	eye: FaEye,
 	eyeOff: FaEyeSlash,
-	status: SiStatuspage,
-	minimize: MdMinimize,
-	table: HiTableCells,
-	important: MdNotificationImportant,
+	whatsapp: FaWhatsapp,
+  
+  // Simple Icons
+  bluesky: SiBluesky,
+  signal: SiSignal,
+  status: SiStatuspage,
+  
+  // Material Design Icons
+  important: MdNotificationImportant,
+  minimize: MdMinimize,
+	
+	// Phosphor Icons
+	grid: PiGridFourDuotone,
+	bag: PiBagDuotone,
+	book: PiBooksDuotone,
+	device: PiDevicesDuotone,
+	gallery: PiImageDuotone,
+	
+	// Lucide Icons (lu)
+	blog: LuBookMarked,
+	work: LuBox,
+	home: LuHouse,
+	music: LuMusic,
+	person: LuCircleUser,
 };
