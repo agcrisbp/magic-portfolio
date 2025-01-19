@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { CustomMDX } from '@/components/mdx';
 import { getPosts } from '@/app/utils/utils';
-import { Avatar, Button, Flex, Heading, Icon, SmartImage, Text } from '@/once-ui/components';
+import { Avatar, Button, Flex, Heading, Icon, ShareButton, SmartImage, Text } from '@/once-ui/components';
 import { formatDate } from '@/app/utils/formatDate';
 import { baseURL, renderContent } from '@/app/resources';
 import styles from '@/components/blog/Posts.module.scss';
@@ -161,6 +161,7 @@ export default function Blog({ params }: BlogParams) {
       <Flex as="article" direction="column" paddingBottom="32" fillWidth>
         <CustomMDX source={post.content} />
       </Flex>
+      <ShareButton baseURL={baseURL} dir="blog" slug={post.slug} />
       <ScrollToHash />
       <Comments
         postSlug={post.slug}

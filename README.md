@@ -116,5 +116,14 @@ To integrate Disqus into your page, follow these steps:
 
 ---
 
+> [!NOTE]
+> If you encounter any errors related to Turbo, you may need to uninstall it by running:
+> 
+> ```bash
+> yarn remove turbo
+> ```
+
+---
+
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https://github.com/agcrisbp/magic-portfolio)
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/agcrisbp/magic-portfolio)
