@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { IconButton, Flex, Text } from '@/once-ui/components';
 import styles from './ToCModal.module.scss';
 
@@ -13,8 +13,41 @@ export function ToCModal({ headings }: ToCModalProps) {
   const [position, setPosition] = useState({ top: '50%', right: '16px' });
   const [isDragging, setIsDragging] = useState(false);
   const buttonRef = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
 
-  const toggleModal = () => setIsMinimized((prev) => !prev);
+  const toggleModal = () => {
+    if (!isDragging) {
+      setIsMinimized((prev) => !prev);
+    }
+  };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (modalRef.current && !modalRef.current.contains(event.target as Node) && !isDragging) {
+      setIsMinimized(true);
+    }
+  };
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      setIsMinimized(true);
+    }
+
+    if (event.key === 'Enter') {
+      setIsMinimized(false);
+    }
+  };
+
+  useEffect(() => {
+    if (!isMinimized) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleKeyDown);
+
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+        document.removeEventListener('keydown', handleKeyDown);
+      };
+    }
+  }, [isMinimized]);
 
   const handleDragStart = (event: React.MouseEvent | React.TouchEvent) => {
     event.preventDefault();
@@ -32,7 +65,6 @@ export function ToCModal({ headings }: ToCModalProps) {
       const newTop = (offsetTop || 0) + moveY - startY;
       const newRight = startRight - (moveX - startX);
 
-      // Prevent dragging outside the window boundaries
       const clampedTop = Math.max(0, Math.min(newTop, window.innerHeight - (buttonRef.current?.offsetHeight || 0)));
       const clampedRight = Math.max(0, Math.min(newRight, window.innerWidth - (buttonRef.current?.offsetWidth || 0)));
 
@@ -57,7 +89,7 @@ export function ToCModal({ headings }: ToCModalProps) {
   };
 
   let levelOneCounter = 0;
-
+  
   return (
     <>
       {isMinimized && (
@@ -84,6 +116,7 @@ export function ToCModal({ headings }: ToCModalProps) {
 
       {!isMinimized && (
         <Flex
+          ref={modalRef}
           className={styles.modal}
           background="accent-medium"
           zIndex={10}
@@ -94,16 +127,15 @@ export function ToCModal({ headings }: ToCModalProps) {
             left: '50%',
             transform: 'translate(-50%, -50%)',
             borderRadius: '8px',
-            maxWidth: '350px',
             boxShadow: '0 0 8px rgba(255,255,255,0.3)',
           }}
         >
-          <Flex direction="column" padding="16" gap="12" style={{ maxWidth: '100%' }}>
+          <Flex direction="column" padding="16" gap="12" fillWidth>
             <Flex justifyContent="space-between" alignItems="center">
               <Text variant="body-default-l">Daftar Isi</Text>
               <IconButton icon="close" variant="secondary" size="s" onClick={toggleModal} />
             </Flex>
-            <Flex direction="column" gap="8" style={{ maxHeight: '350px', overflowY: 'auto' }}>
+            <Flex direction="column" gap="8" className={styles.mobile} >
               {headings.map(({ text, level }, index) => {
                 const isLevelOne = level === 1;
                 if (isLevelOne) {

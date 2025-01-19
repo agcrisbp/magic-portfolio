@@ -73,46 +73,47 @@ Add a new .mdx file to `src/app/[locale]/blog/posts` or `src/app/[locale]/work/p
 - Sync with Spotify to show real-time updates of what you're listening to.
 - Customize the display of music information based on preferences.
 
-> [!TIP]
-> Read [Setting up Spotify Dev](https://github.com/agcrisbp/ADTify?tab=readme-ov-file#setting-up-spotify-dev).
-
 ## **Disqus Comments Integration**
 - Integrate the Disqus comment system into your website for easy commenting.
 - Conditionally render the Disqus comments section based on your page content.
 - Enable or disable Disqus comments.
 - Customize the Disqus settings to automatically display social links and integrate with your content.
 
-To integrate Disqus into your page, follow these steps:
-
-1. **Create a Disqus Account:**
-   - Go to [Disqus](https://disqus.com/) and create an account if you don't have one.
-
-2. **Add Your Site:**
-   - After logging in, navigate to the **Admin** panel and select **"Add Disqus to Site"**.
-   - Enter your site details (site name, category, etc.) and click **Finish**.
-
-3. **Get the Embed Code:**
-   - Once your site is created, go to the **"Installation"** section in the Disqus admin panel.
-   - You will find the **Universal Embed Code** that includes the `script.src` for Disqus, like so:
-
-```html
-<script id="dsq-count-scr" src="//example.disqus.com/count.js" async></script>
-<script>
-  var disqus_config = function () {
-    this.page.url = PAGE_URL;
-    this.page.identifier = PAGE_IDENTIFIER;
-  };
-
-  (function() { 
-    var d = document, s = d.createElement('script');
-    s.src = 'https://example.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
-</script>
-```
-
-4. Copy the url and paste it into `script.src` inside [comments.tsx](src/app/blog/[slug]/comments.tsx).
+> [!TIP]
+> Read [Setting up Spotify Dev](https://github.com/agcrisbp/ADTify?tab=readme-ov-file#setting-up-spotify-dev).
+> Read: [Setup](https://ad-link-docs.vercel.app/frontend#add-discord-status), and **YOU MUST** join [Lanyard Discord Server](https://discord.gg/lanyard).
+>
+> To integrate Disqus into your page, follow these steps:
+>
+> 1. **Create a Disqus Account:**
+>    - Go to [Disqus](https://disqus.com/) and create an account if you don't have one.
+>
+> 2. **Add Your Site:**
+>    - After logging in, navigate to the **Admin** panel and select **"Add Disqus to Site"**.
+>    - Enter your site details (site name, category, etc.) and click **Finish**.
+>
+> 3. **Get the Embed Code:**
+>    - Once your site is created, go to the **"Installation"** section in the Disqus admin panel.
+>    - You will find the **Universal Embed Code** that includes the `script.src` for Disqus, like so:
+>
+> ```html
+> <script id="dsq-count-scr" src="//example.disqus.com/count.js" async></script>
+> <script>
+>   var disqus_config = function () {
+>     this.page.url = PAGE_URL;
+>     this.page.identifier = PAGE_IDENTIFIER;
+>   };
+>
+>   (function() { 
+>     var d = document, s = d.createElement('script');
+>     s.src = 'https://example.disqus.com/embed.js';
+>     s.setAttribute('data-timestamp', +new Date());
+>     (d.head || d.body).appendChild(s);
+>   })();
+> </script>
+> ```
+>
+> 4. Copy the url and paste it into `script.src` inside [comments.tsx](src/app/blog/[slug]/comments.tsx).
 
 ---
 
