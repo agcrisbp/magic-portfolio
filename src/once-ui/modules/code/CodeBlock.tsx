@@ -1,218 +1,230 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect, useRef, ReactNode } from "react";
+import React, { useState, useEffect, useRef, ReactNode } from 'react';
 
-import "./CodeHighlight.css";
-import styles from "./CodeBlock.module.scss";
+import '@/once-ui/modules/code/CodeHighlight.css';
+import styles from '@/once-ui/modules/code/CodeBlock.module.scss';
 
-import { Flex, Button, IconButton, DropdownWrapper, Option } from "@/once-ui/components";
+import { Flex, Button, IconButton, DropdownWrapper } from '@/once-ui/components';
 
-import Prism from "prismjs";
-import "prismjs/plugins/line-highlight/prism-line-highlight";
-import "prismjs/components/prism-jsx";
-import "prismjs/components/prism-css";
-import "prismjs/components/prism-typescript";
-import "prismjs/components/prism-tsx";
-import classNames from "classnames";
+import Prism from 'prismjs';
+import 'prismjs/plugins/line-highlight/prism-line-highlight';
+import 'prismjs/components/prism-jsx';
+import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-tsx';
+import 'prismjs/components/prism-latex';
 
 type CodeInstance = {
-  code: string;
-  language: string;
-  label: string;
+    code: string;
+    language: string;
+    label: string;
 };
 
-interface CodeBlockProps extends React.ComponentProps<typeof Flex> {
-  highlight?: string;
-  codeInstances?: CodeInstance[];
-  codePreview?: ReactNode;
-  copyButton?: boolean;
-  compact?: boolean;
-  className?: string;
-  style?: React.CSSProperties;
-}
+type CodeBlockProps = {
+    highlight?: string;
+    codeInstances?: CodeInstance[];
+    codePreview?: ReactNode;
+    copyButton?: boolean;
+    compact?: boolean;
+    className?: string;
+    style?: React.CSSProperties;
+};
 
 const CodeBlock: React.FC<CodeBlockProps> = ({
-  highlight,
-  codeInstances = [],
-  codePreview,
-  copyButton = true,
-  compact = false,
-  className,
-  style,
-  ...rest
+    highlight,
+    codeInstances = [],
+    codePreview,
+    copyButton = true,
+    compact = false,
+    className,
+    style,
 }) => {
-  const codeRef = useRef<HTMLElement>(null);
-  const preRef = useRef<HTMLPreElement>(null);
-  const [selectedInstance, setSelectedInstance] = useState(0);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const codeRef = useRef<HTMLElement>(null);
+    const preRef = useRef<HTMLPreElement>(null);
+    const [selectedInstance, setSelectedInstance] = useState(0);
 
-  const { code, language, label } = codeInstances[selectedInstance] || {
-    code: "",
-    language: "",
-    label: "Select Code",
-  };
+    const { code, language, label } = codeInstances[selectedInstance] || { code: '', language: '', label: 'Select Code' };
 
-  const [copyIcon, setCopyIcon] = useState<string>("clipboard");
+    const [copyIcon, setCopyIcon] = useState<string>('clipboard');
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [showExpandButton, setShowExpandButton] = useState(false);
 
-  useEffect(() => {
-    if (codeRef.current && codeInstances.length > 0) {
-      Prism.highlightAll();
-    }
-  }, [code, codeInstances.length]);
+    useEffect(() => {
+        if (codeRef.current && codeInstances.length > 0) {
+            Prism.highlightAll();
+        }
+        const lineCount = code.split('\n').length;
+        setShowExpandButton(lineCount > 8);
+    }, [code, codeInstances.length]);
 
-  const handleCopy = () => {
-    if (codeInstances.length > 0) {
-      navigator.clipboard
-        .writeText(code)
-        .then(() => {
-          setCopyIcon("check");
+    const handleCopy = () => {
+        if (codeInstances.length > 0) {
+            navigator.clipboard.writeText(code)
+                .then(() => {
+                    setCopyIcon('check');
 
-          setTimeout(() => {
-            setCopyIcon("clipboard");
-          }, 5000);
-        })
-        .catch((err) => {
-          console.error("Failed to copy code: ", err);
-        });
-    }
-  };
+                    setTimeout(() => {
+                        setCopyIcon('clipboard');
+                    }, 5000);
+                })
+                .catch((err) => {
+                    console.error('Failed to copy code: ', err);
+                });
+        }
+    };
 
-  const handleContent = (selectedLabel: string) => {
-    const index = codeInstances.findIndex((instance) => instance.label === selectedLabel);
-    if (index !== -1) {
-      setSelectedInstance(index);
-    }
-  };
+    const handleContent = (selectedLabel: string) => {
+        const index = codeInstances.findIndex(instance => instance.label === selectedLabel);
+        if (index !== -1) {
+            setSelectedInstance(index);
+        }
+    };
 
-  return (
-    <Flex
-      position="relative"
-      zIndex={0}
-      background="surface"
-      radius="l"
-      overflow="hidden"
-      border="neutral-medium"
-      direction="column"
-      vertical="center"
-      fillWidth
-      minHeight={3}
-      className={className}
-      style={style}
-      {...rest}
-    >
-      {(codeInstances.length > 1 || (copyButton && !compact)) && (
-        <Flex borderBottom="neutral-medium" zIndex={2} fillWidth horizontal="space-between">
-          {codeInstances.length > 1 ? (
-            <Flex borderRight="neutral-medium">
-              <DropdownWrapper
-                isOpen={isDropdownOpen}
-                onOpenChange={setIsDropdownOpen}
-                trigger={
-                  <Button
+    const toggleExpand = () => {
+        setIsExpanded(prev => !prev);
+    };
+
+    return (
+        <Flex
+            position="relative" zIndex={1}
+            background="surface" radius="l" border="neutral-medium" borderStyle="solid-1"
+            direction="column" justifyContent="center"
+            fillWidth minHeight={3}
+            className={className || ''}
+            style={style}>
+            {(codeInstances.length > 1 || copyButton && !compact) && (
+                <Flex
                     style={{
-                      border: "1px solid var(--static-transparent)",
-                      minWidth: "6rem",
+                        borderBottom: '1px solid var(--neutral-border-medium)',
                     }}
-                    radius="none"
-                    size="m"
-                    label={label}
-                    suffixIcon="chevronDown"
-                    variant="secondary"
-                  />
-                }
-                dropdown={
-                  <Flex direction="column" gap="2" padding="4" minWidth={6} data-surface="filled">
-                    {codeInstances.map((instance, index) => (
-                      <Option
-                        key={index}
-                        value={instance.label}
-                        label={instance.label}
-                        selected={selectedInstance === index}
-                        onClick={() => {
-                          handleContent(instance.label);
-                          setIsDropdownOpen(false);
-                        }}
-                      />
-                    ))}
-                  </Flex>
-                }
-              />
-            </Flex>
-          ) : (
-            <div />
-          )}
-          {copyButton && !compact && (
-            <Flex borderLeft="neutral-medium">
-              <IconButton
-                style={{
-                  border: "none",
-                }}
-                radius="none"
-                size="l"
-                tooltip="Copy"
-                tooltipPosition="left"
-                variant="secondary"
-                onClick={handleCopy}
-                icon={copyIcon}
-              />
-            </Flex>
-          )}
+                    zIndex={10}
+                    fillWidth padding="8"
+                    justifyContent="space-between"
+                    alignItems="center">
+                    {codeInstances.length > 1 ? (
+                        <Flex style={{ position: 'relative', }}>
+                            <DropdownWrapper
+                                dropdownOptions={codeInstances.map((instance, index) => ({
+                                    label: instance.label,
+                                    value: `${instance.label}-${index}`,
+                                }))}
+                                dropdownProps={{
+                                    onOptionSelect: (option) => {
+                                        const selectedLabel = option.value.split('-')[0];
+                                        handleContent(selectedLabel);
+                                    },
+                                    style: {
+                                        maxHeight: '100px',
+                                        position: 'absolute',
+                                        overflowY: 'auto',
+                                        backgroundColor: 'rgba(0,0,0,0.9)',
+                                        scrollbarColor: 'transparent transparent',
+                                    }
+                                }}>
+                                <Button
+                                    size="s"
+                                    label={label}
+                                    suffixIcon="chevronDown"
+                                    variant="tertiary"
+                                />
+                            </DropdownWrapper>
+                        </Flex>
+                    ) : <div />}
+                    <Flex gap="8">
+                        {(copyButton && !compact) && 
+                            <IconButton
+                                tooltip="Copy"
+                                variant="secondary"
+                                onClick={handleCopy}
+                                icon={copyIcon}
+                            />
+                        }
+                        {(showExpandButton && !compact) &&
+                            <IconButton
+                                aria-label={isExpanded ? 'Collapse' : 'Expand'}
+                                onClick={toggleExpand}
+                                icon={isExpanded ? 'chevronUp' : 'chevronDown'}
+                                size="m"
+                                variant="secondary"
+                            />
+                        }
+                    </Flex>
+                </Flex>
+            )}
+            {codePreview && (
+                <Flex
+                    position="relative" zIndex={2}
+                    fillHeight padding="l" minHeight={12}
+                    justifyContent="center" alignItems="center">
+                    {Array.isArray(codePreview)
+                        ? codePreview.map((item, index) => (
+                            <React.Fragment key={index}>
+                                {item}
+                            </React.Fragment>
+                        ))
+                        : codePreview}
+                </Flex>
+            )}
+            {codeInstances.length > 0 && (
+                <Flex
+                    style={{
+                        borderTop: (!compact && codePreview) ?
+                        '1px solid var(--neutral-border-medium)' : 
+                        'none',
+                        maxHeight: isExpanded ? 'none' : '150px',
+                        overflow: 'hidden',
+                    }}
+                    fillWidth padding="8"
+                    position="relative" overflowY="auto">
+                    {compact && copyButton &&
+                        <Flex
+                            zIndex={2}
+                            style={{
+                                right: 'var(--static-space-8)',
+                                top: 'var(--static-space-8)',
+                            }}
+                            position="absolute">
+                            <IconButton
+                                aria-label="Copy code"
+                                onClick={handleCopy}
+                                icon={copyIcon}
+                                size="m"
+                                variant="secondary"/>
+                        </Flex>
+                    }
+                    {compact && showExpandButton &&
+                        <Flex
+                            zIndex={2}
+                            style={{
+                                right: 'var(--static-space-8)',
+                                bottom: 'var(--static-space-8)',
+                            }}
+                            position="absolute">
+                            <IconButton
+                                aria-label={isExpanded ? 'Collapse' : 'Expand'}
+                                onClick={toggleExpand}
+                                icon={isExpanded ? 'chevronUp' : 'chevronDown'}
+                                size="m"
+                                variant="secondary"
+                            />
+                        </Flex>
+                    }
+                    <pre
+                        data-line={highlight}
+                        ref={preRef}
+                        className={`${styles.pre} language-${language}`}
+                        tabIndex={-1}>
+                        <code
+                            ref={codeRef}
+                            className={`${styles.code} ${`language-${language}`}`}>
+                            {code}
+                        </code>
+                    </pre>
+                </Flex>
+            )}
         </Flex>
-      )}
-      {codePreview && (
-        <Flex
-          position="relative"
-          zIndex={1}
-          fillHeight
-          padding="l"
-          horizontal="center"
-          vertical="center"
-        >
-          {Array.isArray(codePreview)
-            ? codePreview.map((item, index) => <React.Fragment key={index}>{item}</React.Fragment>)
-            : codePreview}
-        </Flex>
-      )}
-      {codeInstances.length > 0 && (
-        <Flex
-          borderTop={!compact && codePreview ? "neutral-medium" : undefined}
-          fillWidth
-          position="relative"
-        >
-          {compact && copyButton && (
-            <Flex
-              className={styles.compactCopy}
-              overflow="hidden"
-              zIndex={1}
-              right="8"
-              position="absolute"
-            >
-              <IconButton
-                aria-label="Copy code"
-                onClick={handleCopy}
-                icon={copyIcon}
-                size="m"
-                variant="secondary"
-              />
-            </Flex>
-          )}
-          <Flex overflowX="auto">
-            <pre
-              data-line={highlight}
-              ref={preRef}
-              className={classNames(styles.pre, `language-${language}`)}
-              tabIndex={-1}
-            >
-              <code ref={codeRef} className={classNames(styles.code, `language-${language}`)}>
-                {code}
-              </code>
-            </pre>
-          </Flex>
-        </Flex>
-      )}
-    </Flex>
-  );
+    );
 };
 
-CodeBlock.displayName = "CodeBlock";
 export { CodeBlock };

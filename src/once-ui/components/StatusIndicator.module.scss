@@ -1,4 +1,12 @@
 .statusIndicator {
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--page-background);
+    border-radius: var(--radius-full);
+    margin-left: var(--static-space-2);
+    justify-content: center;
+    cursor: pointer;
+
     &.s {
         width: var(--static-space-4);
         height: var(--static-space-4);
@@ -10,63 +18,45 @@
     }
 
     &.l {
-        width: var(--static-space-16);
-        height: var(--static-space-16);
+        width: var(--static-space-24);
+        height: var(--static-space-24);
     }
 
-    &.gray {
-        background-color: var(--scheme-gray-700);
+    &.green { background-color: #34d399; }
+    &.yellow { background-color: #fbbf24; }
+    &.red { background-color: #f87171; }
+    &.gray { background-color: #9ca3af; }
+
+.indicatorCircle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.popUp {
+    position: absolute;
+    top: -25px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 10;
+    transform: translateX(-50%);
+    left: 50%;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+}
+
+    &:hover .popUp {
+        visibility: visible;
+        opacity: 1;
     }
 
-    &.blue {
-        background-color: var(--scheme-blue-700);
-    }
-
-    &.indigo {
-        background-color: var(--scheme-indigo-700);
-    }
-
-    &.violet {
-        background-color: var(--scheme-violet-700);
-    }
-
-    &.magenta {
-        background-color: var(--scheme-magenta-700);
-    }
-
-    &.pink {
-        background-color: var(--scheme-pink-700);
-    }
-
-    &.red {
-        background-color: var(--scheme-red-700);
-    }
-
-    &.orange {
-        background-color: var(--scheme-orange-700);
-    }
-
-    &.yellow {
-        background-color: var(--scheme-yellow-700);
-    }
-
-    &.moss {
-        background-color: var(--scheme-moss-700);
-    }
-
-    &.green {
-        background-color: var(--scheme-green-700);
-    }
-
-    &.emerald {
-        background-color: var(--scheme-emerald-700);
-    }
-
-    &.aqua {
-        background-color: var(--scheme-aqua-700);
-    }
-
-    &.cyan {
-        background-color: var(--scheme-cyan-700);
-    }
+.custom-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
 }

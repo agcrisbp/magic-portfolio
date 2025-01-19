@@ -936,7 +936,7 @@
     padding-bottom: var(--static-space-80);
 }
 
-.py-104 {
+.pt-104 {
     padding-top: var(--static-space-104);
     padding-bottom: var(--static-space-104);
 }
@@ -1355,18 +1355,6 @@
   /****************************/
  /*            GAP           */
 /****************************/
-
-// Negative gap: collapse stacked borders
-
-.g-horizontal--1 > *:not(:first-child) {
-    margin-left: -1px;
-}
-  
-.g-vertical--1 > *:not(:first-child) {
-    margin-top: -1px;
-}
-
-// Regular gap
 
 .g-0 {
     gap: var(--static-space-0);

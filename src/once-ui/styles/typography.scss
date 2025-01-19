@@ -21,6 +21,18 @@ h1, h2, h3, h4, h5, h6, p {
     margin: 0;
 }
 
+code {
+    display: inline;
+    padding: var(--static-space-1) var(--static-space-4);
+    border-radius: 5px;
+    background: var(--neutral-alpha-weak);
+    border: 1px solid var(--neutral-alpha-medium);
+    font-family: var(--font-family-code);
+    font-size: 80%;
+    margin: 0 var(--static-space-2);
+    vertical-align: middle;
+}
+
 .font-size-inherit {
     font-size: inherit;
 }

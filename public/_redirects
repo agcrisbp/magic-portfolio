@@ -1,0 +1,5 @@
+/example https://example.com 301
+
+/email /api/email 301
+
+/.well-known/* /.well-known/:splat 200

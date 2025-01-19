@@ -1,13 +1,5 @@
-.display-flex {
+.flex {
     display: flex;
-}
-
-.display-grid {
-    display: grid;
-}
-
-.display-inline-flex {
-    display: inline-flex;
 }
 
 .flex-column {
@@ -18,24 +10,16 @@
     flex-direction: row;
 }
 
-.flex-column-reverse {
-    flex-direction: column-reverse;
-}
-
-.flex-row-reverse {
-    flex-direction: row-reverse;
-}
-
 .l-flex-show {
-    display: none !important;
+    display: none;
 }
 
 .m-flex-show {
-    display: none !important;
+    display: none;
 }
 
 .s-flex-show {
-    display: none !important;
+    display: none;
 }
 
 @media (--l) {
@@ -53,14 +37,6 @@
 
     .l-flex-row {
         flex-direction: row !important;
-    }
-
-    .l-flex-column-reverse {
-        flex-direction: column-reverse !important;
-    }
-    
-    .l-flex-row-reverse {
-        flex-direction: row-reverse !important;
     }
 }
 
@@ -80,14 +56,6 @@
     .m-flex-row {
         flex-direction: row !important;
     }
-
-    .m-flex-column-reverse {
-        flex-direction: column-reverse !important;
-    }
-    
-    .m-flex-row-reverse {
-        flex-direction: row-reverse !important;
-    }
 }
 
 @media (--s) {
@@ -105,13 +73,5 @@
 
     .s-flex-row {
         flex-direction: row !important;
-    }
-
-    .s-flex-column-reverse {
-        flex-direction: column-reverse !important;
-    }
-    
-    .s-flex-row-reverse {
-        flex-direction: row-reverse !important;
     }
 }

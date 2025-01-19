@@ -1,0 +1,45 @@
+.avatarWrapper {
+    position: relative;
+    display: inline-block;
+    border-radius: var(--radius-full);
+    overflow: visible;
+}
+
+.avatar {
+    position: relative;
+    width: var(--static-space-160);
+    height: var(--static-space-160);
+    min-width: var(--static-space-160);
+    min-height: var(--static-space-160);
+    border-radius: var(--radius-full);
+    object-fit: cover;
+}
+
+.avatarDecoration {
+    position: absolute;
+    top: -18px;
+    left: -18px;
+    width: calc(var(--static-space-160) + 35px);
+    height: calc(var(--static-space-160) + 35px);
+    z-index: 2;
+    object-fit: contain;
+}
+
+.value {
+    white-space: nowrap;
+    overflow: hidden;
+    user-select: none;
+}
+
+.indicator {
+    box-sizing: content-box;
+    position: absolute;
+    bottom: 5px;
+    right: 15px;
+    z-index: 3;
+}
+
+.image {
+    border-radius: var(--radius-full);
+    object-position: center;
+}

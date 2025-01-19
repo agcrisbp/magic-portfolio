@@ -1,38 +1,34 @@
-const baseURL = "demo.magic-portfolio.com";
+const baseURL = 'magic-rose.vercel.app';
+const UserID = '982268021143896064';
+const longLat = 'lat=-7.795580&lon=110.369492';
 
 const routes = {
-  "/": true,
-  "/about": true,
-  "/work": true,
-  "/blog": true,
-  "/gallery": true,
+    '/':                true,
+    '/about':           true,
+    '/work':            true,
+    '/blog':            true,
+    '/gallery':         true,
+    '/music':           true,
 };
 
-// Enable password protection on selected routes
-// Set password in pages/api/authenticate.ts
 const protectedRoutes = {
-  "/work/automate-design-handovers-with-a-figma-to-code-pipeline": true,
+    '/blog/analisis-penyebab-kebocoran-data-di-indonesia': true,
 };
 
 const style = {
   theme: "dark", // dark | light
-  neutral: "gray", // sand | gray | slate
+  neutral: "sand", // sand | gray | slate
   brand: "emerald", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
-  accent: "orange", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
-  solid: "contrast", // color | contrast
-  solidStyle: "flat", // flat | plastic
+  accent: "cyan", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
+  solid: "color", // color | contrast
+  solidStyle: "plastic", // flat | plastic
   border: "playful", // rounded | playful | conservative
   surface: "translucent", // filled | translucent
   transition: "all", // all | micro | macro
 };
 
 const effects = {
-  mask: {
-    cursor: true,
-    x: 0,
-    y: 0,
-    radius: 75,
-  },
+  mask: 'cursor',
   gradient: {
     display: true,
     x: 50,
@@ -40,15 +36,15 @@ const effects = {
     width: 100,
     height: 100,
     tilt: 0,
-    colorStart: "brand-background-strong",
+    colorStart: "neutral-alpha-weak",
     colorEnd: "static-transparent",
     opacity: 50,
   },
   dots: {
     display: true,
-    size: 2,
+    size: 1,
     color: "brand-on-background-weak",
-    opacity: 20,
+    opacity: 0.3,
   },
   lines: {
     display: false,
@@ -63,47 +59,47 @@ const effects = {
 };
 
 const display = {
-  location: true,
-  time: true,
+    location: true,
+    time:     true
 };
 
 const mailchimp = {
-  action: "https://url/subscribe/post?parameters",
-  effects: {
-    mask: {
-      cursor: false,
-      x: 100,
-      y: 0,
-      radius: 100,
-    },
-    gradient: {
-      display: true,
-      x: 100,
-      y: 50,
-      width: 100,
-      height: 100,
-      tilt: -45,
-      colorStart: "accent-background-strong",
-      colorEnd: "static-transparent",
-      opacity: 100,
-    },
-    dots: {
-      display: false,
-      size: 24,
-      color: "brand-on-background-weak",
-      opacity: 100,
-    },
-    lines: {
-      display: false,
-      color: "neutral-alpha-weak",
-      opacity: 100,
-    },
-    grid: {
-      display: true,
-      color: "neutral-alpha-weak",
-      opacity: 100,
-    },
-  },
+    action: 'https://example.com/subscribe/post?',
+    effects: {
+        mask: {
+            cursor: false,
+            x: 100,
+            y: 0,
+            radius: 100
+        },
+        gradient: {
+            display: true,
+            x: 100,
+            y: 50,
+            width: 100,
+            height: 100,
+            tilt: -45,
+            colorStart: 'accent-background-strong',
+            colorEnd: 'static-transparent',
+            opacity: 100
+        },
+        dots: {
+            display: false,
+            size: 24,
+            color: 'brand-on-background-weak',
+            opacity: 100
+        },
+        lines: {
+            display: false,
+            color: 'neutral-alpha-weak',
+            opacity: 100
+        },
+        grid: {
+            display: true,
+            color: 'neutral-alpha-weak',
+            opacity: 100
+        }
+    }
 };
 
-export { routes, protectedRoutes, effects, style, display, mailchimp, baseURL };
+export { routes, protectedRoutes, effects, style, display, mailchimp, UserID, longLat, baseURL };

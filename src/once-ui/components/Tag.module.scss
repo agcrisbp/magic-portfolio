@@ -1,6 +1,25 @@
 .tag {
-    white-space: nowrap;
+    border-width: 1px;
+    border-style: solid;
+    white-space: normal;
     user-select: none;
+    width: fit-content;
+    max-width: 100%;
+    word-wrap: break-word;
+    padding: 0.25rem;
+    position: relative;
+    
+    &.s .iconWrapper {
+        --icon-size: 12px;
+    }
+
+    &.m .iconWrapper {
+        --icon-size: 16px;
+    }
+
+    &.l .iconWrapper {
+        --icon-size: 20px;
+    }
 
     &.brand {
         border-color: var(--brand-border-strong);
@@ -26,7 +45,19 @@
         color: var(--warning-on-background-medium);
     }
 
+    &.peringatan {
+        border-color: var(--warning-border-strong);
+        background-color: var(--warning-background-strong);
+        color: var(--warning-on-background-medium);
+    }
+
     &.danger {
+        border-color: var(--danger-border-strong);
+        background-color: var(--danger-background-strong);
+        color: var(--danger-on-background-medium);
+    }
+
+    &.penting {
         border-color: var(--danger-border-strong);
         background-color: var(--danger-background-strong);
         color: var(--danger-on-background-medium);
@@ -44,11 +75,16 @@
         color: var(--info-on-background-medium);
     }
 
+    &.informasi {
+        border-color: var(--brand-border-strong);
+        background-color: var(--brand-background-strong);
+        color: var(--brand-on-background-medium);
+    }
+
     &.gradient {
         border-color: var(--brand-alpha-medium);
         background-image: linear-gradient(45deg, var(--brand-background-strong), var(--accent-background-strong));
         color: var(--brand-on-background-medium);
-        background-clip: padding-box;
     }
 }
 
@@ -62,4 +98,51 @@
 
 .l {
     padding: var(--static-space-4) var(--static-space-12);
+}
+
+.iconWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        width: var(--icon-size);
+        height: var(--icon-size);
+    }
+}
+
+.topLeftIcon {
+    position: absolute;
+    top: -12px;
+    left: -1px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background-color: var(--surface-background);
+    border-radius: 4px;
+    padding: 0px 2px;
+    z-index: 1;
+
+    svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    &.peringatan {
+        background-color: var(--warning-background-strong);
+    }
+
+    &.penting {
+        background-color: var(--danger-background-strong);
+    }
+
+    &.informasi {
+        background-color: var(--brand-background-strong);
+    }
+}
+
+.iconLabel {
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--neutral-on-background-strong);
 }

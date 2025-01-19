@@ -1,90 +1,164 @@
 "use client";
 
-import {
-  AvatarGroup,
-  Carousel,
-  Column,
-  Flex,
-  Heading,
-  SmartLink,
-  Text,
-} from "@/once-ui/components";
+import { AvatarGroup, Flex, Heading, RevealFx, SmartImage, SmartLink, Text } from "@/once-ui/components";
+import { baseURL } from '@/app/resources';
+import { useEffect, useState } from "react";
 
 interface ProjectCardProps {
-  href: string;
-  priority?: boolean;
-  images: string[];
-  title: string;
-  content: string;
-  description: string;
-  avatars: { src: string }[];
-  link: string;
+    href: string;
+    images: string[];
+    title: string;
+    content: string;
+    description: string;
+    avatars: { src: string }[];
+    link: string;
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
-  href,
-  images = [],
-  title,
-  content,
-  description,
-  avatars,
-  link,
+    href,
+    images = [],
+    title,
+    content,
+    description,
+    avatars,
+    link,
 }) => {
-  return (
-    <Column fillWidth gap="m">
-      <Carousel
-        sizes="(max-width: 960px) 100vw, 960px"
-        images={images.map((image) => ({
-          src: image,
-          alt: title,
-        }))}
-      />
-      <Flex
-        mobileDirection="column"
-        fillWidth
-        paddingX="s"
-        paddingTop="12"
-        paddingBottom="24"
-        gap="l"
-      >
-        {title && (
-          <Flex flex={5}>
-            <Heading as="h2" wrap="balance" variant="heading-strong-xl">
-              {title}
-            </Heading>
-          </Flex>
-        )}
-        {(avatars?.length > 0 || description?.trim() || content?.trim()) && (
-          <Column flex={7} gap="16">
-            {avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />}
-            {description?.trim() && (
-              <Text wrap="balance" variant="body-default-s" onBackground="neutral-weak">
-                {description}
-              </Text>
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [isTransitioning, setIsTransitioning] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsTransitioning(true);
+        }, 1000);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    const handleImageClick = () => {
+        if(images.length > 1) {
+            setIsTransitioning(false);
+            const nextIndex = (activeIndex + 1) % images.length;
+            handleControlClick(nextIndex);
+
+        }
+    };
+
+    const handleControlClick = (index: number) => {
+        if (index !== activeIndex) {
+            setIsTransitioning(false);
+            setTimeout(() => {
+                setActiveIndex(index);
+                setIsTransitioning(true);
+            }, 630);
+        }
+    };
+    
+    const resolvedLink = link.replace("{baseURL}", baseURL);
+
+    return (
+        <Flex
+            fillWidth gap="m"
+            direction="column">
+            {images[activeIndex] && <Flex onClick={handleImageClick}>
+                <RevealFx
+                    style={{width: '100%'}}
+                    delay={0.4}
+                    trigger={isTransitioning}
+                    speed="fast">
+                    <SmartImage
+                        tabIndex={0}
+                        radius="l"
+                        alt={title}
+                        aspectRatio="16 / 9"
+                        src={images[activeIndex]}
+                        style={{
+                            border: '1px solid var(--neutral-alpha-weak)',
+                            ...(images.length > 1 && {
+                                cursor: 'pointer',
+                            }),
+                        }}/>
+                </RevealFx>
+            </Flex>}
+            {images.length > 1 && (
+                <Flex
+                    gap="4" paddingX="s"
+                    fillWidth
+                    justifyContent="center">
+                    {images.map((_, index) => (
+                        <Flex
+                            key={index}
+                            onClick={() => handleControlClick(index)}
+                            style={{
+                                background: activeIndex === index 
+                                    ? 'var(--neutral-on-background-strong)' 
+                                    : 'var(--neutral-alpha-medium)',
+                                cursor: 'pointer',
+                                transition: 'background 0.3s ease',
+                            }}
+                            fillWidth
+                            height="2">
+                        </Flex>
+                    ))}
+                </Flex>
             )}
-            <Flex gap="24" wrap>
-              {content?.trim() && (
-                <SmartLink
-                  suffixIcon="arrowRight"
-                  style={{ margin: "0", width: "fit-content" }}
-                  href={href}
-                >
-                  <Text variant="body-default-s">Read case study</Text>
-                </SmartLink>
-              )}
-              {link && (
-                <SmartLink
-                  suffixIcon="arrowUpRightFromSquare"
-                  style={{ margin: "0", width: "fit-content" }}
-                  href={link}
-                >
-                  <Text variant="body-default-s">View project</Text>
-                </SmartLink>
-              )}
+            <Flex
+                mobileDirection="column"
+                fillWidth paddingX="s" paddingTop="12" paddingBottom="24" gap="l">
+                {title && (
+                    <Flex
+                        flex={5}>
+                        <Heading
+                            as="h2"
+                            wrap="balance"
+                            variant="heading-strong-xl">
+                            {title}
+                        </Heading>
+                    </Flex>
+                )}
+                {(avatars?.length > 0 || description?.trim() || content?.trim()) && (
+                    <Flex
+                        flex={7} direction="column"
+                        gap="16">
+                        {avatars?.length > 0 && (
+                            <AvatarGroup
+                                avatars={avatars}
+                                size="m"
+                                reverseOrder/>
+                        )}
+                        {description?.trim() && (
+                            <Text
+                                wrap="balance"
+                                variant="body-default-s"
+                                onBackground="neutral-weak">
+                                {description}
+                            </Text>
+                        )}
+                        <Flex gap="24" wrap>
+                            {content?.trim() && (
+                                <SmartLink
+                                    suffixIcon="arrowRight"
+                                    style={{margin: '0', width: 'fit-content'}}
+                                    href={href}>
+                                        <Text
+                                            variant="body-default-s">
+                                        Baca Selengkapnya
+                                        </Text>
+                                </SmartLink>
+                            )}
+                            {link && (
+                                <SmartLink
+                                    suffixIcon="externalLink"
+                                    style={{ margin: "0", width: "fit-content" }}
+                                    href={resolvedLink}>
+                                    <Text variant="body-default-s">
+                                      Lihat Proyek
+                                    </Text>
+                                </SmartLink>
+                            )}
+                        </Flex>
+                    </Flex>
+                )}
             </Flex>
-          </Column>
-        )}
-      </Flex>
-    </Column>
-  );
+        </Flex>
+    );
 };
