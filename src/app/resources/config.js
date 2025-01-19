@@ -1,6 +1,6 @@
 const baseURL = 'magic-rose.vercel.app';
-const UserID = '982268021143896064';
-const longLat = 'lat=-7.795580&lon=110.369492';
+const UserID = '982268021143896064'; // DiscordID use Lanyard
+const longLat = 'lat=-7.795580&lon=110.369492'; // Weather APi use https://openweathermap.org/api
 
 const routes = {
     '/':                true,

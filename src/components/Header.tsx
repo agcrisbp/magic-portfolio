@@ -43,7 +43,7 @@ const TimeDisplay: React.FC = () => {
 export const Header = () => {
     const [isPending, startTransition] = useTransition();
 
-    const { person, home, about, blog, work } = renderContent();
+    const { person, home, about, blog, gallery, music, work } = renderContent();
 
     return (
         <>
@@ -108,6 +108,22 @@ export const Header = () => {
                                     href="/work"
                                     selected={false}>
                                     <Flex paddingX="2" hide="s">{work.label}</Flex>
+                                </ToggleButton>
+                            )}
+                            { routes['/gallery'] && (
+                                <ToggleButton
+                                    prefixIcon="gallery"
+                                    href="/gallery"
+                                    selected={false}>
+                                    <Flex paddingX="2" hide="s">{gallery.label}</Flex>
+                                </ToggleButton>
+                            )}
+                            { routes['/music'] && (
+                                <ToggleButton
+                                    prefixIcon="music"
+                                    href="/music"
+                                    selected={false}>
+                                    <Flex paddingX="2" hide="s">{music.label}</Flex>
                                 </ToggleButton>
                             )}
                         </Flex>
