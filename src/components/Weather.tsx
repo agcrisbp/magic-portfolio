@@ -31,7 +31,7 @@ const names: Record<string, string> = {
 
 const icons: Record<string, string> = {
   Clear: 'sun',
-  Clouds: 'cloud',
+  Clouds: 'clouds',
   Rain: 'rain',
   Drizzle: 'drizzle',
   Thunderstorm: 'thunderstorm',
