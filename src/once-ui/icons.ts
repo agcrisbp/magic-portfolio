@@ -47,6 +47,22 @@ import {
 	PiSpotifyLogoDuotone
 } from "react-icons/pi";
 
+import { 
+  FaSun, 
+  FaCloud, 
+  FaCloudRain, 
+  FaCloudShowersHeavy, 
+  FaBolt, 
+  FaSnowflake, 
+  FaSmog, 
+  FaWind, 
+  FaCloudMeatball, 
+  FaExclamationTriangle, 
+  FaUmbrellaBeach 
+} from 'react-icons/fa';
+
+import { GiSandstorm, GiVolcano } from 'react-icons/gi';
+
 import {
 	FaDiscord,
 	FaGithub,
@@ -68,7 +84,11 @@ import {
 import {
   MdMinimize,
   MdNotificationImportant,
+  MdPlayArrow, MdPause,
+  MdWaves, MdOutlineGrain,
 } from "react-icons/md";
+
+import { IoRainy } from 'react-icons/io5';
 
 export const iconLibrary: Record<string, IconType> = {
   
@@ -99,6 +119,19 @@ export const iconLibrary: Record<string, IconType> = {
 	resume: HiDocumentText,
   table: HiTableCells,
   
+  // Font Awesome 5
+  clear: FaSun,                   // Clear weather
+  clouds: FaCloud,                // Clouds
+  rain: IoRainy,                  // Rain
+  drizzle: FaCloudShowersHeavy,   // Drizzle
+  thunderstorm: FaBolt,           // Thunderstorm
+  snow: FaSnowflake,              // Snow
+  smoke: FaSmog,                  // Smoke
+  haze: FaUmbrellaBeach,          // Haze
+  fog: FaCloudMeatball,           // Fog
+  squall: FaWind,                 // Squall
+  tornado: FaExclamationTriangle, // Tornado
+  
   // Font Awesome 6
   discord: FaDiscord,
 	github: FaGithub,
@@ -109,6 +142,10 @@ export const iconLibrary: Record<string, IconType> = {
 	eye: FaEye,
 	eyeOff: FaEyeSlash,
 	whatsapp: FaWhatsapp,
+	
+	// Game Icons
+  sand: GiSandstorm,              // Sand
+  ash: GiVolcano,                 // Ash
   
   // Simple Icons
   bluesky: SiBluesky,
@@ -118,6 +155,10 @@ export const iconLibrary: Record<string, IconType> = {
   // Material Design Icons
   important: MdNotificationImportant,
   minimize: MdMinimize,
+  playtopause: MdPause,
+  pausetoplay: MdPlayArrow,
+  dust: MdWaves,                  // Dust
+  mist: MdOutlineGrain,           // Mist
 	
 	// Phosphor Icons
 	grid: PiGridFourDuotone,
@@ -125,6 +166,7 @@ export const iconLibrary: Record<string, IconType> = {
 	book: PiBooksDuotone,
 	device: PiDevicesDuotone,
 	gallery: PiImageDuotone,
+	spotify: PiSpotifyLogoDuotone,
 	
 	// Lucide Icons (lu)
 	blog: LuBookMarked,

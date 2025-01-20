@@ -1,10 +1,11 @@
 "use client";
 
-import { Flex, Heading, SmartImage, Tag, Text } from '@/once-ui/components';
+import { Flex, Heading, Tag, Text } from '@/once-ui/components';
 import { useEffect, useState } from "react";
 import type { TopMusicResponseSuccess } from "@/pages/api/topMusic";
 import { TrackList } from "@/components";
 import Masonry from 'react-masonry-css';
+import { SmartImage } from "@/once-ui/components";
 import musStyles from "@/components/gallery/Gallery.module.scss";
 import { renderContent } from '@/app/resources';
 
@@ -52,6 +53,14 @@ export default function MusicPage() {
         Lagu dan playlist yang sering saya dengarkan di <a className="text-green-400" target="_blank" href="/spotify">Spotify</a>.
       </Text>
       
+      {topMusic && (
+        <Flex marginTop="16">
+        <Tag variant="success">
+          Total lagu yang didengarkan: {topMusic.lastFMPlayCount}.
+        </Tag>
+        </Flex>
+      )}
+      
       <Flex
         as="div"
         style={{
@@ -77,46 +86,22 @@ export default function MusicPage() {
         ))}
       </Masonry>
       
-      <br />
-      
-      {topMusic && (
-        <Flex
-        as="div"
-        style={{
-          margin: '16px 0',
-        }}>
-        <Tag variant="success">
-          Total lagu yang didengarkan: {topMusic.lastFMPlayCount}.
-        </Tag>
-        </Flex>
-      )}
-      
-      <br />
-      
       {/* Pass the playlists fetched from API */}
-      <Text variant="body-default-xs" onBackground="neutral-weak" paddingBottom="16">
+      <Text variant="body-default-xs" onBackground="neutral-weak" paddingTop="16" paddingBottom="16">
         <TrackList playlists={topMusic?.playlists} />
       </Text>
-
-      <br />
       
       <Text variant="body-default-xs" onBackground="neutral-weak" paddingBottom="16">
         <TrackList tracks={topMusic?.short.items} period="short" priority={true} />
       </Text>
-
-      <br />
       
       <Text variant="body-default-xs" onBackground="neutral-weak" paddingBottom="16">
         <TrackList tracks={topMusic?.medium.items} period="medium" />
       </Text>
-
-      <br />
       
       <Text variant="body-default-xs" onBackground="neutral-weak" paddingBottom="16">
         <TrackList tracks={topMusic?.long.items} period="long" />
       </Text>
-
-      <br />
       
       <Text variant="body-default-xs" onBackground="neutral-weak" paddingBottom="16">
         <TrackList

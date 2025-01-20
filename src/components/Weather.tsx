@@ -1,8 +1,7 @@
 'use client';
 
-import { Icon } from '@iconify/react';
 import { useEffect, useState } from 'react';
-import { Flex, Text } from "@/once-ui/components"
+import { Icon, Flex, Text } from "@/once-ui/components"
 
 type WeatherResponse = {
   main: {
@@ -31,21 +30,21 @@ const names: Record<string, string> = {
 };
 
 const icons: Record<string, string> = {
-  Clear: 'typcn:weather-sunny',
-  Clouds: 'typcn:weather-partly-sunny',
-  Rain: 'ion:rainy',
-  Drizzle: 'mdi:weather-rainy-light',
-  Thunderstorm: 'mdi:weather-lightning',
-  Snow: 'mdi:weather-snowy',
-  Mist: 'mdi:weather-fog',
-  Smoke: 'mdi:weather-smoke',
-  Haze: 'mdi:weather-hazy',
-  Dust: 'mdi:weather-dust',
-  Fog: 'mdi:weather-fog',
-  Sand: 'mdi:weather-sandstorm',
-  Ash: 'mdi:weather-dust',
-  Squall: 'mdi:weather-windy',
-  Tornado: 'mdi:weather-tornado',
+  Clear: 'sun',
+  Clouds: 'cloud',
+  Rain: 'rain',
+  Drizzle: 'drizzle',
+  Thunderstorm: 'thunderstorm',
+  Snow: 'snow',
+  Mist: 'mist',
+  Smoke: 'smoke',
+  Haze: 'haze',
+  Dust: 'dust',
+  Fog: 'fog',
+  Sand: 'sand',
+  Ash: 'ash',
+  Squall: 'squall',
+  Tornado: 'tornado',
 };
 
 export function Weather({ onlyCity = false }: { onlyCity?: boolean }): JSX.Element | null {
@@ -84,17 +83,13 @@ export function Weather({ onlyCity = false }: { onlyCity?: boolean }): JSX.Eleme
   // Default behavior for showing full weather
   const tempCelsius = ((data.main.temp - 32) * 5) / 9;
   const weatherMain = data.weather[0]?.main || '';
-  const weatherIcon = icons[weatherMain] || 'mdi:weather-partly-cloudy';
+  const weatherIcon = icons[weatherMain] || 'rain';
 
   return (
-    <Flex alignItems="center" justifyContent="center">
+    <Flex gap="4" fillWidth justifyContent="center" alignItems="center" direction="row">
+      <Icon name={weatherIcon} size="xs" />
       <Text variant="body-default-s" align="center">
-        <Icon icon={weatherIcon} className="w-5 h-5" />
-        {' '}
-        <span>
-          {tempCelsius.toFixed(0)}°C{' '}
-          {names[weatherMain] ?? weatherMain}
-        </span>
+        {tempCelsius.toFixed(0)}°C {names[weatherMain] ?? weatherMain}
       </Text>
     </Flex>
   );

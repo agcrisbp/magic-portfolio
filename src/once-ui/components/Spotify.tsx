@@ -1,6 +1,6 @@
 'use client';
 
-import { Icon } from "@iconify/react";
+import { Flex, Icon, Tooltip, Text } from '.';
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
@@ -72,7 +72,7 @@ export default function Spotify() {
           <>
             {"album" in data.item ? (
               <>
-                <p className={styles["album-info"]}>
+                <Text variant="body-default-s" onBackground="neutral-medium" className={styles["album-info"]}>
                   <a
                     href={data.item.external_urls.spotify}
                     target="_blank"
@@ -95,22 +95,22 @@ export default function Spotify() {
                       {i < data.item?.artists.length! - 1 ? ", " : null}
                     </span>
                   ))}
-                </p>
-                <p className={styles["album-info"]}>
+                </Text>
+                <Text variant="body-default-xs" onBackground="neutral-medium" className={styles["album-info"]}>
                   Album{" "}
                   <a
                     href={data.item.album.external_urls.spotify}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={styles["album-info"]}
+                    className={styles["album-name"]}
                   >
                     {data.item.album.name}
                   </a>
-                </p>
+                </Text>
               </>
             ) : (
               <>
-                <p className={styles["album-info"]}>
+                <Text variant="body-default-s" onBackground="neutral-medium" className={styles["album-info"]}>
                   <a
                     href={data.item.external_urls.spotify}
                     target="_blank"
@@ -128,11 +128,11 @@ export default function Spotify() {
                   >
                     {data.item.show.name}
                   </a>
-                </p>
-                <p className={styles["album-info"]}>Podcast Episode</p>
+                </Text>
+                <Text variant="body-default-s" onBackground="neutral-medium" className={styles["album-info"]}>Podcast Episode</Text>
               </>
             )}
-            <p
+            <Text variant="body-default-s" onBackground="neutral-medium"
               className={`${styles["progress-container"]} ${styles["opacity-80"]} ${styles["flex"]} ${styles["items-center"]} ${styles["gap-1"]}`}
             >
               {data?.isPlayingNow && data.item ? (
@@ -146,43 +146,42 @@ export default function Spotify() {
                     />
                   </span>
                   <span className={styles["time-info"]}>
-                    <span className={styles["full-width"]}>
+                    <Text variant="body-default-xs" onBackground="neutral-medium" className={styles["full-width"]}>
                       {formatDuration(time!)}
-                    </span>
+                    </Text>
                     <span>
                       {data?.isPaused ? (
                         <Icon
-                          className={styles.icon}
-                          icon="line-md:pause-to-play-transition"
+                          onBackground="neutral-weak"
+                          size="xs"
+                          name="pausetoplay"
                         />
                       ) : (
                         <Icon
-                          className={styles.icon}
-                          icon="line-md:play-to-pause-transition"
+                          onBackground="neutral-medium"
+                          size="xs"
+                          name="playtopause"
                         />
                       )}
                     </span>
-                    <span className={styles["right-align"]}>
+                    <Text variant="body-default-xs" onBackground="neutral-medium" className={styles["right-align"]}>
                       {formatDuration(data.item.duration_ms)}
-                    </span>
+                    </Text>
                   </span>
                 </span>
               ) : (
                 <>
-                  <span className={styles["spotify-icon"]}>
-                    <Icon
-                      icon="simple-icons:spotify"
-                      width={48}
-                      height={48}
-                      className={styles["spotify-icon"]}
-                    />
-                  </span>
+                  <Icon
+                    onBackground="neutral-medium"
+                    size="xs"
+                    name="spotify"
+                  />
                   {data?.recentlyPlayed ? (
-                    <p className={styles["album-info"]}>Terakhir diputar di Spotify</p>
+                    <Text variant="body-default-xs" onBackground="neutral-medium" className={styles["album-info"]}>Terakhir diputar di Spotify</Text>
                   ) : null}
                 </>
               )}
-            </p>
+            </Text>
           </>
         ) : (
           "Tidak ada lagu yang diputar saat ini" 

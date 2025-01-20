@@ -33,7 +33,7 @@ const Icon = forwardRef<HTMLDivElement, IconProps>(({
     onSolid,
     size = 'm',
     tooltip,
-    tooltipPosition = 'top',
+    tooltipPosition = 'random',
     decorative = true,
     className,
     style,

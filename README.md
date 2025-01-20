@@ -1,3 +1,5 @@
+<a href='https://github.com/agcrisbp/github-clone-count-api'><img alt='GitHub Clones' src='https://img.shields.io/badge/dynamic/json?color=success&label=Clone&query=count&url=https://gist.githubusercontent.com/agcrisbp/528d07e9dd264f3989bb0fdbd47be1e8/raw/clone.json&logo=github'></a>
+
 # **About**
 
 Originally made by [Once UI - Magic Portfolio](https://aghea.vercel.app/once-ui), my main aim with this fork is to extend the project and introduce some new features. It is predominantly in Bahasa Indonesia, so feel free to use and edit what you need to.
@@ -81,7 +83,8 @@ Add a new .mdx file to `src/app/[locale]/blog/posts` or `src/app/[locale]/work/p
 
 > [!TIP]
 > Read [Setting up Spotify Dev](https://github.com/agcrisbp/ADTify?tab=readme-ov-file#setting-up-spotify-dev).
-> Read: [Setup](https://ad-link-docs.vercel.app/frontend#add-discord-status), and **YOU MUST** join [Lanyard Discord Server](https://discord.gg/lanyard).
+>
+> Read: [Setting up Discord](https://ad-link-docs.vercel.app/frontend#add-discord-status), and **YOU MUST** join [Lanyard Discord Server](https://discord.gg/lanyard).
 >
 > To integrate Disqus into your page, follow these steps:
 >
@@ -114,15 +117,6 @@ Add a new .mdx file to `src/app/[locale]/blog/posts` or `src/app/[locale]/work/p
 > ```
 >
 > 4. Copy the url and paste it into `script.src` inside [comments.tsx](src/app/blog/[slug]/comments.tsx).
-
----
-
-> [!NOTE]
-> If you encounter any errors related to Turbo, you may need to uninstall it by running:
-> 
-> ```bash
-> yarn remove turbo
-> ```
 
 ---
 

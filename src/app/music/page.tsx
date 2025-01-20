@@ -36,7 +36,13 @@ export async function generateMetadata() {
 export default function Music() {
 	const { music, person } = renderContent();
 	return (
-		<Flex fillWidth>
+		<Flex
+      as="section"
+      fillWidth
+      maxWidth="m"
+      direction="column"
+      gap="m"
+    >
 			<script
 				type="application/ld+json"
 				suppressHydrationWarning
