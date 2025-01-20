@@ -1,9 +1,9 @@
-import { notFound } from 'next/navigation'
-import { CustomMDX } from '@/components/mdx'
-import { getPosts } from '@/app/utils/utils'
-import { AvatarGroup, Button, Flex, Heading, ShareButton, SmartImage, Tag, Text } from '@/once-ui/components'
-import { baseURL, renderContent } from '@/app/resources';
+import { notFound } from 'next/navigation';
+import { CustomMDX } from '@/components/mdx';
+import { getPosts } from '@/app/utils/utils';
+import { AvatarGroup, Button, Flex, Heading, Icon, ShareButton, SmartImage, Tag, Text } from '@/once-ui/components';
 import { formatDate } from '@/app/utils/formatDate';
+import { baseURL, renderContent } from '@/app/resources';
 import ScrollToHash from '@/components/ScrollToHash';
 import { ToCModal } from '@/components/ToCModal';
 
@@ -34,6 +34,7 @@ export function generateMetadata({ params: { slug } }: WorkParams) {
     let {
         title,
         publishedAt: publishedTime,
+        updatedAt,
         summary: description,
         images,
         image,
@@ -53,6 +54,7 @@ export function generateMetadata({ params: { slug } }: WorkParams) {
             description,
             type: 'article',
             publishedTime,
+            modifiedTime: updatedAt,
             url: `https://${baseURL}/work/${post.slug}`,
             images: [
                 {
@@ -89,88 +91,95 @@ export default function Project({ params }: WorkParams) {
       level: heading.match(/^#+/)?.[0].length || 1,
     }));
 
-    return (
-        <Flex as="section"
-            fillWidth maxWidth="m"
-            direction="column" alignItems="center"
-            gap="l">
-            <script
-                type="application/ld+json"
-                suppressHydrationWarning
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                        '@context': 'https://schema.org',
-                        '@type': 'BlogPosting',
-                        headline: post.metadata.title,
-                        datePublished: post.metadata.publishedAt,
-                        dateModified: post.metadata.publishedAt,
-                        description: post.metadata.summary,
-                        image: post.metadata.image
-                            ? `https://${baseURL}${post.metadata.image}`
-                            : `https://${baseURL}/og?title=${post.metadata.title}`,
-                        url: `https://${baseURL}/work/${post.slug}`,
-                        author: {
-                            '@type': 'Person',
-                            name: person.name,
-                        },
-                    }),
-                }}
+  return (
+    <Flex
+      as="section"
+      fillWidth
+      maxWidth="m"
+      direction="column"
+      gap="m"
+    >
+      <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                  '@context': 'https://schema.org',
+                  '@type': 'BlogPosting',
+                  headline: post.metadata.title,
+                  datePublished: post.metadata.publishedAt,
+                  dateModified: post.metadata.updatedAt || post.metadata.publishedAt,
+                  description: post.metadata.summary,
+                  image: post.metadata.image
+                      ? `https://${baseURL}${post.metadata.image}`
+                      : `https://${baseURL}/og?title=${post.metadata.title}`,
+                  url: `https://${baseURL}/work/${post.slug}`,
+                  author: {
+                      '@type': 'Person',
+                      name: person.name,
+                  },
+              }),
+          }}
+      />
+        <Button
+          href={`/work`}
+          variant="tertiary"
+          size="s"
+          prefixIcon="chevronLeft"
+        >
+          Kembali
+        </Button>
+        <Heading variant="display-strong-s">{post.metadata.title}</Heading>
+        {post.metadata.images.length > 0 && (
+            <SmartImage
+              priority
+              style={{
+                cursor: 'pointer',
+                border: '1px solid var(--neutral-alpha-weak)',
+              }}
+              radius="m"
+              src={post.metadata.images[0]}
+              alt={post.metadata.title[0]}
+              aspectRatio="16 / 9"
             />
-            <Flex
-                fillWidth maxWidth="xs" gap="16"
-                direction="column">
-                <Button
-                    href={`/work`}
-                    variant="tertiary"
-                    size="s"
-                    prefixIcon="chevronLeft">
-                    Back
-                </Button>
-                <Heading
-                    variant="display-strong-s">
-                    {post.metadata.title}
-                </Heading>
+        )}
+        <Flex gap="12" alignItems="center" justifyContent="space-between">
+          <Flex gap="12" alignItems="center">
+            { post.metadata.team && (
+                  <AvatarGroup
+                      reverseOrder
+                      avatars={avatars}
+                      size="m"/>
+              )}
+            <Text variant="body-default-s" onBackground="neutral-weak">
+              {formatDate(post.metadata.publishedAt)}
+            </Text>
+          </Flex>
+          {post.metadata.updatedAt && (
+            <Flex alignItems="center" gap="2">
+              <Icon
+                name="infoCircle"
+                tooltip="Tanggal diperbarui."
+                size="xs"
+                onBackground="neutral-weak"
+              />
+              <Text variant="body-default-s" onBackground="neutral-weak">
+                {formatDate(post.metadata.updatedAt)}
+              </Text>
             </Flex>
-            {post.metadata.images.length > 0 && (
-                <SmartImage
-                    aspectRatio="16 / 9"
-                    radius="m"
-                    alt="image"
-                    src={post.metadata.images[0]}/>
-            )}
-            <Flex style={{margin: 'auto'}}
-                as="article"
-                maxWidth="xs" fillWidth
-                direction="column">
-                <Flex
-                    gap="12" marginBottom="24"
-                    alignItems="center">
-                    { post.metadata.team && (
-                        <AvatarGroup
-                            reverseOrder
-                            avatars={avatars}
-                            size="m"/>
-                    )}
-                    <Text
-                        variant="body-default-s"
-                        onBackground="neutral-weak">
-                        {formatDate(post.metadata.publishedAt)}
-                    </Text>
-                </Flex>
-                <Flex
-                    as="div"
-                    style={{
-                        borderBottom: '1px solid',
-                        margin: '10px 0',
-                    }}
-                />
-                <CustomMDX source={post.content} />
-            </Flex>
-            <ToCModal headings={headings || []} />
-            <Tag>
-              <ShareButton baseURL={baseURL} dir="work" slug={post.slug} />
-            </Tag>
-            <ScrollToHash />
+          )}
         </Flex>
-    )
+        <Flex as="div" style={{ borderBottom: '1px solid', margin: '10px 0' }} />
+        <ToCModal headings={headings || []} />
+        <Flex as="article" direction="column" paddingBottom="32" fillWidth>
+          <CustomMDX source={post.content} />
+        </Flex>
+        <Flex justifyContent="center">
+          <Tag>
+            <ShareButton baseURL={baseURL} dir="work" slug={post.slug} />
+          </Tag>
+        </Flex>
+        <ScrollToHash />
+    </Flex>
+  );
 }

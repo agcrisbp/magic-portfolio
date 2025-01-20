@@ -1,4 +1,5 @@
 const baseURL = 'magic-rose.vercel.app';
+const Email = 'email@example.com';
 const UserID = '982268021143896064'; // DiscordID use Lanyard
 const longLat = 'lat=-7.795580&lon=110.369492'; // Weather APi use https://openweathermap.org/api
 
@@ -102,4 +103,4 @@ const mailchimp = {
     }
 };
 
-export { routes, protectedRoutes, effects, style, display, mailchimp, UserID, longLat, baseURL };
+export { routes, protectedRoutes, effects, style, display, mailchimp, Email, UserID, longLat, baseURL };
