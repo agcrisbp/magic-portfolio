@@ -6,5 +6,4 @@ export { HeadingLink } from '@/components/HeadingLink'
 export { RouteGuard } from '@/components/RouteGuard'
 export { default as Partners } from '@/components/Partners';
 export { TrackList } from '@/components/TrackList'
-export { default as UpTime } from '@/components/UpTime'
 export { Weather } from '@/components/Weather'

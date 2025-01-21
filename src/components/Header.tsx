@@ -62,7 +62,7 @@ export const Header = () => {
                     paddingLeft="12" fillWidth
                     alignItems="center"
                     textVariant="body-default-s">
-                    { display.location && (
+                    { display.location && process.env.WEATHER_API_KEY && (
                         <Flex hide="s">
                             <Weather />
                         </Flex>

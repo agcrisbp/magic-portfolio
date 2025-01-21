@@ -1,6 +1,6 @@
 import { AvatarDecoration, Button, Flex, Heading, Icon, IconButton, SmartImage, Tag, Text } from '@/once-ui/components';
 import Image from 'next/image';
-import { baseURL, renderContent } from '@/app/resources';
+import { baseURL, renderContent, display } from '@/app/resources';
 import TableOfContents from '@/components/about/TableOfContents';
 import styles from '@/components/about/about.module.scss';
 import dynamic from 'next/dynamic';
@@ -109,14 +109,19 @@ export default function About() {
                         <AvatarDecoration
                             src={person.avatar}
                             size="xl"/>
-                        <Flex
-                            gap="8"
-                            alignItems="center">
-                            <Icon
-                                onBackground="accent-weak"
-                                name="globe"/>
-                            <Weather onlyCity={true}/>
-                        </Flex>
+                        { display.location && (
+                              <Flex
+                                  gap="8"
+                                  alignItems="center">
+                                  <Icon
+                                      onBackground="accent-weak"
+                                      name="globe"/>
+                                  { !process.env.WEATHER_API_KEY ? (
+                                    <> {person.location.split('/')[1]} </> ) : (
+                                   <Weather onlyCity={true}/>
+                                  )}
+                              </Flex>
+                            )}
                         { person.languages.length > 0 && (
                             <Flex
                                 wrap
