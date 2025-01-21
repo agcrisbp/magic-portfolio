@@ -23,15 +23,14 @@ export const Footer = () => {
                 gap="16"
                 justifyContent="space-between"
                 alignItems="center">
-                
-              {/* Left Section */}
+              
               {process.env.SPOTIFY_CLIENT_ID && (<>
                   <Flex className={styles.footerLeft}>
                      <Spotify />
                   </Flex>
               </>)}
               
-              <Flex className={styles.footerCenter} gap="16">
+              <Flex className={process.env.SPOTIFY_CLIENT_ID ? undefined : styles.footerLeft} gap="16">
                 {social.map((item) =>
                   item.link && (
                     <IconButton
