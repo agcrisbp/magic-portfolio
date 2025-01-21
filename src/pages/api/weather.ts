@@ -12,7 +12,7 @@ type WeatherResponse = {
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?${longLat}&units=imperial&appid=${process.env.WEATHER_API_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?${longLat}&units=imperial&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`
     );
 
     if (!response.ok) {

@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Icon, Flex, Text } from "@/once-ui/components"
+import { Icon, Flex, Text } from "@/once-ui/components";
+import { renderContent } from '@/app/resources';
 
 type WeatherResponse = {
   main: {
@@ -50,8 +51,14 @@ const icons: Record<string, string> = {
 export function Weather({ onlyCity = false }: { onlyCity?: boolean }): JSX.Element | null {
   const [data, setData] = useState<WeatherResponse | undefined>(undefined);
   const [loading, setLoading] = useState(true);
+  const { person } = renderContent();
 
   useEffect(() => {
+    if (!process.env.NEXT_PUBLIC_WEATHER_API_KEY) {
+      setLoading(false);
+      return;
+    }
+
     fetch('/api/weather')
       .then((res) => res.json())
       .then((res: WeatherResponse) => {
@@ -63,6 +70,10 @@ export function Weather({ onlyCity = false }: { onlyCity?: boolean }): JSX.Eleme
         setLoading(false);
       });
   }, []);
+
+  if (!process.env.NEXT_PUBLIC_WEATHER_API_KEY) {
+    return <> {person.location} </>;
+  }
 
   if (loading) {
     return null;
@@ -80,7 +91,6 @@ export function Weather({ onlyCity = false }: { onlyCity?: boolean }): JSX.Eleme
     );
   }
 
-  // Default behavior for showing full weather
   const tempCelsius = ((data.main.temp - 32) * 5) / 9;
   const weatherMain = data.weather[0]?.main || '';
   const weatherIcon = icons[weatherMain] || 'rain';
