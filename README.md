@@ -38,11 +38,11 @@ npm run dev
 
 **5. Edit content**
 
-[src/app/resources/content](src/app/resources/content.js) (or content-i18n for localization).
+[src/app/resources/content](src/app/resources/content.js).
 
 **6. Create blog posts / projects**
 
-Add a new .mdx file to `src/app/[locale]/blog/posts` or `src/app/[locale]/work/projects`.
+Add a new .mdx file to `src/app/blog/posts` or `src/app/work/projects`.
 
 **7. Domain and redirects setup**
 
