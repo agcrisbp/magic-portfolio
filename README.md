@@ -4,7 +4,7 @@
 
 Originally made by [Once UI - Magic Portfolio](https://aghea.vercel.app/once-ui), my main aim with this fork is to extend the project and introduce some new features. It is predominantly in Bahasa Indonesia, so feel free to use and edit what you need to.
 
-View the [demo here](https://magic-rose.vercel.app).
+View the [demo here](https://magic-i18n.vercel.app).
 
 ![Magic Portfolio](public/images/cover.png)
 
