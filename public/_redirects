@@ -1,19 +1,5 @@
-/bsky https://bit.ly/AgheaBluesky 301
-/signal https://bit.ly/AgheaSignal 301
-/contact https://bit.ly/AgheaSignal 301
+/example https://example.com 301
+
 /email /api/email 301
-/discord https://bit.ly/3RxrKvQ 301
-/it-never-ends https://s.id/AgheaINE 301
-/soultaker https://s.id/Soultaker 301
-/mxm https://bit.ly/AgheaMXM 301
-/magic-portfolio https://s.id/magic-portfolio 301
-/twitter https://bit.ly/AgheaTwitter 301
-/youtube https://bit.ly/AgheaYouTube 301
-/github https://bit.ly/3RwQ0yc 301
-/linkedin https://bit.ly/48tDdU0 301
-/once-ui https://s.id/OnceUI 301
-/resume /CV___Agcrismanto_Budhi_Praswastyka.pdf 301
-/spotify https://spoti.fi/3PkwCnr 301
-/termux https://bit.ly/3vuDUhG 301
-/termuxdl https://bit.ly/4aGdHN4 301
+
 /.well-known/* /.well-known/:splat 200

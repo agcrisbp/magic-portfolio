@@ -305,37 +305,27 @@ const gallery = {
     description: `Koleksi foto ${person.name}`,
     images: [
         { 
-            src: '/images/gallery/Graduation Certificate.jpg',
+            src: '/images/gallery/img-01.jpg',
             alt: 'image',
             orientation: 'horizontal'
         },
         { 
-            src: '/images/gallery/Translation Curator Certificate.jpg',
-            alt: 'image',
-            orientation: 'horizontal'
-        },
-        { 
-            src: '/images/gallery/IMG-20240815-WA0004.jpg',
-            alt: 'image',
-            orientation: 'horizontal'
-        },
-        { 
-            src: '/images/gallery/IMG_20220101_181500.jpg',
-            alt: 'image',
-            orientation: 'horizontal'
-        },
-        { 
-            src: '/images/gallery/IMG_20241025_175127.jpg',
-            alt: 'image',
-            orientation: 'horizontal'
-        },
-        { 
-            src: '/images/gallery/IMG_20220417_082837.jpg',
+            src: '/images/gallery/img-02.jpg',
             alt: 'image',
             orientation: 'vertical'
         },
         { 
-            src: '/images/gallery/EwhXPIDVoAol2eq.jpeg',
+            src: '/images/gallery/img-03.jpg',
+            alt: 'image',
+            orientation: 'horizontal'
+        },
+        { 
+            src: '/images/gallery/img-04.jpg',
+            alt: 'image',
+            orientation: 'horizontal'
+        },
+        { 
+            src: '/images/gallery/img-05.jpg',
             alt: 'image',
             orientation: 'horizontal'
         },

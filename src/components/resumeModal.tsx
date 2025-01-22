@@ -7,9 +7,9 @@ const ResumeModal = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
 
-  const files = [
-    { name: 'Bahasa Indonesia', link: '/CV___Agcrismanto_Budhi_Praswastyka.pdf' },
-    { name: 'English', link: '/CV___Agcrismanto_Budhi_Praswastyka__English_.pdf' },
+  const files = [ // this can be any files inside public directory
+    { name: 'Example: LinkedIn Icon', link: '/trademark/linkedin.svg' },
+    { name: 'Example: _redirects', link: '/_redirects' },
   ];
 
   useEffect(() => {
@@ -96,6 +96,8 @@ const ResumeModal = () => {
                   variant="secondary"
                   size="s"
                   onClick={() => handleDownload(file.link)}
+                  fillWidth
+                  style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}
                 />
               ))}
             </Flex>

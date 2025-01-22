@@ -8,7 +8,7 @@ import { useTranslations } from 'next-intl';
 import { Partners, Weather } from "@/components"
 import dynamic from 'next/dynamic';
 
-const ResumeModal = dynamic(() => import('./resumeModal'), { ssr: false });
+const ResumeModal = dynamic(() => import('@/components/resumeModal'), { ssr: false });
 
 export async function generateMetadata(
     {params: {locale}}: { params: { locale: string }}

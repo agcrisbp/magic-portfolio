@@ -1,14 +1,13 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useEffect, useRef, useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition, createRef } from "react";
 import { Flex, ToggleButton, IconButton } from "@/once-ui/components";
 import { Weather } from "@/components";
 import styles from "@/components/Header.module.scss";
 
 import { routes, display } from "@/app/resources";
-import { routing } from "@/i18n/routing";
-import { Locale, usePathname, useRouter } from "@/i18n/routing";
+import { Locale, usePathname, useRouter, routing } from "@/i18n/routing";
 import { renderContent } from "@/app/resources";
 import { useTranslations } from "next-intl";
 import { i18n } from "@/app/resources/config";
@@ -62,10 +61,21 @@ export const Header = () => {
   const pathname = usePathname() ?? "";
   const params = useParams();
   const [isLocaleMenuOpen, setLocaleMenuOpen] = useState(false);
-  const localeMenuRef = useRef<HTMLDivElement>(null);
+
+  // Store dynamic refs for each locale
+  const refs = useRef<Record<string, React.RefObject<HTMLButtonElement>>>(
+    routing.locales.reduce((acc, locale) => {
+      acc[locale] = createRef<HTMLButtonElement>();
+      return acc;
+    }, {} as Record<string, React.RefObject<HTMLButtonElement>>)
+  );
 
   function handleLanguageChange(locale: string) {
     const nextLocale = locale as Locale;
+
+    // Access the specific button's ref
+    console.log("Ref for locale:", locale, refs.current[locale]?.current);
+
     startTransition(() => {
       router.replace(pathname, { locale: nextLocale });
     });
@@ -74,8 +84,10 @@ export const Header = () => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
-        localeMenuRef.current &&
-        !localeMenuRef.current.contains(event.target as Node)
+        refs.current &&
+        Object.values(refs.current).every(
+          (ref) => ref.current && !ref.current.contains(event.target as Node)
+        )
       ) {
         setLocaleMenuOpen(false);
       }
@@ -152,11 +164,11 @@ export const Header = () => {
                         selected={params?.locale === locale}
                         onClick={() => handleLanguageChange(locale)}
                         className={isPending ? "pointer-events-none opacity-60" : undefined}
-                        ref={localeMenuRef}
+                        ref={refs.current[locale]}
                       >
                         {locale.toUpperCase()}
                       </ToggleButton>
-                    ))}
+                  ))}
                 </Flex>
               )}
             </>
@@ -221,7 +233,7 @@ export const Header = () => {
               {routes["/gallery"] && (
                 <ToggleButton
                   prefixIcon="gallery"
-                  href={`/${params?.locale}/work`}
+                  href={`/${params?.locale}/gallery`}
                   selected={pathname.startsWith("/gallery")}
                 >
                   <Flex paddingX="2" hide="s">
@@ -271,11 +283,11 @@ export const Header = () => {
                           selected={params?.locale === locale}
                           onClick={() => handleLanguageChange(locale)}
                           className={isPending ? "pointer-events-none opacity-60" : undefined}
-                          ref={localeMenuRef}
+                          ref={refs.current[locale]}
                         >
                           {locale.toUpperCase()}
                         </ToggleButton>
-                      ))}
+                    ))}
                   </Flex>
                 )}
               </>
