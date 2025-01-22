@@ -144,7 +144,6 @@ export const Header = () => {
                   gap="2"
                   justifyContent="center"
                   fillWidth
-                  ref={localeMenuRef}
                 >
                   {i18n &&
                     routing.locales.map((locale, index) => (
@@ -153,6 +152,7 @@ export const Header = () => {
                         selected={params?.locale === locale}
                         onClick={() => handleLanguageChange(locale)}
                         className={isPending ? "pointer-events-none opacity-60" : undefined}
+                        ref={localeMenuRef}
                       >
                         {locale.toUpperCase()}
                       </ToggleButton>
@@ -262,7 +262,6 @@ export const Header = () => {
                     gap="2"
                     justifyContent="center"
                     fillWidth
-                    ref={localeMenuRef}
                     hide="s"
                   >
                     {i18n &&
@@ -272,6 +271,7 @@ export const Header = () => {
                           selected={params?.locale === locale}
                           onClick={() => handleLanguageChange(locale)}
                           className={isPending ? "pointer-events-none opacity-60" : undefined}
+                          ref={localeMenuRef}
                         >
                           {locale.toUpperCase()}
                         </ToggleButton>
