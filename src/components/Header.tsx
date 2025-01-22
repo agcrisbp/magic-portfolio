@@ -144,7 +144,7 @@ export const Header = () => {
           alignItems="center"
           style={{ position: "absolute", bottom: 50, maxWidth: "100%", zIndex: 10 }}
         >
-          {routing.locales.length > 1 && (
+          {i18n ? routing.locales.length > 1 && (
             <>
               {isLocaleMenuOpen && (
                 <Flex
@@ -158,8 +158,7 @@ export const Header = () => {
                   justifyContent="center"
                   fillWidth
                 >
-                  {i18n &&
-                    routing.locales.map((locale, index) => (
+                  {routing.locales.map((locale, index) => (
                       <ToggleButton
                         key={index}
                         selected={params?.locale === locale}
@@ -173,7 +172,7 @@ export const Header = () => {
                 </Flex>
               )}
             </>
-          )}
+          ): null}
         </Flex>
 
         <Flex fillWidth justifyContent="center">
@@ -253,7 +252,7 @@ export const Header = () => {
             textVariant="body-default-s"
             gap="20"
           >
-            {routing.locales.length > 1 && (
+            {i18n ? routing.locales.length > 1 && (
               <>
                 {!isLocaleMenuOpen ? (
                   <IconButton
@@ -277,8 +276,7 @@ export const Header = () => {
                     fillWidth
                     hide="s"
                   >
-                    {i18n &&
-                      routing.locales.map((locale, index) => (
+                    {routing.locales.map((locale, index) => (
                         <ToggleButton
                           key={index}
                           selected={params?.locale === locale}
@@ -292,7 +290,7 @@ export const Header = () => {
                   </Flex>
                 )}
               </>
-            )}
+            ): null}
             <Flex hide="s">{display.time && <TimeDisplay />}</Flex>
           </Flex>
         </Flex>
