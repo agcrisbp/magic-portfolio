@@ -62,6 +62,7 @@ export const Header = () => {
   const params = useParams();
   const [isLocaleMenuOpen, setLocaleMenuOpen] = useState(false);
 
+  // Store dynamic refs for each locale
   const refs = useRef<Record<string, React.RefObject<HTMLButtonElement>>>(
     routing.locales.reduce((acc, locale) => {
       acc[locale] = createRef<HTMLButtonElement>();
@@ -69,10 +70,14 @@ export const Header = () => {
     }, {} as Record<string, React.RefObject<HTMLButtonElement>>)
   );
 
+  // Reference for the entire locale menu
   const localeMenuRef = useRef<HTMLDivElement>(null);
 
   function handleLanguageChange(locale: string) {
     const nextLocale = locale as Locale;
+
+    // Access the specific button's ref
+    console.log("Ref for locale:", locale, refs.current[locale]?.current);
 
     startTransition(() => {
       router.replace(pathname, { locale: nextLocale });
@@ -152,7 +157,6 @@ export const Header = () => {
                   gap="2"
                   justifyContent="center"
                   fillWidth
-                  ref={localeMenuRef}
                 >
                   {i18n &&
                     routing.locales.map((locale, index) => (
