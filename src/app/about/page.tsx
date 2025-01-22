@@ -116,7 +116,7 @@ export default function About() {
                                   <Icon
                                       onBackground="accent-weak"
                                       name="globe"/>
-                                  { !process.env.WEATHER_API_KEY ? (
+                                  { !process.env.NEXT_PUBLIC_WEATHER_API_KEY ? (
                                     <> {person.location.split('/')[1]} </> ) : (
                                    <Weather onlyCity={true}/>
                                   )}

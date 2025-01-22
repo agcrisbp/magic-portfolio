@@ -69,6 +69,10 @@ Add a new .mdx file to `src/app/blog/posts` or `src/app/work/projects`.
 - Generate and display social links automatically.
 - Set up password protection for URLs.
 
+## **Localization**
+- A localized version of Magic Portfolio is available with the next-intl library.
+- To use localization, switch to the 'i18n' branch.
+
 ## **Spotify Now Playing & Recently Played**
 - Display the currently playing track and recently played songs from Spotify.
 - Automatically update the list of recently played tracks.
