@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname } from '@/i18n/routing';
 import { routes, protectedRoutes } from '@/app/resources';
-import { Flex, Spinner, IconButton, Input, Button, Heading } from '@/once-ui/components';
+import { Flex, Spinner, IconButton, Input, Button, Heading } from '@/once-ui/components'; 
 
 interface RouteGuardProps {
     children: React.ReactNode;
@@ -75,24 +75,24 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
             setError('Kata sandi salah');
         }
     };
-    
+
     const togglePasswordVisibility = () => {
         setIsPasswordVisible(!isPasswordVisible);
     };
 
     if (loading) {
         return (
-        <Flex fillWidth paddingY="128" justifyContent="center">
-            <Spinner />
-        </Flex>
+            <Flex fillWidth paddingY="128" justifyContent="center">
+                <Spinner />
+            </Flex>
         );
     }
 
     if (!isRouteEnabled) {
         return (
-        <Flex fillWidth paddingY="128" justifyContent="center">
-            <Spinner />
-        </Flex>
+            <Flex fillWidth paddingY="128" justifyContent="center">
+                <Spinner />
+            </Flex>
         );
     }
 
@@ -143,4 +143,4 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
     return <>{children}</>;
 };
 
-export { RouteGuard }
+export { RouteGuard };

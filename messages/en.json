@@ -1,0 +1,86 @@
+{
+    "person": {
+        "role": "Cybersecurity"
+    },
+    "newsletter": {
+        "title": "Subscribe to {role}'s Newsletter",
+        "description": "Artikel yang saya tulis adalah dokumentasi dari opini saya untuk bahan pembelajaran maupun bacaan semata. Beberapa artikel saya tulis dalam Bahasa Inggris agar dapat bermanfaat dan dibaca oleh teman-teman dari mancanegara.",
+        "button": "Subscribe"
+    },
+    "home": {
+        "label": "Home",
+        "title": "{name}",
+        "description": "A programmer who aware of the tiny moments in a persons life that reveal greater truths.",
+        "headline": "Do what you love, love what you do.",
+        "subline": "Agcrismanto Budhi Praswastyka, also known as Cris or Aghea, is a professional in Web Developer and Cybersecurity since 2011, with a focus on developing secure web applications. Additionally, he has experience in the food and beverage industry."
+    },
+    "about": {
+        "label": "About",
+        "title": "About Me",
+        "description": "Meet {name} from {location}.",
+        "intro": {
+            "title": "Introduction",
+            "description": "Agcrismanto Budhi Praswastyka, known as Cris or Aghea, is a professional specializing in Web Developer and Cybersecurity, with expertise in these fields since 2011. He is proficient in programming languages such as Python and has a strong focus on enhancing digital security measures. His work primarily involves developing secure web applications and protecting systems from cyber threats. Additionally, He has experience in the food and beverage industry for several years.\n\nHe is also a movie buff, with a particular interest in comedy, action, and horror genres. In his free time, he explores his creative interests as a musician and enjoys playing games. His curiosity and commitment to staying updated with technological advancements are central to his personal and professional growth."
+        },
+        "work": {
+            "title": "Pengalaman Kerja"
+        },
+        "achievements": {
+            "BLAST-1": "Designed and developed core features of an esports-based platform, including an intuitive user interface and efficient tournament management system, using technologies like React, Next.js, TypeScript, and Node.js to create dynamic and responsive web applications.",
+            "BLAST-2": "Implemented security measures to protect user data and tournament information, ensuring systems were free of vulnerabilities through penetration testing and strict access management.",
+            "BLAST-3": "Optimized website performance to handle high traffic during major tournaments, focusing on system speed and scalability.",
+            "Diskominfo-1": "Monitored and ensured the security of network infrastructure, configuring firewalls and intrusion detection/prevention systems (IDS/IPS).",
+            "Diskominfo-2": "Conducted vulnerability assessments of applications and networks to identify risks and audited systems regularly to ensure compliance with security standards.",
+            "Diskominfo-3": "Performed cyberattack simulations (penetration testing) to identify potential security gaps in government systems.",
+            "Diskominfo-4": "Responded to and handled cybersecurity incidents, such as ransomware, phishing, or malware attacks, by creating incident reports and providing mitigation recommendations.",
+            "Diskominfo-5": "Conducted staff training on data security, privacy protection, and best practices in IT usage to ensure compliance with applicable security standards."
+        },
+        "studies": {
+            "title": "Studies",
+            "institutions": {
+                "Build the Future": {
+                    "description": "Studied online marketing and personal branding."
+                }
+            }
+        },
+        "technical": {
+            "title": "Technical skills",
+            "skills": {
+                "Figma": {
+                    "description": "Able to prototype in Figma with Once UI with unnatural speed."
+                },
+                "Nextjs": {
+                    "description": "Building next gen apps with Next.js + Once UI + Supabase."
+                }
+            }
+        }
+    },
+    "blog": {
+        "label": "Blog",
+        "title": "Blog",
+        "description": "This site contains documentation of my writings and opinions for learning and reading purposes. Some of my articles are written in English so that they can be useful and read by friends from abroad."
+    },
+    "work": {
+        "label": "Work",
+        "title": "Projects",
+        "description": "Projects by {name}"
+    },
+    "gallery": {
+        "label": "Gallery",
+        "title": "Gallery",
+        "description": "A photo collection by {name}"
+    },
+    "music": {
+        "label": "Music",
+        "title": "Music",
+        "description": "Discover {name} most frequently played tracks and playlists on Spotify."
+    },
+    "button": {
+        "read": "Read More",
+        "view": "View Project",
+        "back": "Back",
+        "toc": "Table of Contents",
+        "newBlog": "Latest Blog",
+        "newWork": "Latest Project"
+    }
+}

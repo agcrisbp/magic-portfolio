@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import type { TopMusicResponseSuccess } from "@/pages/api/topMusic";
 import { TrackList } from "@/components";
 import Masonry from 'react-masonry-css';
+import { useTranslations } from "next-intl";
 import { SmartImage } from "@/once-ui/components";
 import musStyles from "@/components/gallery/Gallery.module.scss";
 import { renderContent } from '@/app/resources';
@@ -18,7 +19,8 @@ type PlaylistsInfo = {
 
 export default function MusicPage() {
   const [topMusic, setTopMusic] = useState<TopMusicResponseSuccess | null>(null);
-  const { music } = renderContent();
+  const t = useTranslations();
+  const { music } = renderContent(t);
   const breakpointColumnsObj = {
     default: 4,
     1440: 3,

@@ -3,6 +3,7 @@
 import Masonry from 'react-masonry-css';
 import { SmartImage } from "@/once-ui/components";
 import styles from "./Gallery.module.scss";
+import { useTranslations } from 'next-intl';
 import { renderContent } from '@/app/resources';
 
 export default function MasonryGrid() {
@@ -13,7 +14,8 @@ export default function MasonryGrid() {
         560: 1
     };
 
-    const { gallery } = renderContent();
+    const t = useTranslations();
+    const { gallery } = renderContent(t);
 
     return (
         <Masonry

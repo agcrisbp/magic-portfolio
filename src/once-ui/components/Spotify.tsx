@@ -52,7 +52,7 @@ export default function Spotify() {
   return (
     <div className={styles["spotify-container"]}>
       <div className={styles["album-image-container"]}>
-        <Link href="/spotify">
+        <Link href="/music">
           <Image
             src={
               (data?.item && "album" in data.item

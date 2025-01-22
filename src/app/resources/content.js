@@ -13,7 +13,7 @@ const person = {
 }
 
 const newsletter = {
-    display: true,
+    display: false,
     title: <>Berlangganan Artikel Baru {person.role}</>,
     description: <>Artikel yang Ia tulis adalah dokumentasi dari opininya untuk bahan pembelajaran maupun bacaan semata. Beberapa artikel Ia tulis dalam Bahasa Inggris agar dapat bermanfaat dan dibaca oleh teman-teman dari mancanegara.</>
 }
@@ -24,22 +24,22 @@ const social = [
     {
         name: 'GitHub',
         icon: 'github',
-        link: '/example',
+        link: '/github',
     },
     {
         name: 'LinkedIn',
         icon: 'linkedin',
-        link: '/example',
+        link: '/linkedin',
     },
     {
         name: 'YouTube',
         icon: 'youtube',
-        link: '/example',
+        link: '/youtube',
     },
     {
         name: 'Signal',
         icon: 'signal',
-        link: '/example',
+        link: '/signal',
     },
     {
         name: 'Email',
@@ -68,11 +68,11 @@ const about = {
         display: true
     },
     calendar: {
-        display: true,
+        display: false,
         link: 'https://cal.com'
     },
     resume: {
-        display: true // edit src/components/resumeModal.tsx
+        display: true
     },
     intro: {
         display: true,
@@ -238,7 +238,7 @@ Di luar pekerjaannya, Ia mengeksplorasi minat kreatifnya sebagai musisi dan pegi
 }
 
 const partners = {
-  display: true,
+  display: false,
   items: [
     {
       name: "Diskominfo Purworejo",
@@ -305,27 +305,37 @@ const gallery = {
     description: `Koleksi foto ${person.name}`,
     images: [
         { 
-            src: '/images/gallery/img-01.jpg',
+            src: '/images/gallery/Graduation Certificate.jpg',
             alt: 'image',
             orientation: 'horizontal'
         },
         { 
-            src: '/images/gallery/img-02.jpg',
+            src: '/images/gallery/Translation Curator Certificate.jpg',
+            alt: 'image',
+            orientation: 'horizontal'
+        },
+        { 
+            src: '/images/gallery/IMG-20240815-WA0004.jpg',
+            alt: 'image',
+            orientation: 'horizontal'
+        },
+        { 
+            src: '/images/gallery/IMG_20220101_181500.jpg',
+            alt: 'image',
+            orientation: 'horizontal'
+        },
+        { 
+            src: '/images/gallery/IMG_20241025_175127.jpg',
+            alt: 'image',
+            orientation: 'horizontal'
+        },
+        { 
+            src: '/images/gallery/IMG_20220417_082837.jpg',
             alt: 'image',
             orientation: 'vertical'
         },
         { 
-            src: '/images/gallery/img-03.jpg',
-            alt: 'image',
-            orientation: 'horizontal'
-        },
-        { 
-            src: '/images/gallery/img-04.jpg',
-            alt: 'image',
-            orientation: 'horizontal'
-        },
-        { 
-            src: '/images/gallery/img-05.jpg',
+            src: '/images/gallery/EwhXPIDVoAol2eq.jpeg',
             alt: 'image',
             orientation: 'horizontal'
         },

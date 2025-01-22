@@ -1,0 +1,86 @@
+{
+    "person": {
+        "role": "Cybersecurity"
+    },
+    "newsletter": {
+        "title": "Langganan Artikel Terbaru Aghea",
+        "description": "Artikel yang saya tulis adalah dokumentasi dari opini saya untuk bahan pembelajaran maupun bacaan semata. Beberapa artikel saya tulis dalam Bahasa Inggris agar dapat bermanfaat dan dibaca oleh teman-teman dari mancanegara.",
+        "button": "Berlangganan"
+    },
+    "home": {
+        "label": "Beranda",
+        "title": "{name}",
+        "description": "A programmer who aware of the tiny moments in a persons life that reveal greater truths.",
+        "headline": "Waiter, Web Developer, dan Cybersecurity",
+        "subline": "Agcrismanto Budhi Praswastyka, atau yang dikenal sebagai Cris atau Aghea, adalah profesional di bidang Pengembangan Web dan Keamanan Siber sejak 2011 dengan fokus pada pengembangan aplikasi web yang aman. Selain itu, Ia juga memiliki pengalaman di industri makanan dan minuman."
+    },
+    "about": {
+        "label": "Tentang",
+        "title": "Tentang",
+        "description": "Perkenalkan {name} dari {location}.",
+        "intro": {
+            "title": "Pengantar",
+            "description": "Agcrismanto Budhi Praswastyka, yang lebih dikenal dengan nama Cris atau Aghea, adalah seorang profesional yang memiliki spesialisasi dalam Pengembangan Web dan Keamanan Siber. Dengan pengalaman yang dimilikinya sejak tahun 2011, Ia telah menguasai berbagai bahasa pemrograman, seperti Python, JavaScript, React, serta HTML/CSS, dan memiliki fokus yang mendalam dalam memperkuat langkah-langkah keamanan di dunia digital. Pekerjaan utamanya melibatkan pengembangan aplikasi web yang aman serta perlindungan sistem dari ancaman siber. Selain itu, Ia juga pernah berkecimpung di industri makanan dan minuman selama beberapa tahun.\n\nDi luar pekerjaannya, Ia mengeksplorasi minat kreatifnya sebagai musisi dan mengisi waktu luangnya dengan bermain gim. Ia juga penggemar film, terutama yang bergenre komedi, aksi, dan horor. Rasa ingin tahu dan komitmennya untuk terus mengikuti perkembangan teknologi menjadi bagian penting dari pertumbuhan pribadi dan profesionalnya."
+        },
+        "work": {
+            "title": "Pengalaman Kerja"
+        },
+        "achievements": {
+            "BLAST-1": "Merancang dan mengembangkan fitur utama platform berbasis esports, termasuk antarmuka pengguna yang intuitif serta sistem pengelolaan turnamen yang efisien, menggunakan teknologi seperti React, Next.js, TypeScript, dan Node.js untuk menciptakan aplikasi web yang dinamis dan responsif.",
+            "BLAST-2": "Mengimplementasikan langkah-langkah keamanan untuk melindungi data pengguna dan informasi turnamen, dengan memastikan sistem bebas dari kerentanannya melalui pengujian penetrasi (penetration testing), serta pengelolaan akses yang ketat.",
+            "BLAST-3": "Mengoptimalkan performa website agar dapat menangani banyak pengguna secara simultan, terutama pada saat turnamen besar, dengan fokus pada kecepatan dan skalabilitas sistem.",
+            "Diskominfo-1": "Mengawasi dan memastikan keamanan infrastruktur jaringan dan melakukan konfigurasi firewall dan sistem deteksi intrusi (IDS/IPS).",
+            "Diskominfo-2": "Melakukan penilaian kerentanan pada aplikasi dan jaringan untuk mengidentifikasi risiko, serta mengaudit sistem secara berkala untuk memastikan kepatuhan terhadap standar keamanan.",
+            "Diskominfo-3": "Melakukan simulasi serangan siber (Penetration Testing) untuk mengidentifikasi potensi celah keamanan pada sistem pemerintah.",
+            "Diskominfo-4": "Merespons dan menangani insiden keamanan siber, seperti serangan ransomware, phishing, atau malware, dengan membuat laporan insiden serta memberikan rekomendasi mitigasi.",
+            "Diskominfo-5": "Melaksanakan pelatihan untuk staf mengenai keamanan data, perlindungan privasi, serta praktik terbaik dalam penggunaan teknologi informasi untuk memastikan kepatuhan terhadap standar keamanan yang berlaku."
+        },
+        "studies": {
+            "title": "Pendidikan",
+            "institutions": {
+                "Build the Future": {
+                    "description": "Belajar pemasaran online dan personal branding."
+                }
+            }
+        },
+        "technical": {
+            "title": "Kemampuan Teknis",
+            "skills": {
+                "Figma": {
+                    "description": "Mampu membuat prototipe di Figma dengan Once UI dengan kecepatan luar biasa."
+                },
+                "Nextjs": {
+                    "description": "Membangun aplikasi generasi berikutnya dengan Next.js + Once UI + Supabase."
+                }
+            }
+        }
+    },
+    "blog": {
+        "label": "Tulisan",
+        "title": "Tulisan",
+        "description": "Artikel di halaman ini berisi dokumentasi dari tulisan dan opini saya untuk bahan pembelajaran maupun bacaan semata. Beberapa artikel saya tulis dalam Bahasa Inggris agar dapat bermanfaat dan dibaca oleh teman-teman dari mancanegara."
+    },
+    "work": {
+        "label": "Projek",
+        "title": "Projek",
+        "description": "Projek oleh {name}"
+    },
+    "gallery": {
+        "label": "Galeri",
+        "title": "Galeri Foto Saya",
+        "description": "Koleksi foto oleh {name}"
+    },
+    "music": {
+        "label": "Musik",
+        "title": "Musik",
+        "description": "Temukan lagu dan daftar putar yang paling sering diputar {name} di Spotify."
+    },
+    "button": {
+        "read": "Baca Selengkapnya",
+        "view": "Lihat Proyek",
+        "back": "Kembali",
+        "toc": "Daftar Isi",
+        "newBlog": "Tulisan Terbaru",
+        "newWork": "Proyek Terbaru"
+    }
+}

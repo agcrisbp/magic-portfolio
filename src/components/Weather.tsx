@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Icon, Flex, Text } from "@/once-ui/components";
 import { renderContent } from '@/app/resources';
+import { useTranslations } from "next-intl";
 
 type WeatherResponse = {
   main: {
@@ -51,7 +52,8 @@ const icons: Record<string, string> = {
 export function Weather({ onlyCity = false }: { onlyCity?: boolean }): JSX.Element | null {
   const [data, setData] = useState<WeatherResponse | undefined>(undefined);
   const [loading, setLoading] = useState(true);
-  const { person } = renderContent();
+  const t = useTranslations();
+  const { person } = renderContent(t);
 
   useEffect(() => {
     if (!process.env.NEXT_PUBLIC_WEATHER_API_KEY) {

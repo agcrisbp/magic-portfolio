@@ -23,12 +23,14 @@
 .footerCenter,
 .footerRight {
   text-align: center;
-  padding-top: 20px;
-  flex-grow: 1;
-  min-width: 200px;
-  max-width: 33%;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  padding: 10px;
+  flex-grow: 1; /* Kolom bisa mengisi ruang */
+
+  min-width: 200px; /* Minimum width untuk kolom */
+  max-width: 33%; /* Menentukan lebar maksimal kolom */
+  
+  white-space: nowrap; /* Menjaga teks tidak terpotong di satu baris */
+  text-overflow: ellipsis; /* Menambahkan ... jika konten terlalu panjang */
 }
 
 .footerLeft {
@@ -38,9 +40,14 @@
   text-align: left;
 }
 
+.footerCenter {
+  display: flex;
+  justify-content: center;
+}
+
 .footerRight {
   display: flex;
-  gap: 8px;
+  gap: 16px;
   justify-content: flex-end;
   align-items: center;
 }

@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/og'
 import { baseURL, renderContent } from '@/app/resources';
+import { getTranslations } from 'next-intl/server';
 
 export const runtime = 'edge';
 
@@ -11,7 +12,8 @@ export async function GET(request: Request) {
     ).then((res) => res.arrayBuffer());
     const fontData = await font;
 
-    const { person } = renderContent();
+    const t = await getTranslations();
+    const { person } = renderContent(t);
 
     return new ImageResponse(
         (
@@ -95,7 +97,7 @@ export async function GET(request: Request) {
                     data: fontData,
                     style: 'normal',
                 },
-            ],
+              ],
         }
     )
 }

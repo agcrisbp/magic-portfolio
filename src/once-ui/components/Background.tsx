@@ -97,7 +97,7 @@ const Background = forwardRef<HTMLDivElement, BackgroundProps>(
                 setSmoothPosition((prev) => {
                     const dx = cursorPosition.x - prev.x;
                     const dy = cursorPosition.y - prev.y;
-                    const easingFactor = 0.09;
+                    const easingFactor = 0.05;
 
                     return {
                         x: Math.round(prev.x + dx * easingFactor),

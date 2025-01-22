@@ -1,0 +1,323 @@
+---
+title: 'How To Write MDX and Markdown in Magic-Portfolio'
+summary: 'If you prefer not to use MDX, you can use regular Markdown, with a few exceptions.'
+publishedAt: '2024-11-27'
+updatedAt: '2025-01-19'
+image: "/images/cover.png"
+tag: 'Tutorial'
+---
+
+# Summary
+
+Some of the MDX and MD writing formats here are templates that have been modified by **[Aghea]({baseURL}/github)**, not the original version from [Once UI]({baseURL}/once-ui). You can access the repository for this template at [github/agcrisbp/magic-portfolio]({baseURL}/magic-portfolio).
+
+If you choose not to use MDX (Markdown JSX), you can use regular Markdown (MD) with a few exceptions.
+
+- Update: January 16, 2025
+  - [LaTeX](#latex).
+  
+- Update: January 18 & 19, 2025
+  - [Table](#table): Added `collapse` property to automatically adjust table width.
+  - [QuoteBlock](#quoteblock): Added special properties for [Information](#2-informasi), [Important](#3-penting), and [Warning](#4-peringatan).
+
+---
+
+# Bold
+<CodeBlock className="my-24" compact codeInstances={[ { code: '**Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.**', label: 'MDX', language: 'mdx' }, ]} copyButton />
+
+**Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.**
+
+---
+
+# Italic
+<CodeBlock className="my-24" compact codeInstances={[ { code: '*Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.*', label: 'MDX', language: 'mdx' }, ]} copyButton />
+*Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.*
+
+---
+
+# Lists
+#### Unordered Lists
+<CodeBlock className="my-24" compact codeInstances={[ { code: '- Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', label: 'MDX', language: 'mdx' }, ]} copyButton />
+- Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+<CodeBlock className="my-24" compact codeInstances={[ { code: `- Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`, label: 'MDX', language: 'mdx' }, ]} copyButton />
+
+- Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+#### Ordered Lists
+<CodeBlock className="my-24" compact codeInstances={[ { code: '1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', label: 'MDX', language: 'mdx' }, ]} copyButton />
+1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+---
+
+# Table
+
+#### Collapse: True
+
+<CodeBlock className="my-24" compact codeInstances={[ { code: `<Table
+  collapse
+  data={{
+    headers: ['No.', 'Left', 'Center', 'Center', 'Center', 'Center', 'Right'],
+    rows: [
+      ['1', 'Left', 'Center', 'Center', 'Center', 'Right'],
+      ['2', 'Left', 'Center', 'Center', 'Center', 'Right'],
+    ],
+  }}
+/>`, label: 'MDX', language: 'mdx' }, ]} copyButton />
+
+<Table
+  collapse
+  data={{
+    headers: ['No.', 'Left', 'Center', 'Center', 'Center', 'Center', 'Right'],
+    rows: [
+      ['1', 'Left', 'Center', 'Center', 'Center', 'Center', 'Right'],
+      ['2', 'Left', 'Center', 'Center', 'Center', 'Center', 'Right'],
+    ],
+  }}
+/>
+
+#### Collapse: False
+
+<CodeBlock className="my-24" compact codeInstances={[ { code: `<Table
+  data={{
+    headers: ['No.', 'Left', 'Center', 'Center', 'Center', 'Right'],
+    rows: [
+      ['1', 'Left', 'Center', 'Center', 'Center', 'Right'],
+      ['2', 'Left', 'Center', 'Center', 'Center', 'Right'],
+    ],
+  }}
+/>`, label: 'MDX', language: 'mdx' }, ]} copyButton />
+
+<Table
+  data={{
+    headers: ['No.', 'Left', 'Center', 'Center', 'Center', 'Right'],
+    rows: [
+      ['1', 'Left', 'Center', 'Center', 'Center', 'Right'],
+      ['2', 'Left', 'Center', 'Center', 'Center', 'Right'],
+    ],
+  }}
+/>
+
+<Tag
+    style={{ marginTop: '16px', marginBottom: '16px' }}
+    prefixIcon="infoCircle"
+    variant="info"
+>
+    Jika kamu berada di desktop dan tidak dapat melihat perbedaannya, gunakan perangkat mobile.
+</Tag>
+
+---
+
+# Dropdown CodeBlock
+<CodeBlock
+  className="my-24"
+  compact
+  codeInstances={[
+    {
+      code: `<CodeBlock
+  className="my-24"
+  compact
+  codeInstances={[
+    {
+      code: 'var greeting = "Hello, World!";
+console.log(greeting);',
+      label: 'JavaScript',
+      language: 'javascript',
+    },
+    {
+      code: '<html>
+    <body>
+      <p>Hello, World!
+      </p>
+    </body>
+</html>',
+      label: 'HTML',
+      language: 'html',
+    },
+    {
+      code: 'const greeting = \`Hello, World!\`;\nconsole.log(greeting);',
+      label: 'Template Literals',
+      language: 'javascript',
+    },
+    {
+      code: 'greeting = "Hello, World!"\nprint(greeting)',
+      label: 'Python',
+      language: 'python',
+    },
+  ]}
+/>`,
+      label: 'Bash',
+      language: 'bash',
+    },
+  ]}
+/>
+
+<CodeBlock
+  className="my-24"
+  compact
+  codeInstances={[
+    {
+      code: `var greeting = "Hello, World!";
+console.log(greeting);`,
+      label: 'JavaScript',
+      language: 'javascript',
+    },
+    {
+      code: `<html>
+    <body>
+      <p>Hello, World!
+      </p>
+    </body>
+</html>`,
+      label: 'HTML',
+      language: 'html',
+    },
+    {
+      code: `const greeting = \`Hello, World!\`;\nconsole.log(greeting);`,
+      label: 'Template Literals',
+      language: 'javascript',
+    },
+    {
+      code: 'greeting = "Hello, World!"\nprint(greeting)',
+      label: 'Python',
+      language: 'python',
+    },
+  ]}
+/>
+
+---
+
+# QuoteBlock
+
+#### 1. Variasi
+
+1. Variasi Original
+    - `brand`, `accent`, `warning`, `success`, `danger`, `neutral`, `info`, `gradient`.
+
+2. Variasi Kostum
+    - `peringatan`, `informasi`, `penting`.
+
+<CodeBlock className="my-24" compact codeInstances={[ { code: `<Tag
+    style={{ marginTop: '16px', marginBottom: '16px' }}
+    variant="success"
+>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+</Tag>`, label: 'MDX', language: 'mdx' }, ]} copyButton />
+
+<Tag
+    style={{ marginTop: '16px', marginBottom: '16px' }}
+    variant="success"
+>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+</Tag>
+
+#### 2. Informasi
+
+<CodeBlock className="my-24" compact codeInstances={[ { code: `<Tag
+    style={{ marginTop: '16px', marginBottom: '16px' }}
+    prefixIcon="infoCircle"
+    variant="informasi"
+>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+</Tag>`, label: 'MDX', language: 'mdx' }, ]} copyButton />
+
+<Tag
+    style={{ marginTop: '16px', marginBottom: '16px' }}
+    prefixIcon="infoCircle"
+    variant="informasi"
+>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+</Tag>
+
+#### 3. Penting
+
+<CodeBlock className="my-24" compact codeInstances={[ { code: `<Tag
+    style={{ marginTop: '16px', marginBottom: '16px' }}
+    prefixIcon="important"
+    variant="penting"
+>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+</Tag>`, label: 'MDX', language: 'mdx' }, ]} copyButton />
+
+<Tag
+    style={{ marginTop: '16px', marginBottom: '16px' }}
+    prefixIcon="important"
+    variant="penting"
+>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+</Tag>
+
+#### 4. Peringatan
+
+<CodeBlock className="my-24" compact codeInstances={[ { code: `<Tag
+    style={{ marginTop: '16px', marginBottom: '16px' }}
+    prefixIcon="warningTriangle"
+    variant="peringatan"
+>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+</Tag>`, label: 'MDX', language: 'mdx' }, ]} copyButton />
+
+<Tag
+    style={{ marginTop: '16px', marginBottom: '16px' }}
+    prefixIcon="warningTriangle"
+    variant="peringatan"
+>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+</Tag>
+
+---
+
+# Image
+
+<CodeBlock className="my-24" compact codeInstances={[ { code: `<a href="https://ibb.co.com/7S8rkQ8"><img src="https://i.ibb.co.com/51tsKkt/image.jpg" width="100" height="100"/></a>
+
+<img src="/images/gallery/IMG-20240815-WA0004.jpg" width="100" height="220" />`, label: 'MDX', language: 'mdx' }, ]} copyButton />
+
+<a href="https://ibb.co.com/7S8rkQ8"><img src="https://i.ibb.co.com/51tsKkt/image.jpg" width="100" height="100"/></a>
+
+<img src="/images/gallery/IMG-20240815-WA0004.jpg" width="100" height="220" />
+
+#### Inline Images
+
+<CodeBlock className="my-24" compact codeInstances={[ { code: `<InlineImages>
+    <a href="https://ibb.co.com/7S8rkQ8"><img src="https://i.ibb.co.com/51tsKkt/image.jpg" width="100" height="100"/></a>
+    <img src="/images/gallery/IMG-20240815-WA0004.jpg" width="100" height="220" />
+</InlineImages>`, label: 'MDX', language: 'mdx' }, ]} copyButton />
+
+<InlineImages>
+    <a href="https://ibb.co.com/7S8rkQ8"><img src="https://i.ibb.co.com/51tsKkt/image.jpg" width="100" height="100"/></a>
+    <img src="/images/gallery/IMG-20240815-WA0004.jpg" width="100" height="220" />
+</InlineImages>
+
+---
+
+# LaTeX
+
+#### Inline Equation: Rumus Luas Persegi Panjang
+
+<CodeBlock className="my-24" compact codeInstances={[ 
+  { code: `<InlineMath math="A = l \times w" />`, label: 'LaTeX', language: 'latex' }, 
+]} copyButton />
+
+<InlineMath math="A = l \times w" />
+
+#### Block Equation: Teorema Pythagoras
+
+<CodeBlock className="my-24" compact codeInstances={[ 
+  { code: `<BlockMath math="a^2 + b^2 = c^2" />`, label: 'LaTeX', language: 'latex' }, 
+]} copyButton />
+
+<BlockMath math="a^2 + b^2 = c^2" />
+
+    - Block Equation Kompleks: Persamaan Kuadrat
+
+<CodeBlock className="my-24" compact codeInstances={[ 
+  { code: `<BlockMath math="x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}" />`, label: 'LaTeX', language: 'latex' }, 
+]} copyButton />
+
+<BlockMath math="x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}" />
+
+---

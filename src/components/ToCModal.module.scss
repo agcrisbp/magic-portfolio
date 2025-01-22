@@ -1,10 +1,5 @@
 .modal {
   animation: fadeIn 0.3s ease-in-out;
-  max-width: 768px;
-
-  @media (max-width: 767px) {
-    max-width: 350px;
-  }
 }
 
 @keyframes fadeIn {
@@ -15,15 +10,5 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-.mobile {
-  max-height: 350px;
-  overflow-y: auto;
-
-  @media (min-width: 768px) {
-    max-height: 768px;
-    overflow-y: auto;
   }
 }

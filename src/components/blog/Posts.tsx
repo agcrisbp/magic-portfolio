@@ -5,14 +5,16 @@ import Post from './Post';
 interface PostsProps {
   range?: [number] | [number, number];
   columns?: '1' | '2' | '3';
+  locale: string;
   thumbnail?: boolean;
   tag?: string;
 }
 
-export function Posts({ range, columns = '1', thumbnail = false, tag }: PostsProps) {
-  let allBlogs = getPosts(['src', 'app', 'blog', 'posts']);
+export function Posts({ range, columns = '1', locale = 'id', thumbnail = false, tag }: PostsProps) {
+  let allBlogs = getPosts(['src', 'app', '[locale]', 'blog', 'posts', locale]);
   const filteredBlogs = tag ? allBlogs.filter((post) => post.metadata.tag?.includes(tag)) : allBlogs;
 
+  // Sort blogs by `updatedAt` if exists, otherwise use `publishedAt`
   const sortedBlogs = filteredBlogs.sort((a, b) => {
     const aDate = a.metadata.updatedAt || a.metadata.publishedAt;
     const bDate = b.metadata.updatedAt || b.metadata.publishedAt;

@@ -1,7 +1,16 @@
-const baseURL = 'magic-rose.vercel.app';
+const baseURL = 'magic-en.vercel.app';
 const Email = 'email@example.com';
 const UserID = '982268021143896064'; // DiscordID use Lanyard
 const longLat = 'lat=-7.795580&lon=110.369492'; // Weather APi use https://openweathermap.org/api
+
+// Enable localization
+const i18n = true;
+
+// Manage localized content in the messages folder
+const i18nOptions = {
+    locales: ['id', 'en'],            // A list of all locales that are supported, e.g. ['en','id']
+    defaultLocale: 'id'         // Locale used by default and as a fallback
+}
 
 const routes = {
     '/':                true,
@@ -62,10 +71,10 @@ const effects = {
 const display = {
     location: true,
     time:     true
-};
+}
 
 const mailchimp = {
-    action: 'https://example.com/subscribe/post?',
+    action: 'https://ink.us21.list-manage.com/subscribe/post?u=71c4ab2344a6cbfe72136d322&amp;id=72c35f4e3d&amp;f_id=00a3aae1f0',
     effects: {
         mask: {
             cursor: false,
@@ -101,6 +110,6 @@ const mailchimp = {
             opacity: 100
         }
     }
-};
+}
 
-export { routes, protectedRoutes, effects, style, display, mailchimp, Email, UserID, longLat, baseURL };
+export { routes, protectedRoutes, effects, style, display, mailchimp, baseURL, i18n, i18nOptions, Email, UserID, longLat };

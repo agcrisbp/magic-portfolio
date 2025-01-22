@@ -42,7 +42,7 @@ npm run dev
 
 **6. Create blog posts / projects**
 
-Add a new .mdx file to `src/app/blog/posts` or `src/app/work/projects`.
+Add a new .mdx file to `src/app/[locale]/blog/posts` or `src/app/[locale]/work/projects`.
 
 **7. Domain and redirects setup**
 
@@ -68,6 +68,9 @@ Add a new .mdx file to `src/app/blog/posts` or `src/app/work/projects`.
 - Enable or disable pages for blog, work, gallery and about / CV.
 - Generate and display social links automatically.
 - Set up password protection for URLs.
+
+## **Localization**
+- A localized version of Magic Portfolio is available with the next-intl library.
 
 ## **Spotify Now Playing & Recently Played**
 - Display the currently playing track and recently played songs from Spotify.

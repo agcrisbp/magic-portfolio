@@ -1,4 +1,16 @@
+'use client';
+
+import { routing, Locale } from "@/i18n/routing";
+import { useParams } from "next/navigation";
+
 export function formatDate(date: string, includeRelative = false) {
+    const params = useParams();
+
+    // Ensure locale is a string, not an array, and fallback to defaultLocale
+    const currentLocale: Locale = Array.isArray(params?.locale) 
+        ? params.locale[0] 
+        : (params?.locale as Locale) || routing.defaultLocale;
+
     const currentDate = new Date();
 
     if (!date.includes('T')) {
@@ -22,7 +34,7 @@ export function formatDate(date: string, includeRelative = false) {
         formattedDate = 'Today';
     }
 
-    const fullDate = targetDate.toLocaleString('id-id', {
+    const fullDate = targetDate.toLocaleString(currentLocale, {
         month: 'long',
         day: 'numeric',
         year: 'numeric',

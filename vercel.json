@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "alias": "magic-rose.vercel.app",
+  "alias": "magic-en.vercel.app",
   "cleanUrls": true,
   "public": false,
   "regions": ["sin1"],
