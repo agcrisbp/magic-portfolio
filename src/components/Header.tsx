@@ -70,14 +70,11 @@ export const Header = () => {
     }, {} as Record<string, React.RefObject<HTMLButtonElement>>)
   );
 
-  // Reference for the entire locale menu
   const localeMenuRef = useRef<HTMLDivElement>(null);
+  const secondlocaleMenuRef = useRef<HTMLDivElement>(null);
 
   function handleLanguageChange(locale: string) {
     const nextLocale = locale as Locale;
-
-    // Access the specific button's ref
-    console.log("Ref for locale:", locale, refs.current[locale]?.current);
 
     startTransition(() => {
       router.replace(pathname, { locale: nextLocale });
@@ -87,17 +84,19 @@ export const Header = () => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
-        localeMenuRef.current && 
-        !localeMenuRef.current.contains(event.target as Node)
+        localeMenuRef.current &&
+        !localeMenuRef.current.contains(event.target as Node) &&
+        secondlocaleMenuRef.current &&
+        !secondlocaleMenuRef.current.contains(event.target as Node)
       ) {
         setLocaleMenuOpen(false);
       }
     };
-
+  
     if (isLocaleMenuOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
-
+  
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -157,6 +156,7 @@ export const Header = () => {
                   gap="2"
                   justifyContent="center"
                   fillWidth
+                  ref={localeMenuRef}
                 >
                   {routing.locales.map((locale, index) => (
                       <ToggleButton
@@ -275,6 +275,7 @@ export const Header = () => {
                     justifyContent="center"
                     fillWidth
                     hide="s"
+                    ref={secondlocaleMenuRef}
                   >
                     {routing.locales.map((locale, index) => (
                         <ToggleButton
