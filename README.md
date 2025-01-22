@@ -14,16 +14,18 @@ Magic Portfolio was built with [Once UI](https://once-ui.com) for [Next.js](http
 
 **1. Build This Project**
 
-[Fork this repository](https://github.com/agcrisbp/magic-portfolio/fork). Or run the following command to create a new project with this template:
+[Fork this repository](https://github.com/agcrisbp/magic-portfolio/fork) and switch to the `i18n` branch. Or run the following command to create a new project using the `i18n` branch:
+
 ```
-yarn create next-app app -e https://github.com/agcrisbp/magic-portfolio
+yarn create next-app app -e https://github.com/agcrisbp/magic-portfolio/tree/i18n
 
 # or npm
 
-npx create-next-app app --example https://github.com/agcrisbp/magic-portfolio
+npx create-next-app app --example https://github.com/agcrisbp/magic-portfolio/tree/i18n
 ```
 
 **2. Run dev server**
+
 ```
 yarn dev
 
@@ -36,15 +38,15 @@ npm run dev
 
 [src/app/resources/config](src/app/resources/config.js).
 
-**5. Edit content**
+**4. Edit content**
 
 [src/app/resources/content](src/app/resources/content.js).
 
-**6. Create blog posts / projects**
+**5. Create blog posts / projects**
 
 Add a new .mdx file to `src/app/[locale]/blog/posts` or `src/app/[locale]/work/projects`.
 
-**7. Domain and redirects setup**
+**6. Domain and redirects setup**
 
 - Make sure your domain is already connected with [Vercel Nameservers](https://vercel.com/docs/projects/domains/working-with-nameservers), then change the [vercel.json](/vercel.json).
 - Edit all `async redirects()` URLs in [next.config.mjs](next.config.mjs), [_redirects](public/_redirects) for Netlify.
@@ -123,5 +125,5 @@ Add a new .mdx file to `src/app/[locale]/blog/posts` or `src/app/[locale]/work/p
 
 ---
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https://github.com/agcrisbp/magic-portfolio)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/agcrisbp/magic-portfolio)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https://github.com/agcrisbp/magic-portfolio/tree/i18n)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/agcrisbp/magic-portfolio/tree/i18n)

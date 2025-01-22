@@ -106,7 +106,7 @@ If you choose not to use MDX (Markdown JSX), you can use regular Markdown (MD) w
     prefixIcon="infoCircle"
     variant="info"
 >
-    Jika kamu berada di desktop dan tidak dapat melihat perbedaannya, gunakan perangkat mobile.
+    If you're on a desktop and can't see the difference, use a mobile device.
 </Tag>
 
 ---
@@ -192,12 +192,12 @@ console.log(greeting);`,
 
 # QuoteBlock
 
-#### 1. Variasi
+#### 1. Variant
 
-1. Variasi Original
+1. Original Variant
     - `brand`, `accent`, `warning`, `success`, `danger`, `neutral`, `info`, `gradient`.
 
-2. Variasi Kostum
+2. Custom Variant
     - `peringatan`, `informasi`, `penting`.
 
 <CodeBlock className="my-24" compact codeInstances={[ { code: `<Tag
@@ -274,29 +274,29 @@ console.log(greeting);`,
 
 <CodeBlock className="my-24" compact codeInstances={[ { code: `<a href="https://ibb.co.com/7S8rkQ8"><img src="https://i.ibb.co.com/51tsKkt/image.jpg" width="100" height="100"/></a>
 
-<img src="/images/gallery/IMG-20240815-WA0004.jpg" width="100" height="220" />`, label: 'MDX', language: 'mdx' }, ]} copyButton />
+<img src="/images/gallery/img-01.jpg" width="100" height="170" />`, label: 'MDX', language: 'mdx' }, ]} copyButton />
 
 <a href="https://ibb.co.com/7S8rkQ8"><img src="https://i.ibb.co.com/51tsKkt/image.jpg" width="100" height="100"/></a>
 
-<img src="/images/gallery/IMG-20240815-WA0004.jpg" width="100" height="220" />
+<img src="/images/gallery/img-01.jpg" width="100" height="170" />
 
 #### Inline Images
 
 <CodeBlock className="my-24" compact codeInstances={[ { code: `<InlineImages>
     <a href="https://ibb.co.com/7S8rkQ8"><img src="https://i.ibb.co.com/51tsKkt/image.jpg" width="100" height="100"/></a>
-    <img src="/images/gallery/IMG-20240815-WA0004.jpg" width="100" height="220" />
+    <img src="/images/gallery/img-01.jpg" width="100" height="170" />
 </InlineImages>`, label: 'MDX', language: 'mdx' }, ]} copyButton />
 
 <InlineImages>
     <a href="https://ibb.co.com/7S8rkQ8"><img src="https://i.ibb.co.com/51tsKkt/image.jpg" width="100" height="100"/></a>
-    <img src="/images/gallery/IMG-20240815-WA0004.jpg" width="100" height="220" />
+    <img src="/images/gallery/img-01.jpg" width="100" height="170" />
 </InlineImages>
 
 ---
 
 # LaTeX
 
-#### Inline Equation: Rumus Luas Persegi Panjang
+#### Inline Equation: Rectangle Area Formula
 
 <CodeBlock className="my-24" compact codeInstances={[ 
   { code: `<InlineMath math="A = l \times w" />`, label: 'LaTeX', language: 'latex' }, 
@@ -304,7 +304,7 @@ console.log(greeting);`,
 
 <InlineMath math="A = l \times w" />
 
-#### Block Equation: Teorema Pythagoras
+#### Block Equation: Pythagorean Theorem
 
 <CodeBlock className="my-24" compact codeInstances={[ 
   { code: `<BlockMath math="a^2 + b^2 = c^2" />`, label: 'LaTeX', language: 'latex' }, 
@@ -312,7 +312,7 @@ console.log(greeting);`,
 
 <BlockMath math="a^2 + b^2 = c^2" />
 
-    - Block Equation Kompleks: Persamaan Kuadrat
+    - Block Equation Complex: Quadratic Equation
 
 <CodeBlock className="my-24" compact codeInstances={[ 
   { code: `<BlockMath math="x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}" />`, label: 'LaTeX', language: 'latex' }, 
