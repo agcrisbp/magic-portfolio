@@ -10,137 +10,169 @@ type ToCModalProps = {
 };
 
 export function ToCModal({ headings }: ToCModalProps) {
-  const [isOpen, setIsOpen] = useState(true);
   const [isMinimized, setIsMinimized] = useState(true);
+  const [position, setPosition] = useState({ top: '50%', right: '16px' });
+  const [isDragging, setIsDragging] = useState(false);
+  const buttonRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
-
-  const toggleModal = () => setIsMinimized((prev) => !prev);
   
   const t = useTranslations();
-  
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-        setIsMinimized(true);
-      }
-    };
 
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setIsMinimized(true);
-      }
-      
-      if (event.key === 'Enter') {
-        setIsMinimized(false);
-      }
-    };
+  const toggleModal = () => {
+    if (!isDragging) {
+      setIsMinimized((prev) => !prev);
+    }
+  };
 
-    if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-      document.addEventListener('keydown', handleKeyDown);
+  const handleClickOutside = (event: MouseEvent) => {
+    if (modalRef.current && !modalRef.current.contains(event.target as Node) && !isDragging) {
+      setIsMinimized(true);
+    }
+  };
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      setIsMinimized(true);
     }
 
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isOpen]);
-  
-  let levelOneCounter = 0;
+    if (event.key === 'Enter') {
+      setIsMinimized(false);
+    }
+  };
 
+  useEffect(() => {
+    if (!isMinimized) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleKeyDown);
+
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+        document.removeEventListener('keydown', handleKeyDown);
+      };
+    }
+  }, [isMinimized]);
+
+  const handleDragStart = (event: React.MouseEvent | React.TouchEvent) => {
+    event.preventDefault();
+    setIsDragging(true);
+
+    const startX = 'touches' in event ? event.touches[0].clientX : event.clientX;
+    const startY = 'touches' in event ? event.touches[0].clientY : event.clientY;
+    const { offsetTop, offsetLeft, offsetWidth } = buttonRef.current || {};
+    const startRight = window.innerWidth - (offsetLeft || 0) - (offsetWidth || 0);
+
+    const onDrag = (e: MouseEvent | TouchEvent) => {
+      const moveX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+      const moveY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+
+      const newTop = (offsetTop || 0) + moveY - startY;
+      const newRight = startRight - (moveX - startX);
+
+      const clampedTop = Math.max(0, Math.min(newTop, window.innerHeight - (buttonRef.current?.offsetHeight || 0)));
+      const clampedRight = Math.max(0, Math.min(newRight, window.innerWidth - (buttonRef.current?.offsetWidth || 0)));
+
+      setPosition({
+        top: `${clampedTop}px`,
+        right: `${clampedRight}px`,
+      });
+    };
+
+    const stopDrag = () => {
+      setIsDragging(false);
+      document.removeEventListener('mousemove', onDrag);
+      document.removeEventListener('touchmove', onDrag);
+      document.removeEventListener('mouseup', stopDrag);
+      document.removeEventListener('touchend', stopDrag);
+    };
+
+    document.addEventListener('mousemove', onDrag);
+    document.addEventListener('touchmove', onDrag);
+    document.addEventListener('mouseup', stopDrag);
+    document.addEventListener('touchend', stopDrag);
+  };
+
+  let levelOneCounter = 0;
+  
   return (
     <>
       {isMinimized && (
         <Flex
-          justifyContent="center"
-          alignItems="center"
-          background="accent-medium"
-          onClick={toggleModal}
+          ref={buttonRef}
           zIndex={10}
+          background="accent-medium"
+          onMouseDown={handleDragStart}
+          onTouchStart={handleDragStart}
+          onClick={!isDragging ? toggleModal : undefined}
           style={{
             position: 'fixed',
-            right: '16px',
-            cursor: 'pointer',
+            top: position.top,
+            right: position.right,
+            cursor: 'grab',
             borderRadius: '16px',
             transform: 'translateY(-50%)',
-            top: '50%',
+            transition: 'top 0.8s, right 0.3s',
           }}
         >
-          <IconButton
-            icon="table"
-            tooltip={t("button.toc")}
-            size="l"
-            variant="tertiary"
-          />
+          <IconButton icon="table" tooltip={t("button.toc")} size="l" variant="tertiary" />
         </Flex>
       )}
 
-      {isOpen && !isMinimized && (
+      {!isMinimized && (
         <Flex
+          ref={modalRef}
           className={styles.modal}
-          justifyContent="center"
-          alignItems="center"
-          fillWidth
+          background="accent-medium"
           zIndex={10}
-          position="fixed"
+          fillWidth
           style={{
+            position: 'fixed',
             top: '50%',
-            right: '16px',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
             borderRadius: '8px',
-            transform: 'translateY(-50%)',
             boxShadow: '0 0 8px rgba(255,255,255,0.3)',
-            maxWidth: '350px',
           }}
         >
-          <Flex
-            ref={modalRef}
-            direction="column"
-            padding="16"
-            radius="l"
-            background="accent-weak"
-            gap="12"
-            shadow="l"
-            zIndex={10}
-            style={{
-              maxWidth: '100%',
-              width: 'fit-content',
-            }}
-          >
-            <Flex justifyContent="space-between" alignItems="center" gap="8" zIndex={10}>
-                <Text variant="body-default-l">{t("button.toc")}</Text>
-                <IconButton
-                  icon="close"
-                  data-border="rounded"
-                  variant="secondary"
-                  size="s"
-                  onClick={toggleModal}
-                />
+          <Flex direction="column" padding="16" gap="12" fillWidth>
+            <Flex justifyContent="space-between" alignItems="center">
+              <Text variant="body-default-l">{t("button.toc")}</Text>
+              <IconButton icon="close" variant="secondary" size="s" onClick={toggleModal} />
             </Flex>
-            
-            <Flex
-                direction="column"
-                gap="8"
-                zIndex={10}
-                style={{
-                  maxHeight: '500px',
-                  overflowY: 'auto',
-                  scrollbarColor: 'transparent transparent',
-                }}>
+            <Flex direction="column" gap="8" className={styles.mobile} >
               {headings.map(({ text, level }, index) => {
                 const isLevelOne = level === 1;
                 if (isLevelOne) {
                   levelOneCounter += 1;
                 }
-
+              
                 return (
                   <a
                     key={index}
-                    href={`#${text.toLowerCase().replace(/\s+/g, '-').replace(/[:_]/g, '')}`}
+                    href={`#${text.toLowerCase().replace(/\s+/g, '-').replace(/[:_.]/g, '')}`}
                     style={{ marginLeft: `${(level - 1) * 4}px` }}
                   >
-                    <Text variant="body-default-m">
-                      {isLevelOne ? `${levelOneCounter}.` : '-'} {text}
-                    </Text>
+                    <Flex style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+                      <Text
+                        variant="body-default-m"
+                        style={{ 
+                          marginRight: '8px', 
+                          whiteSpace: 'nowrap', 
+                          flexShrink: 0 
+                        }}
+                      >
+                        {isLevelOne ? `${levelOneCounter}.` : '⤷'}
+                      </Text>
+                      <Text
+                        variant="body-default-m"
+                        style={{
+                          wordWrap: 'break-word',
+                          overflowWrap: 'break-word',
+                          whiteSpace: 'normal',
+                        }}
+                      >
+                        {text}
+                      </Text>
+                    </Flex>
                   </a>
                 );
               })}

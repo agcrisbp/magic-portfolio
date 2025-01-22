@@ -53,7 +53,7 @@ const effects = {
   dots: {
     display: true,
     size: 1,
-    color: "brand-on-background-weak",
+    color: "accent-on-background-weak",
     opacity: 0.3,
   },
   lines: {

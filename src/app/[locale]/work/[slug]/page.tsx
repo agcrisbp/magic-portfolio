@@ -1,12 +1,13 @@
 import { notFound } from 'next/navigation'
 import { CustomMDX } from '@/components/mdx'
 import { getPosts } from '@/app/utils/utils'
-import { AvatarGroup, Button, Flex, Heading, SmartImage, Text } from '@/once-ui/components'
+import { AvatarGroup, Button, Flex, Heading, ShareButton, SmartImage, Tag, Text } from '@/once-ui/components'
 import { baseURL, renderContent } from '@/app/resources';
 import { routing } from '@/i18n/routing';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import ScrollToHash from '@/components/ScrollToHash';
+import { ToCModal } from '@/components/ToCModal';
 import dynamic from 'next/dynamic';
 
 const DateDisplay = dynamic(() => import('@/components/DateDisplay'), { ssr: false });
@@ -95,12 +96,22 @@ export default function Project({ params }: WorkParams) {
 	const avatars = post.metadata.team?.map((person) => ({
         src: person.avatar,
     })) || [];
+    
+  const headings = post.content
+    .match(/(?<=^|\n)#{1,6} .+/g)
+    ?.map((heading) => ({
+      text: heading.replace(/^#+ /, '').trim(),
+      level: heading.match(/^#+/)?.[0].length || 1,
+  }));
 
 	return (
-		<Flex as="section"
-			fillWidth maxWidth="m"
-			direction="column" alignItems="center"
-			gap="l">
+		<Flex
+		  as="section"
+      fillWidth
+      maxWidth="m"
+      direction="column"
+      gap="m"
+    >
 			<script
 				type="application/ld+json"
 				suppressHydrationWarning
@@ -123,21 +134,17 @@ export default function Project({ params }: WorkParams) {
 					}),
 				}}
 			/>
-			<Flex
-				fillWidth maxWidth="xs" gap="16"
-				direction="column">
-				<Button
-					href={`/${params.locale}/work`}
-					variant="tertiary"
-					size="s"
-					prefixIcon="chevronLeft">
-					{t("button.back")}
-				</Button>
-				<Heading
-					variant="display-strong-s">
-					{post.metadata.title}
-				</Heading>
-			</Flex>
+			<Button
+				href={`/${params.locale}/work`}
+				variant="tertiary"
+				size="s"
+				prefixIcon="chevronLeft">
+				{t("button.back")}
+			</Button>
+			<Heading
+				variant="display-strong-s">
+				{post.metadata.title}
+			</Heading>
 			{post.metadata.images.length > 0 && (
 				<SmartImage
 					aspectRatio="16 / 9"
@@ -171,8 +178,14 @@ export default function Project({ params }: WorkParams) {
             margin: '10px 0',
           }}
         />
+        <ToCModal headings={headings || []} />
 				<CustomMDX source={post.content} />
 			</Flex>
+			<Flex justifyContent="center">
+        <Tag>
+          <ShareButton baseURL={baseURL} dir="work" slug={post.slug} />
+        </Tag>
+      </Flex>
 			<ScrollToHash />
 		</Flex>
 	)
