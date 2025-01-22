@@ -14,7 +14,7 @@ export default function Comments({ postSlug, postUrl }: CommentsProps) {
 
     if (!existingScript) {
       const script = document.createElement("script");
-      script.src = "https://agcrisbp.disqus.com/embed.js";
+      script.src = "https://blog-aghea.disqus.com/embed.js";
       script.id = scriptId;
       script.async = true;
       document.body.appendChild(script);
