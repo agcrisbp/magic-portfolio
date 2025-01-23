@@ -2,39 +2,51 @@ import { Flex, Heading, Tag, Text } from '@/once-ui/components';
 import { getPosts } from '@/app/utils/utils';
 import { Posts } from '@/components/blog/Posts';
 import Link from 'next/link';
+import { baseURL, renderContent } from '@/app/resources'
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 
-export async function generateStaticParams() {
-  const locales = ['id', 'en'];
-  const posts = locales.flatMap((locale) =>
-    getPosts(['src', 'app', '[locale]', 'blog', 'posts', locale])
-  );
-  const tags = Array.from(new Set(posts.flatMap((post) => post.metadata.tag)));
-  return locales.flatMap((locale) =>
-    tags.map((tag) => ({ tag, locale }))
-  );
+export async function generateMetadata(
+	{params: {locale}}: { params: { locale: string }}
+) {
+
+	const t = await getTranslations();
+	const { tag } = renderContent(t);
+
+	const title = tag.title;
+	const description = tag.description;
+	const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
+
+	return {
+		title,
+		description,
+		openGraph: {
+			title,
+			description,
+			type: 'website',
+			url: `https://${baseURL}/${locale}/blog/tag`,
+			images: [
+				{
+					url: ogImage,
+					alt: title,
+				},
+			],
+		},
+		twitter: {
+			card: 'summary_large_image',
+			title,
+			description,
+			images: [ogImage],
+		},
+	};
 }
 
-export async function generateMetadata({ params }: { params: { locale: string; tag: string } }) {
-  const { locale, tag } = params;
-  return {
-    title: `Tag`,
-    description: `Telusuri artikel dengan tag.`,
-    openGraph: {
-      title: `Tag`,
-      description: `Telusuri artikel dengan tag.`,
-      type: 'website',
-      url: `/${locale}/blog/tag/${tag}`,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `Tag`,
-      description: `Telusuri artikel dengan tag.`,
-    },
-  };
-}
-
-export default function TagList({ params }: { params: { locale: string } }) {
-  const { locale } = params;
+export default function TagList(
+	{ params: {locale}}: { params: { locale: string }}
+) {
+	unstable_setRequestLocale(locale);
+	
+	const t = useTranslations();
 
   // Retrieve posts for the given locale
   const posts = getPosts(['src', 'app', '[locale]', 'blog', 'posts', locale]);
@@ -45,10 +57,10 @@ export default function TagList({ params }: { params: { locale: string } }) {
   return (
     <Flex fillWidth maxWidth="s" flex={1} direction="column">
       <Heading marginBottom="s" variant="display-strong-s">
-        Semua Tag
+        {t("tag.all")}
       </Heading>
       <Text variant="body-default-xs" onBackground="neutral-weak">
-        Klik tag untuk melihat artikel terkait.
+        {t("tag.click")}
       </Text>
       <Flex
         as="div"

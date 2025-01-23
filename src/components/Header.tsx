@@ -62,7 +62,6 @@ export const Header = () => {
   const params = useParams();
   const [isLocaleMenuOpen, setLocaleMenuOpen] = useState(false);
 
-  // Store dynamic refs for each locale
   const refs = useRef<Record<string, React.RefObject<HTMLButtonElement>>>(
     routing.locales.reduce((acc, locale) => {
       acc[locale] = createRef<HTMLButtonElement>();

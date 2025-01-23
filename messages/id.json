@@ -60,6 +60,14 @@
         "title": "Tulisan",
         "description": "Artikel di halaman ini berisi dokumentasi dari tulisan dan opini saya untuk bahan pembelajaran maupun bacaan semata. Beberapa artikel saya tulis dalam Bahasa Inggris agar dapat bermanfaat dan dibaca oleh teman-teman dari mancanegara."
     },
+    "tag": {
+        "label": "Tag",
+        "title": "Tag",
+        "description": "Telusuri artikel menggunakan tag.",
+        "all": "Semua Tag",
+        "all-2": "Semua artikel dengan tag {tag}",
+        "click": "Klik tag untuk melihat artikel terkait."
+    },
     "work": {
         "label": "Projek",
         "title": "Projek",

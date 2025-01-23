@@ -1,9 +1,13 @@
 import { Button, Flex, Heading, Text } from '@/once-ui/components';
 import { getPosts } from '@/app/utils/utils';
 import { Posts } from '@/components/blog/Posts';
+import { baseURL, renderContent } from '@/app/resources';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { routing } from '@/i18n/routing';
+import { useTranslations } from 'next-intl';
 
 export async function generateStaticParams() {
-  const locales = ['id', 'en'];
+  const locales = routing.locales;
   const posts = locales.flatMap((locale) =>
     getPosts(['src', 'app', '[locale]', 'blog', 'posts', locale])
   );
@@ -15,39 +19,61 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: { locale: string; tag: string } }) {
   const { locale, tag } = params;
+  const t = await getTranslations();
+
+  const title = `Tag: ${tag}`;
+  const description = t("tag.all-2", { tag: tag });
+  const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
+
   return {
-    title: `Tag: ${tag}`,
-    description: `Artikel dengan tag ${tag}.`,
+    title,
+    description,
     openGraph: {
-      title: `Tag: ${tag}`,
-      description: `Artikel dengan tag ${tag}.`,
+      title,
+      description,
       type: 'website',
       url: `/${locale}/blog/tag/${tag}`,
+      images: [
+        {
+          url: ogImage,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `Tag: ${tag}`,
-      description: `Artikel dengan tag ${tag}.`,
+      title,
+      description,
+      images: [ogImage],
     },
   };
 }
 
 export default function TagBlog({ params }: { params: { locale: string; tag: string } }) {
+  unstable_setRequestLocale(params.locale);
+  
+  const t = useTranslations();
+  
   const { locale, tag } = params;
   return (
-    <Flex fillWidth maxWidth="s" flex={1} direction="column">
+    <Flex
+      as="section"
+      fillWidth
+      maxWidth="xs"
+      direction="column"
+      gap="m"
+    >
       <Button
         href={`/${locale}/blog`}
         variant="tertiary"
         size="s"
         prefixIcon="chevronLeft">
-        Kembali
+        {t("button.back")}
       </Button>
       <Heading marginBottom="s" variant="display-strong-s">
         Tag: {tag}
       </Heading>
       <Text variant="body-default-xs" onBackground="neutral-weak">
-        Semua artikel dengan tag {tag}.
+        {t("tag.all-2", {tag: tag})}
       </Text>
       <Flex
         as="div"

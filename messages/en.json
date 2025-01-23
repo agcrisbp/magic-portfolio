@@ -60,6 +60,14 @@
         "title": "Blog",
         "description": "This site contains documentation of my writings and opinions for learning and reading purposes. Some of my articles are written in English so that they can be useful and read by friends from abroad."
     },
+    "tag": {
+        "label": "Tag",
+        "title": "Tag",
+        "description": "Find articles using tags.",
+        "all": "All Tags",
+        "all-2": "All articles with {tag} tag.",
+        "click": "Click the tag to see related articles."
+    },
     "work": {
         "label": "Work",
         "title": "Projects",

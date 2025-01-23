@@ -10,7 +10,7 @@ interface PostsProps {
   tag?: string;
 }
 
-export function Posts({ range, columns = '1', locale = 'id', thumbnail = false, tag }: PostsProps) {
+export function Posts({ range, columns = '1', locale, thumbnail = false, tag }: PostsProps) {
   let allBlogs = getPosts(['src', 'app', '[locale]', 'blog', 'posts', locale]);
   const filteredBlogs = tag ? allBlogs.filter((post) => post.metadata.tag?.includes(tag)) : allBlogs;
 

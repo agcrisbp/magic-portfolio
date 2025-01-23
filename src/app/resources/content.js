@@ -215,6 +215,12 @@ const createI18nContent = (t) => {
         // Create new blog posts by adding a new .mdx file to app/blog/posts
         // All posts will be listed on the /blog route
     }
+    
+    const tag = {
+        label: t("tag.label"),
+        title: t("tag.title"),
+        description: t("tag.description")
+    }
 
     const work = {
         label: t("work.label"),
@@ -283,6 +289,7 @@ const createI18nContent = (t) => {
         about,
         partners,
         blog,
+        tag,
         work,
         gallery,
         music
