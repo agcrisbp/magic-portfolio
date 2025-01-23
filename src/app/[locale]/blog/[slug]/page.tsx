@@ -168,7 +168,7 @@ export default function Blog({ params }: BlogParams) {
       <Flex as="article" direction="column" fillWidth>
         <CustomMDX source={post.content} />
       </Flex>
-      <ShareButton baseURL={baseURL} dir="blog" slug={post.slug} />
+      <ShareButton baseURL={baseURL} dir={`${params.locale}/blog`} slug={post.slug} />
       <ScrollToHash />
       <Comments
         postSlug={post.slug}

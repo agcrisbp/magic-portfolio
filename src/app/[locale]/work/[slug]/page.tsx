@@ -183,7 +183,7 @@ export default function Project({ params }: WorkParams) {
 			</Flex>
 			<Flex justifyContent="center">
         <Tag>
-          <ShareButton baseURL={baseURL} dir="work" slug={post.slug} />
+          <ShareButton baseURL={baseURL} dir={`${params.locale}/work`} slug={post.slug} />
         </Tag>
       </Flex>
 			<ScrollToHash />
