@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Button, Flex, Text, IconButton } from '@/once-ui/components';
+import { useTranslations } from 'next-intl';
 
 const ResumeModal = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -40,6 +41,8 @@ const ResumeModal = () => {
     window.open(link, '_blank');
     setModalOpen(false);
   };
+  
+  const t = useTranslations();
 
   return (
     <>
@@ -77,7 +80,7 @@ const ResumeModal = () => {
           >
             <Flex justifyContent="space-between" alignItems="center" gap="8" fillHeight>
               <Text variant="body-default-l">
-                Pilih Resume
+                {t("button.chooseResume")}
               </Text>
               <IconButton
                 data-border="rounded"

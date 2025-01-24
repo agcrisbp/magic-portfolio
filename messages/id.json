@@ -11,7 +11,7 @@
         "label": "Beranda",
         "title": "{name}",
         "description": "A programmer who aware of the tiny moments in a persons life that reveal greater truths.",
-        "headline": "Waiter, Web Developer, dan Cybersecurity",
+        "headline": "Do what you love, love what you do.",
         "subline": "Agcrismanto Budhi Praswastyka, atau yang dikenal sebagai Cris atau Aghea, adalah profesional di bidang Pengembangan Web dan Keamanan Siber sejak 2011 dengan fokus pada pengembangan aplikasi web yang aman. Selain itu, Ia juga memiliki pengalaman di industri makanan dan minuman."
     },
     "about": {
@@ -135,6 +135,7 @@
         "view": "Lihat Proyek",
         "send": "Kirim",
         "back": "Kembali",
+        "chooseResume": "Pilih Resume",
         "toc": "Daftar Isi",
         "newBlog": "Tulisan Terbaru",
         "newWork": "Proyek Terbaru"

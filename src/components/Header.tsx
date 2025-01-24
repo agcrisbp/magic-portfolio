@@ -74,9 +74,10 @@ export const Header = () => {
 
   function handleLanguageChange(locale: string) {
     const nextLocale = locale as Locale;
-
+  
     startTransition(() => {
       router.replace(pathname, { locale: nextLocale });
+      window.location.reload();
     });
   }
 
