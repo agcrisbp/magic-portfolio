@@ -81,13 +81,13 @@ const createI18nContent = (t) => {
             experiences: [
                 {
                     company: 'BLAST',
-                    timeframe: '2022 - Present',
+                    timeframe: t("about.work.experiences.BLAST.timeframe"),
                     role: 'Web Developer & Cybersecurity',
                     location: 'Denmark',
                     achievements: [
-                        t("about.achievements.BLAST-1"),
-                        t("about.achievements.BLAST-2"),
-                        t("about.achievements.BLAST-3")
+                        t("about.work.experiences.BLAST.achievements.BLAST-1"),
+                        t("about.work.experiences.BLAST.achievements.BLAST-2"),
+                        t("about.work.experiences.BLAST.achievements.BLAST-3")
                     ],
                     images: [
                         {
@@ -102,16 +102,81 @@ const createI18nContent = (t) => {
                     company: 'Dinas Komunikasi dan Informatika',
                     timeframe: '2018 - 2020',
                     role: 'Cybersecurity Consultant',
-                    location: 'Purworejo, Central Java',
+                    location: t("about.work.experiences.Diskominfo.location"),
                     achievements: [
-                        t("about.achievements.Diskominfo-1"),
-                        t("about.achievements.Diskominfo-2"),
-                        t("about.achievements.Diskominfo-3"),
-                        t("about.achievements.Diskominfo-4"),
-                        t("about.achievements.Diskominfo-5")
+                        t("about.work.experiences.Diskominfo.achievements.Diskominfo-1"),
+                        t("about.work.experiences.Diskominfo.achievements.Diskominfo-2"),
+                        t("about.work.experiences.Diskominfo.achievements.Diskominfo-3"),
+                        t("about.work.experiences.Diskominfo.achievements.Diskominfo-4"),
+                        t("about.work.experiences.Diskominfo.achievements.Diskominfo-5")
                     ],
                     images: []
-                }
+                },
+                {
+                    company: 'TSM',
+                    timeframe: '2017 - 2022',
+                    role: 'Moderation Staff',
+                    location: 'Remote',
+                    achievements: [
+                        t("about.work.experiences.TSM.achievements.TSM-1"),
+                        t("about.work.experiences.TSM.achievements.TSM-2"),
+                        t("about.work.experiences.TSM.achievements.TSM-3"),
+                        t("about.work.experiences.TSM.achievements.TSM-4")
+                    ],
+                    images: []
+                },
+                {
+                    company: 'T.I.A',
+                    timeframe: '2017 - 2018',
+                    role: 'Data Analyst',
+                    location: 'DKI Jakarta',
+                    achievements: [
+                        t("about.work.experiences.TIA.achievements.TIA-1"),
+                        t("about.work.experiences.TIA.achievements.TIA-2"),
+                        t("about.work.experiences.TIA.achievements.TIA-3"),
+                        t("about.work.experiences.TIA.achievements.TIA-4")
+                    ],
+                    images: []
+                },
+                {
+                    company: 'ACC Super Sambal',
+                    timeframe: '2017',
+                    role: 'Waiter',
+                    location: t("about.work.experiences.SS.location"),
+                    achievements: [],
+                    images: [ ]
+                },
+                {
+                    company: 'CV. Sukamenak Jaya',
+                    timeframe: '2016',
+                    role: 'PPIC',
+                    location: t("about.work.experiences.PPIC.location"),
+                    achievements: [
+                        t("about.work.experiences.PPIC.achievements.PPIC-1"),
+                        t("about.work.experiences.PPIC.achievements.PPIC-2"),
+                        t("about.work.experiences.PPIC.achievements.PPIC-3")
+                    ],
+                    images: [ ]
+                },
+                {
+                    company: 'Dapur Sambal',
+                    timeframe: '2015 - 2016',
+                    role: 'Waiter',
+                    location: t("about.work.experiences.DS.location"),
+                    achievements: [ ],
+                    images: [ ]
+                },
+                {
+                    company: 'Empatha Boga',
+                    timeframe: '2016',
+                    role: 'Helper & Waiter',
+                    location: t("about.work.experiences.EB.location"),
+                    achievements: [
+                        t("about.work.experiences.EB.achievements.EB-1"),
+                        t("about.work.experiences.EB.achievements.EB-2")
+                    ],
+                    images: [ ]
+                },
             ]
         },
         studies: {

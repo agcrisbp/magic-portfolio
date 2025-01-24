@@ -23,17 +23,64 @@
             "description": "Agcrismanto Budhi Praswastyka, yang lebih dikenal dengan nama Cris atau Aghea, adalah seorang profesional yang memiliki spesialisasi dalam Pengembangan Web dan Keamanan Siber. Dengan pengalaman yang dimilikinya sejak tahun 2011, Ia telah menguasai berbagai bahasa pemrograman, seperti Python, JavaScript, React, serta HTML/CSS, dan memiliki fokus yang mendalam dalam memperkuat langkah-langkah keamanan di dunia digital. Pekerjaan utamanya melibatkan pengembangan aplikasi web yang aman serta perlindungan sistem dari ancaman siber. Selain itu, Ia juga pernah berkecimpung di industri makanan dan minuman selama beberapa tahun.\n\nDi luar pekerjaannya, Ia mengeksplorasi minat kreatifnya sebagai musisi dan mengisi waktu luangnya dengan bermain gim. Ia juga penggemar film, terutama yang bergenre komedi, aksi, dan horor. Rasa ingin tahu dan komitmennya untuk terus mengikuti perkembangan teknologi menjadi bagian penting dari pertumbuhan pribadi dan profesionalnya."
         },
         "work": {
-            "title": "Pengalaman Kerja"
-        },
-        "achievements": {
-            "BLAST-1": "Merancang dan mengembangkan fitur utama platform berbasis esports, termasuk antarmuka pengguna yang intuitif serta sistem pengelolaan turnamen yang efisien, menggunakan teknologi seperti React, Next.js, TypeScript, dan Node.js untuk menciptakan aplikasi web yang dinamis dan responsif.",
-            "BLAST-2": "Mengimplementasikan langkah-langkah keamanan untuk melindungi data pengguna dan informasi turnamen, dengan memastikan sistem bebas dari kerentanannya melalui pengujian penetrasi (penetration testing), serta pengelolaan akses yang ketat.",
-            "BLAST-3": "Mengoptimalkan performa website agar dapat menangani banyak pengguna secara simultan, terutama pada saat turnamen besar, dengan fokus pada kecepatan dan skalabilitas sistem.",
-            "Diskominfo-1": "Mengawasi dan memastikan keamanan infrastruktur jaringan dan melakukan konfigurasi firewall dan sistem deteksi intrusi (IDS/IPS).",
-            "Diskominfo-2": "Melakukan penilaian kerentanan pada aplikasi dan jaringan untuk mengidentifikasi risiko, serta mengaudit sistem secara berkala untuk memastikan kepatuhan terhadap standar keamanan.",
-            "Diskominfo-3": "Melakukan simulasi serangan siber (Penetration Testing) untuk mengidentifikasi potensi celah keamanan pada sistem pemerintah.",
-            "Diskominfo-4": "Merespons dan menangani insiden keamanan siber, seperti serangan ransomware, phishing, atau malware, dengan membuat laporan insiden serta memberikan rekomendasi mitigasi.",
-            "Diskominfo-5": "Melaksanakan pelatihan untuk staf mengenai keamanan data, perlindungan privasi, serta praktik terbaik dalam penggunaan teknologi informasi untuk memastikan kepatuhan terhadap standar keamanan yang berlaku."
+            "title": "Pengalaman Kerja",
+            "experiences": {
+                "BLAST": {
+                    "timeframe": "2022 - Sekarang",
+                    "achievements": {
+                        "BLAST-1": "Merancang dan mengembangkan fitur utama platform berbasis esports, termasuk antarmuka pengguna yang intuitif serta sistem pengelolaan turnamen yang efisien, menggunakan teknologi seperti React, Next.js, TypeScript, dan Node.js untuk menciptakan aplikasi web yang dinamis dan responsif.",
+                        "BLAST-2": "Mengimplementasikan langkah-langkah keamanan untuk melindungi data pengguna dan informasi turnamen, dengan memastikan sistem bebas dari kerentanannya melalui pengujian penetrasi (penetration testing), serta pengelolaan akses yang ketat.",
+                        "BLAST-3": "Mengoptimalkan performa website agar dapat menangani banyak pengguna secara simultan, terutama pada saat turnamen besar, dengan fokus pada kecepatan dan skalabilitas sistem."
+                    }
+                },
+                "Diskominfo": {
+                    "location": "Purworejo, Jawa Tengah",
+                    "achievements": {
+                        "Diskominfo-1": "Mengawasi dan memastikan keamanan infrastruktur jaringan dan melakukan konfigurasi firewall dan sistem deteksi intrusi (IDS/IPS).",
+                        "Diskominfo-2": "Melakukan penilaian kerentanan pada aplikasi dan jaringan untuk mengidentifikasi risiko, serta mengaudit sistem secara berkala untuk memastikan kepatuhan terhadap standar keamanan.",
+                        "Diskominfo-3": "Melakukan simulasi serangan siber (Penetration Testing) untuk mengidentifikasi potensi celah keamanan pada sistem pemerintah.",
+                        "Diskominfo-4": "Merespons dan menangani insiden keamanan siber, seperti serangan ransomware, phishing, atau malware, dengan membuat laporan insiden serta memberikan rekomendasi mitigasi.",
+                        "Diskominfo-5": "Melaksanakan pelatihan untuk staf mengenai keamanan data, perlindungan privasi, serta praktik terbaik dalam penggunaan teknologi informasi untuk memastikan kepatuhan terhadap standar keamanan yang berlaku."
+                    }
+                },
+                "TSM": {
+                    "achievements": {
+                        "TSM-1": "Memantau dan memastikan interaksi pemain dan penggemar di saluran komunikasi resmi Team SoloMid tetap sesuai dengan pedoman dan kebijakan komunitas.",
+                        "TSM-2": "Menangani laporan pelanggaran, seperti perilaku buruk, pelecehan, dan kecurangan dalam game, serta mengambil tindakan yang diperlukan, termasuk memberi peringatan atau pemblokiran akun.",
+                        "TSM-3": "Berkolaborasi dengan tim manajemen untuk mengembangkan kebijakan moderasi yang efektif dan responsif terhadap tren dan isu-isu komunitas yang baru muncul.",
+                        "TSM-4": "Membantu dalam pelaksanaan acara dan streaming langsung, memastikan pengalaman positif bagi penggemar dan partisipan."
+                    }
+                },
+                "TIA": {
+                    "achievements": {
+                        "TIA-1": "Mengumpulkan, menganalisis, dan menginterpretasi data untuk memberikan wawasan yang berguna bagi pengambilan keputusan strategis perusahaan.",
+                        "TIA-2": "Membuat laporan analisis data yang membantu tim manajemen dalam memahami tren pasar, perilaku konsumen, dan kinerja produk.",
+                        "TIA-3": "Menggunakan alat analisis data seperti Excel, Python, atau SQL untuk memproses dan menganalisis data dalam jumlah besar.",
+                        "TIA-4": "Melakukan verifikasi dan validasi data untuk memastikan keakuratan dan kelengkapan informasi yang digunakan dalam laporan bisnis."
+                    }
+                },
+                "SS": {
+                    "location": "Kutoarjo, Jawa Tengah"
+                },
+                "PPIC": {
+                    "location": "Bandung, Jawa Barat",
+                    "achievements": {
+                        "PPIC-1": "Menyusun rencana produksi bulanan dan mingguan untuk memastikan ketersediaan produk yang cukup untuk memenuhi permintaan pasar.",
+                        "PPIC-2": "Mengelola dan mengawasi tingkat persediaan bahan baku dan produk jadi, serta memastikan bahwa persediaan tetap berada pada tingkat optimal untuk menghindari kekurangan atau kelebihan stok.",
+                        "PPIC-3": "Berkoordinasi dengan tim produksi untuk memastikan jadwal produksi berjalan sesuai rencana dan dapat memenuhi target waktu yang ditetapkan."
+                    }
+                },
+                "DS": {
+                    "location": "Bekasi, Jawa Barat"
+                },
+                "EB": {
+                    "location": "Kebumen, Jawa Tengah",
+                    "achievements": {
+                        "EB-1": "Membantu tim dapur dalam menyiapkan bahan makanan dan kebutuhan operasional sehari-hari.",
+                        "EB-2": "Berperan aktif dalam mengelola dan memastikan ketersediaan inventaris bahan makanan serta peralatan makan untuk mendukung kelancaran operasional."
+                    }
+                }
+            }
         },
         "studies": {
             "title": "Pendidikan",
@@ -86,9 +133,15 @@
     "button": {
         "read": "Baca Selengkapnya",
         "view": "Lihat Proyek",
+        "send": "Kirim",
         "back": "Kembali",
         "toc": "Daftar Isi",
         "newBlog": "Tulisan Terbaru",
         "newWork": "Proyek Terbaru"
+    },
+    "popup": {
+        "passPage": "Halaman ini dilindungi kata sandi",
+        "wrongPass": "Kata sandi salah",
+        "inputPass": "Masukkan Kata Sandi"
     }
 }

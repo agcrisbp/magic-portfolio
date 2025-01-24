@@ -23,17 +23,64 @@
             "description": "Agcrismanto Budhi Praswastyka, known as Cris or Aghea, is a professional specializing in Web Developer and Cybersecurity, with expertise in these fields since 2011. He is proficient in programming languages such as Python and has a strong focus on enhancing digital security measures. His work primarily involves developing secure web applications and protecting systems from cyber threats. Additionally, He has experience in the food and beverage industry for several years.\n\nHe is also a movie buff, with a particular interest in comedy, action, and horror genres. In his free time, he explores his creative interests as a musician and enjoys playing games. His curiosity and commitment to staying updated with technological advancements are central to his personal and professional growth."
         },
         "work": {
-            "title": "Pengalaman Kerja"
-        },
-        "achievements": {
-            "BLAST-1": "Designed and developed core features of an esports-based platform, including an intuitive user interface and efficient tournament management system, using technologies like React, Next.js, TypeScript, and Node.js to create dynamic and responsive web applications.",
-            "BLAST-2": "Implemented security measures to protect user data and tournament information, ensuring systems were free of vulnerabilities through penetration testing and strict access management.",
-            "BLAST-3": "Optimized website performance to handle high traffic during major tournaments, focusing on system speed and scalability.",
-            "Diskominfo-1": "Monitored and ensured the security of network infrastructure, configuring firewalls and intrusion detection/prevention systems (IDS/IPS).",
-            "Diskominfo-2": "Conducted vulnerability assessments of applications and networks to identify risks and audited systems regularly to ensure compliance with security standards.",
-            "Diskominfo-3": "Performed cyberattack simulations (penetration testing) to identify potential security gaps in government systems.",
-            "Diskominfo-4": "Responded to and handled cybersecurity incidents, such as ransomware, phishing, or malware attacks, by creating incident reports and providing mitigation recommendations.",
-            "Diskominfo-5": "Conducted staff training on data security, privacy protection, and best practices in IT usage to ensure compliance with applicable security standards."
+            "title": "Pengalaman Kerja",
+            "experiences": {
+                "BLAST": {
+                    "timeframe": "2022 - Present",
+                    "achievements": {
+                        "BLAST-1": "Designed and developed core features of an esports-based platform, including an intuitive user interface and efficient tournament management system, using technologies like React, Next.js, TypeScript, and Node.js to create dynamic and responsive web applications.",
+                        "BLAST-2": "Implemented security measures to protect user data and tournament information, ensuring systems were free of vulnerabilities through penetration testing and strict access management.",
+                        "BLAST-3": "Optimized website performance to handle high traffic during major tournaments, focusing on system speed and scalability."
+                    }
+                },
+                "Diskominfo": {
+                    "location": "Purworejo, Central Java",
+                    "achievements": {
+                        "Diskominfo-1": "Monitored and ensured the security of network infrastructure, configuring firewalls and intrusion detection/prevention systems (IDS/IPS).",
+                        "Diskominfo-2": "Conducted vulnerability assessments of applications and networks to identify risks and audited systems regularly to ensure compliance with security standards.",
+                        "Diskominfo-3": "Performed cyberattack simulations (penetration testing) to identify potential security gaps in government systems.",
+                        "Diskominfo-4": "Responded to and handled cybersecurity incidents, such as ransomware, phishing, or malware attacks, by creating incident reports and providing mitigation recommendations.",
+                        "Diskominfo-5": "Conducted staff training on data security, privacy protection, and best practices in IT usage to ensure compliance with applicable security standards."
+                    }
+                },
+                "TSM": {
+                    "achievements": {
+                        "TSM-1": "Monitoring and ensuring that player and fan interactions on Team SoloMid's official communication channels comply with community guidelines and policies.",
+                        "TSM-2": "Handling reports of violations, such as misconduct, harassment, and in-game cheating, and taking necessary actions, including issuing warnings or account bans.",
+                        "TSM-3": "Collaborating with the management team to develop effective moderation policies that are responsive to emerging community trends and issues.",
+                        "TSM-4": "Assisting in the execution of events and live streams, ensuring a positive experience for fans and participants."
+                    }
+                },
+                "TIA": {
+                    "achievements": {
+                        "TIA-1": "Collected, analyzed, and interpreted data to provide actionable insights for the company's strategic decision-making.",
+                        "TIA-2": "Prepared data analysis reports that helped the management team understand market trends, consumer behavior, and product performance.",
+                        "TIA-3": "Utilized data analysis tools such as Excel, Python, or SQL to process and analyze large datasets.",
+                        "TIA-4": "Performed data verification and validation to ensure the accuracy and completeness of information used in business reports."
+                    }
+                },
+                "SS": {
+                    "location": "Kutoarjo, Central Java"
+                },
+                "PPIC": {
+                    "location": "Bandung, West Java",
+                    "achievements": {
+                        "PPIC-1": "Prepared monthly and weekly production plans to ensure sufficient product availability to meet market demand.",
+                        "PPIC-2": "Managed and monitored inventory levels of raw materials and finished goods, ensuring optimal stock levels to avoid shortages or overstocking.",
+                        "PPIC-3": "Coordinated with the production team to ensure production schedules were executed as planned and met established deadlines."
+                    }
+                },
+                "DS": {
+                    "location": "Bekasi, West Java"
+                },
+                "EB": {
+                    "location": "Kebumen, Central Java",
+                    "achievements": {
+                        "EB-1": "Assisted the kitchen team in preparing food ingredients and daily operational needs.",
+                        "EB-2": "Actively participated in managing and ensuring the availability of food ingredient inventory and dining equipment to support smooth operations."
+                    }
+                }
+            }
         },
         "studies": {
             "title": "Studies",
@@ -86,9 +133,15 @@
     "button": {
         "read": "Read More",
         "view": "View Project",
+        "send": "Submit",
         "back": "Back",
         "toc": "Table of Contents",
         "newBlog": "Latest Blog",
         "newWork": "Latest Project"
+    },
+    "popup": {
+        "passPage": "This page is password protected",
+        "wrongPass": "Incorrect password",
+        "inputPass": "Input Password"
     }
 }

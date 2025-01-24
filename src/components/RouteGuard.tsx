@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react';
 import { usePathname } from '@/i18n/routing';
 import { routes, protectedRoutes } from '@/app/resources';
-import { Flex, Spinner, IconButton, Input, Button, Heading } from '@/once-ui/components'; 
+import { Flex, Spinner, IconButton, Input, Button, Heading } from '@/once-ui/components';
+import { useTranslations } from "next-intl";
 
 interface RouteGuardProps {
     children: React.ReactNode;
@@ -18,6 +19,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
     const [error, setError] = useState<string | undefined>(undefined);
     const [loading, setLoading] = useState(true);
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    
 
     useEffect(() => {
         const performChecks = async () => {
@@ -60,7 +62,8 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
 
         performChecks();
     }, [pathname]);
-
+    
+    const t = useTranslations();
     const handlePasswordSubmit = async () => {
         const response = await fetch('/api/authenticate', {
             method: 'POST',
@@ -72,7 +75,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
             setIsAuthenticated(true);
             setError(undefined);
         } else {
-            setError('Kata sandi salah');
+            setError(t("popup.wrongPass"));
         }
     };
 
@@ -102,13 +105,13 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
                 fillWidth paddingY="128" maxWidth={24} gap="24"
                 justifyContent="center" direction="column" alignItems="center">
                 <Heading align="center" wrap="balance">
-                    Halaman ini dilindungi kata sandi
+                    {t("popup.passPage")}
                 </Heading>
                 <Flex alignItems="center" position="relative">
                     <Input
                         id="password"
                         type={isPasswordVisible ? "text" : "password"}
-                        label="Masukkan kata sandi"
+                        label={t("popup.inputPass")}
                         value={password}
                         onChange={(e) => {
                             setPassword(e.target.value);
@@ -134,7 +137,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
                     )}
                 </Flex>
                 <Button onClick={handlePasswordSubmit} size="l">
-                    Kirim
+                    {t("button.send")}
                 </Button>
             </Flex>
         );
