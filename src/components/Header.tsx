@@ -77,7 +77,7 @@ export const Header = () => {
   
     startTransition(() => {
       router.replace(pathname, { locale: nextLocale });
-      window.location.reload();
+      window.location.href = `${pathname}`;
     });
   }
 
