@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -23,7 +24,7 @@ type Metadata = {
 
 function getMDXFiles(dir: string) {
     if (!fs.existsSync(dir)) {
-        throw new Error(`Directory not found: ${dir}`);
+        notFound();
     }
 
     return fs.readdirSync(dir).filter((file) => path.extname(file) === '.mdx');
@@ -31,7 +32,7 @@ function getMDXFiles(dir: string) {
 
 function readMDXFile(filePath: string) {
     if (!fs.existsSync(filePath)) {
-        throw new Error(`File not found: ${filePath}`);
+        notFound();
     }
 
     const rawContent = fs.readFileSync(filePath, 'utf-8');
