@@ -28,8 +28,9 @@ function Table({ data, collapse = false }: TableProps) {
             key={index}
             style={{
                 padding: '8px',
-                textAlign: 'left',
                 border: '1px solid rgba(255,255,255,0.3)',
+                wordWrap: 'break-word',
+                overflowWrap: 'break-word',
             }}
         >
             {header}
@@ -37,26 +38,27 @@ function Table({ data, collapse = false }: TableProps) {
     ));
 
     const rows = data.rows.map((row, index) => (
-        <tr
-            key={index}
-            style={{
-                borderBottom: '1px solid rgba(255,255,255,0.3)',
-            }}
-        >
-            {row.map((cell, cellIndex) => (
-                <td
-                    key={cellIndex}
-                    style={{
-                        padding: '8px',
-                        textAlign: 'left',
-                        border: '1px solid rgba(255,255,255,0.3)',
-                    }}
-                >
-                    {cell}
-                </td>
-            ))}
-        </tr>
-    ));
+    <tr
+        key={index}
+        style={{
+            borderBottom: '1px solid rgba(255,255,255,0.3)',
+        }}
+    >
+        {row.map((cell, cellIndex) => (
+            <td
+                key={cellIndex}
+                style={{
+                    padding: '8px',
+                    textAlign: 'left',
+                    border: '1px solid rgba(255,255,255,0.3)',
+                    verticalAlign: 'top', // Align text to the top of the cell
+                }}
+            >
+                {cell}
+            </td>
+        ))}
+    </tr>
+));
 
     return (
         <div
@@ -65,7 +67,7 @@ function Table({ data, collapse = false }: TableProps) {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                overflowX: collapse ? 'hidden' : 'auto', // Hidden overflow for collapse true
+                overflowX: collapse ? 'hidden' : 'auto',
                 marginTop: '12px',
                 marginBottom: '16px',
             }}

@@ -2,6 +2,7 @@ import "@/once-ui/styles/index.scss";
 import "@/once-ui/tokens/index.scss";
 
 import classNames from "classnames";
+import { Analytics } from "@vercel/analytics/react"
 
 import { Footer, Header, RouteGuard } from "@/components";
 import { baseURL, effects, style } from "@/app/resources";
@@ -35,9 +36,6 @@ export async function generateMetadata() {
         "max-image-preview": "large",
         "max-snippet": -1,
       },
-    },
-    verification: {
-      google: 'JrRNA-l-wk3csXDy1FmtSfrQBXw-QAzHs0FCaC6Mt2Y',
     },
   };
 }
@@ -158,6 +156,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             </Flex>
           </Flex>
           <Footer />
+          <Analytics/>
         </Column>
       </ToastProvider>
     </Flex>

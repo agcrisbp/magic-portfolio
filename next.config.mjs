@@ -9,7 +9,7 @@ const withMDX = mdx({
 const nextConfig = {
   experimental: {
     turbo: {
-      memoryLimit: 2 * 1024 * 1024 * 1024,
+      memoryLimit: 4 * 1024 * 1024 * 1024,
       resolveExtensions: [
         '.mdx',
         '.tsx',
