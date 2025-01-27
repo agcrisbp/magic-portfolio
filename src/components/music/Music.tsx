@@ -83,30 +83,31 @@ export default function MusicPage() {
         ))}
       </Masonry>
       
-      {/* Pass the playlists fetched from API */}
-      <Text variant="body-default-xs" onBackground="neutral-weak" paddingTop="16" paddingBottom="16">
-        <TrackList playlists={topMusic?.playlists} />
-      </Text>
-      
-      <Text variant="body-default-xs" onBackground="neutral-weak" paddingBottom="16">
-        <TrackList tracks={topMusic?.short.items} period="short" priority={true} />
-      </Text>
-      
-      <Text variant="body-default-xs" onBackground="neutral-weak" paddingBottom="16">
-        <TrackList tracks={topMusic?.medium.items} period="medium" />
-      </Text>
-      
-      <Text variant="body-default-xs" onBackground="neutral-weak" paddingBottom="16">
-        <TrackList tracks={topMusic?.long.items} period="long" />
-      </Text>
-      
-      <Text variant="body-default-xs" onBackground="neutral-weak" paddingBottom="16">
-        <TrackList
-          topArtists={topMusic?.topArtists}
-          artist={true}
-          priority={true}
-        />
-      </Text>
+      {topMusic && (<>
+        <Text variant="body-default-xs" onBackground="neutral-weak" paddingTop="16" paddingBottom="16">
+          <TrackList playlists={topMusic?.playlists} />
+        </Text>
+        
+        <Text variant="body-default-xs" onBackground="neutral-weak" paddingBottom="16">
+          <TrackList tracks={topMusic?.short.items} period="short" priority={true} />
+        </Text>
+        
+        <Text variant="body-default-xs" onBackground="neutral-weak" paddingBottom="16">
+          <TrackList tracks={topMusic?.medium.items} period="medium" />
+        </Text>
+        
+        <Text variant="body-default-xs" onBackground="neutral-weak" paddingBottom="16">
+          <TrackList tracks={topMusic?.long.items} period="long" />
+        </Text>
+        
+        <Text variant="body-default-xs" onBackground="neutral-weak" paddingBottom="16">
+          <TrackList
+            topArtists={topMusic?.topArtists}
+            artist={true}
+            priority={true}
+          />
+        </Text>
+      </>)}
     </Column>
   );
 }

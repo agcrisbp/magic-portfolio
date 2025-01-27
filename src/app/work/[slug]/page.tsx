@@ -108,7 +108,7 @@ export default function Project({ params }: WorkParams) {
 				<Button
 					data-border="rounded"
 					href="/work"
-					variant="tertiary"
+					variant="secondary"
 					weight="default"
 					size="s"
 					prefixIcon="chevronLeft">

@@ -109,7 +109,7 @@ export default function Blog({ params }: BlogParams) {
           }),
         }}
       />
-      <Button href="/blog" weight="default" variant="tertiary" size="s" prefixIcon="chevronLeft">
+      <Button href="/blog" weight="default" variant="secondary" size="s" prefixIcon="chevronLeft">
         Kembali
       </Button>
       <Heading variant="display-strong-s">{post.metadata.title}</Heading>

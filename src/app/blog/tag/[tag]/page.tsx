@@ -33,7 +33,7 @@ export default function TagBlog({ params }: { params: { tag: string } }) {
     <Column maxWidth="s">
       <Button
         href="/blog"
-        variant="tertiary"
+        variant="secondary"
         size="s"
         prefixIcon="chevronLeft">
         Kembali
