@@ -1,4 +1,3 @@
-import { baseURL } from '@/app/resources';
 import { Flex, IconButton, SmartLink, Spotify, Text } from "@/once-ui/components";
 import styles from './Footer.module.scss';
 import { person, social } from "@/app/resources/content";
@@ -51,22 +50,12 @@ export const Footer = () => {
                 <div className={styles.footerRight}>
                     <Text variant="body-default-s" onBackground="neutral-strong">
                         <Text onBackground="neutral-weak">
-                            <SmartLink href="/terms-of-use">
-                                Syarat Ketentuan
-                            </SmartLink>{' '}
-                            &{' '}
-                            <SmartLink href="/privacy-policy">
-                                Kebijakan Privasi
-                            </SmartLink>
-                        </Text>
-                        <br/>
-                        <Text onBackground="neutral-weak">
                             © {currentYear}{' '}
                         </Text>
                         <Text onBackground="neutral-strong">{person.name}</Text>
                         <br />
                         <Text onBackground="neutral-weak" style={{ display: 'inline-flex' }} >
-                            Powered by<SmartLink href={`https://${baseURL}/once-ui`}><img src="/trademark/OnceUIxCH.svg" width="auto" height="17" style={{ pointerEvents: 'none' }} /></SmartLink>
+                            Powered by<SmartLink href={`https://aghea.vercel.app/once-ui`}><img src="/trademark/OnceUIxCH.svg" width="auto" height="17" style={{ pointerEvents: 'none' }} /></SmartLink>
                         </Text>
                     </Text>
                 </div>
