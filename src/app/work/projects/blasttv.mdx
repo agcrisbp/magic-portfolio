@@ -4,7 +4,6 @@ publishedAt: "2023-01-18"
 summary: "BLAST.TV adalah platform online yang fokus pada penyelenggaraan turnamen eSports, terutama dalam game Counter-Strike: Global Offensive (CS:GO) yang sekarang berganti menjadi Counter-Strike 2 atau CS2."
 images:
   - "/images/projects/blast.jpg"
-  - "/images/projects/blast-app.jpg"
 team:
   - name: "BLAST"
     role: "Event Organizer"
@@ -16,3 +15,52 @@ team:
     linkedIn: "/linkedin"
 link: "https://blast.tv"
 ---
+
+<ProjectInfo items={[
+  {
+    label: "Peran",
+    value: "Developer & Cybersecurity"
+  },
+  {
+    label: "Durasi",
+    value: "4 bulan"
+  },
+  {
+    label: "Tim",
+    value: [
+      "6 orang"
+    ]
+  }
+]} />
+
+Proses pembuatan BLAST.TV melibatkan beberapa tahap pengembangan dan kolaborasi antara tim yang terdiri dari kalangan profesional pengembang perangkat lunak dan web, dan keamanan siber. Berikut adalah gambaran keseluruhan proses pembuatan platform ini:
+
+### 1. Pengembangan Platform
+
+BLAST.TV dikembangkan untuk menyelenggarakan turnamen eSports, dengan fokus utama pada game CS:GO yang kini beralih ke CS2, dan kini telah merambah ke beberapa cabang eSports baru. Sebagai Full-Stack Web Developer, proses pengembangan dimulai dengan merancang arsitektur platform yang scalable dan responsif. Platform ini harus mampu menangani ribuan pengguna yang menonton streaming pertandingan secara langsung, sambil menyediakan fitur interaktif seperti statistik real-time, komentar, dan fitur chat.
+
+<Carousel
+  indicator="thumbnail"
+  sizes="(max-width: 1280px) 100vw, 1024px"
+  images={[
+    { 
+      src: '/images/projects/blast.jpg',
+    },
+    { 
+      src: '/images/projects/blast-app.jpg',
+    },
+  ]}/>
+
+Pada bagian frontend, kami menggunakan teknologi seperti React untuk membangun antarmuka pengguna yang dinamis dan responsif. Komponen-komponen utama seperti tampilan pertandingan, leaderboard, dan informasi turnamen dikembangkan dengan pendekatan modular untuk memudahkan pemeliharaan dan pengembangan lebih lanjut. Backend platform ini dibangun dengan menggunakan database untuk menyimpan data turnamen, pengguna, dan hasil pertandingan secara efisien, serta teknologi yang dapat mengelola streaming video, dan statistik pertandingan secara real-time.
+
+### 2. Integrasi Streaming dan Keamanan
+
+Streaming langsung adalah fitur utama dalam BLAST.TV. Kami mengintegrasikan berbagai teknologi untuk memastikan kualitas streaming yang tinggi, terutama dengan peningkatan performa untuk pengguna di berbagai lokasi geografis. Teknologi seperti WebRTC digunakan untuk mengoptimalkan pengalaman streaming langsung.
+
+Sebagai bagian dari tim Cybersecurity, saya bertanggung jawab untuk memastikan keamanan platform. Proses pengamanan platform melibatkan penggunaan enkripsi SSL untuk melindungi komunikasi data, serta penerapan kebijakan keamanan yang ketat untuk mencegah potensi serangan DDoS, SQL injection, dan kebocoran data. Selain itu, autentikasi multi-faktor dan pengelolaan hak akses pengguna digunakan untuk memastikan bahwa hanya pengguna yang berwenang yang dapat mengakses fitur administratif.
+
+### 3. Pemeliharaan dan Perbaikan Berkelanjutan
+
+Setelah peluncuran platform, yang diluncurkan pertama kali dalam bentuk Beta, proses pemeliharaan berkelanjutan sangat penting untuk memastikan platform tetap aman, cepat, dan stabil. Tim bekerja secara terus-menerus untuk memperbarui dependensi, memperbaiki bug, dan merespons masalah yang muncul. Monitoring terus-menerus digunakan untuk mendeteksi potensi ancaman keamanan dan memastikan bahwa server beroperasi dengan optimal.
+
+Secara keseluruhan, pembuatan BLAST.TV adalah proyek yang melibatkan kolaborasi erat antara tim pengembang, tim keamanan, dan penyelenggara event untuk menghasilkan platform eSports yang tidak hanya fungsional tetapi juga aman dan mudah diakses oleh para penggemar di seluruh dunia.

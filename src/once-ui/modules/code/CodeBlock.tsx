@@ -55,7 +55,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
             Prism.highlightAll();
         }
         const lineCount = code.split('\n').length;
-        setShowExpandButton(lineCount > 8);
+        setShowExpandButton(lineCount > 2);
     }, [code, codeInstances.length]);
 
     const handleCopy = () => {
@@ -88,20 +88,20 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
     return (
         <Flex
             position="relative" zIndex={1}
-            background="surface" radius="l" border="neutral-medium" borderStyle="solid-1"
-            direction="column" justifyContent="center"
+            background="surface" radius="l" border="neutral-medium" borderStyle="solid"
+            direction="column" horizontal="center"
             fillWidth minHeight={3}
             className={className || ''}
             style={style}>
             {(codeInstances.length > 1 || copyButton && !compact) && (
                 <Flex
                     style={{
-                        borderBottom: '1px solid var(--neutral-border-medium)',
+                        borderBottom: '1px solid var(--accent-border-medium)',
                     }}
                     zIndex={10}
                     fillWidth padding="8"
-                    justifyContent="space-between"
-                    alignItems="center">
+                    horizontal="space-between"
+                    vertical="center">
                     {codeInstances.length > 1 ? (
                         <Flex style={{ position: 'relative', }}>
                             <DropdownWrapper
@@ -118,7 +118,6 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
                                         maxHeight: '100px',
                                         position: 'absolute',
                                         overflowY: 'auto',
-                                        backgroundColor: 'rgba(0,0,0,0.9)',
                                         scrollbarColor: 'transparent transparent',
                                     }
                                 }}>
@@ -156,7 +155,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
                 <Flex
                     position="relative" zIndex={2}
                     fillHeight padding="l" minHeight={12}
-                    justifyContent="center" alignItems="center">
+                    horizontal="center" vertical="center">
                     {Array.isArray(codePreview)
                         ? codePreview.map((item, index) => (
                             <React.Fragment key={index}>
@@ -172,7 +171,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
                         borderTop: (!compact && codePreview) ?
                         '1px solid var(--neutral-border-medium)' : 
                         'none',
-                        maxHeight: isExpanded ? 'none' : '150px',
+                        maxHeight: isExpanded ? 'none' : '90px',
                         overflow: 'hidden',
                     }}
                     fillWidth padding="8"
@@ -210,17 +209,17 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
                             />
                         </Flex>
                     }
-                    <pre
-                        data-line={highlight}
-                        ref={preRef}
-                        className={`${styles.pre} language-${language}`}
-                        tabIndex={-1}>
-                        <code
-                            ref={codeRef}
-                            className={`${styles.code} ${`language-${language}`}`}>
-                            {code}
-                        </code>
-                    </pre>
+<pre
+    data-line={highlight}
+    ref={preRef}
+    className={`${styles.pre} ${isExpanded ? styles['pre-expanded'] : ''} language-${language}`}
+    tabIndex={-1}>
+    <code
+        ref={codeRef}
+        className={`${styles.code} ${`language-${language}`}`}>
+        {code}
+    </code>
+</pre>
                 </Flex>
             )}
         </Flex>

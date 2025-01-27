@@ -45,21 +45,21 @@ const ResumeModal = () => {
     <>
       <IconButton
         data-border="rounded"
-        variant="tertiary"
+        variant="secondary"
         icon="download"
         onClick={() => setModalOpen(true)}
       />
 
       {isModalOpen && (
         <Flex
-          justifyContent="center"
-          alignItems="center"
+          horizontal="center"
+          vertical="center"
           fillWidth
           fillHeight
           position="fixed"
-          zIndex={1000}
           style={{
             paddingTop: '50px',
+            zIndex: 1000,
           }}
         >
           <Flex
@@ -75,7 +75,7 @@ const ResumeModal = () => {
               width: 'fit-content',
             }}
           >
-            <Flex justifyContent="space-between" alignItems="center" gap="8" fillHeight>
+            <Flex horizontal="space-between" vertical="center" gap="8" fillHeight>
               <Text variant="body-default-l">
                 Pilih Resume
               </Text>

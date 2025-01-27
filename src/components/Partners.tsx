@@ -87,7 +87,7 @@ const Partners: React.FC<PartnersProps> = ({ partners }) => {
   return (
     <>
       {partners.length > 0 && (
-        <Flex wrap gap="16" justifyContent="center" onContextMenu={handleContextMenu}>
+        <Flex wrap gap="16" align="center" onContextMenu={handleContextMenu}>
           {partners.map((partner, index) => (
             <div
               key={index}

@@ -1,15 +1,16 @@
 'use client';
 
-import React, { forwardRef } from 'react';
+import React, { forwardRef, ReactNode } from 'react';
 import classNames from 'classnames';
 
 import { Flex, Text, Icon } from '.';
 
 type TooltipProps = {
-    label: string;
+    label: ReactNode | string;
     prefixIcon?: string;
     suffixIcon?: string;
     className?: string;
+    style?: React.CSSProperties;
 };
 
 const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(({
@@ -17,11 +18,16 @@ const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(({
     prefixIcon,
     suffixIcon,
     className,
+    style,
 }, ref) => {
     return (
         <Flex
             ref={ref}
-            style={{ whiteSpace: 'nowrap', userSelect: 'none' }}
+            style={{
+              whiteSpace: "nowrap",
+              userSelect: "none",
+              ...style,
+            }}
             gap="4"
             zIndex={1}
             background="surface"
@@ -29,8 +35,8 @@ const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(({
             paddingX="8"
             radius="s"
             border="neutral-medium"
-            borderStyle="solid-1"
-            alignItems="center"
+            borderStyle="solid"
+            vertical="center"
             role="tooltip"
             className={classNames(className)}>
             {prefixIcon && <Icon name={prefixIcon} size="xs" />}

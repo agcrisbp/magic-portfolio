@@ -3,7 +3,7 @@
   "version": 2,
   "alias": "magic-rose.vercel.app",
   "cleanUrls": true,
-  "public": false,
+  "public": true,
   "regions": ["sin1"],
   "rewrites": [
     {

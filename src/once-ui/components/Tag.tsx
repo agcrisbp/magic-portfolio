@@ -36,7 +36,6 @@ const Tag = forwardRef<HTMLDivElement, TagProps>(({
 
     return (
         <Flex
-            alignItems="center"
             radius="l"
             gap="4"
             ref={ref}
@@ -59,7 +58,6 @@ const Tag = forwardRef<HTMLDivElement, TagProps>(({
             <Flex
                 style={{ userSelect: 'none' }}
                 paddingX={paddingSize}
-                alignItems="center"
             >
                 <Text
                     as="span"

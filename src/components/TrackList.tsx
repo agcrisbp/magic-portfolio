@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Flex, SmartLink, SmartImage, Text } from '@/once-ui/components';
+import { Column, Flex, Row, SmartLink, SmartImage, Text } from '@/once-ui/components';
 import styles from './TrackList.module.scss';
 
 interface TrackListProps {
@@ -36,13 +36,13 @@ export function TrackList({
   };
 
   return (
-    <Flex background="surface" marginBottom="16" className={styles['tracklist-container']} direction="column" align="start" justifyContent="flex-start">
+    <Column background="surface" marginBottom="16" className={styles['tracklist-container']} align="start" horizontal="start">
       {/* Display the label once per container */}
       <Text variant="body-default-xs" onBackground="neutral-weak" marginLeft="4">
         {renderLabel()}
       </Text>
 
-      <Flex
+      <Row
         className={styles['tracklist-scroll']}
         direction="row"
         gap="4"
@@ -58,8 +58,8 @@ export function TrackList({
             </Flex>
           )
         )}
-      </Flex>
-    </Flex>
+      </Row>
+    </Column>
   );
 }
 
@@ -74,12 +74,12 @@ function Track({ artist, data, priority }: TrackProps) {
 
   const renderPlaylist = (playlistData: { name: string; image: string; href: string }) => (
     <SmartLink href={playlistData.href} className={styles['track-item']}>
-      <Flex direction="column" className={styles['track-image-container']}>
+      <Column className={styles['track-image-container']}>
         <SmartImage src={playlistData.image} alt={playlistData.name} priority={priority} className={styles['track-image']} />
-        <Flex direction="column" className={styles['track-info']} justifyContent="flex-end">
+        <Column className={styles['track-info']} horizontal="start">
           <Text marginLeft="4" onBackground="brand-medium">{playlistData.name}</Text>
-        </Flex>
-      </Flex>
+        </Column>
+      </Column>
     </SmartLink>
   );
 
@@ -87,12 +87,12 @@ function Track({ artist, data, priority }: TrackProps) {
     const { name, external_urls, images } = artistData;
     return (
       <SmartLink href={external_urls.spotify} className={styles['track-item']}>
-        <Flex direction="column" className={styles['track-image-container']}>
+        <Column className={styles['track-image-container']}>
           <SmartImage src={images[0]?.url} alt={name} priority={priority} className={styles['track-image']} />
-          <Flex direction="column" className={styles['track-info']} justifyContent="flex-end">
+          <Column className={styles['track-info']} horizontal="start">
             <Text marginLeft="4" onBackground="brand-medium">{name}</Text>
-          </Flex>
-        </Flex>
+          </Column>
+        </Column>
       </SmartLink>
     );
   };
@@ -109,13 +109,13 @@ function Track({ artist, data, priority }: TrackProps) {
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        <Flex direction="column" className={styles['track-image-container']}>
+        <Column className={styles['track-image-container']}>
           <SmartImage src={album.images[0].url} alt={name} priority={priority} className={styles['track-image']} />
-          <Flex direction="column" className={styles['track-info']} justifyContent="flex-end">
+          <Column className={styles['track-info']} horizontal="start">
             <Text marginLeft="4" onBackground="brand-medium">{name}</Text>
             <Text marginLeft="4" onBackground="brand-weak">{artistNames}</Text>
-          </Flex>
-        </Flex>
+          </Column>
+        </Column>
       </SmartLink>
     );
   };

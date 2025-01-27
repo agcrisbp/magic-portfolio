@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Icon, Flex, Text } from "@/once-ui/components";
-import { renderContent } from '@/app/resources';
+import { Flex, Icon, Row, Text } from "@/once-ui/components";
+import { person } from "@/app/resources/content";
 
 type WeatherResponse = {
   main: {
@@ -51,7 +51,6 @@ const icons: Record<string, string> = {
 export function Weather({ onlyCity = false }: { onlyCity?: boolean }): JSX.Element | null {
   const [data, setData] = useState<WeatherResponse | undefined>(undefined);
   const [loading, setLoading] = useState(true);
-  const { person } = renderContent();
 
   useEffect(() => {
     if (!process.env.NEXT_PUBLIC_WEATHER_API_KEY) {
@@ -72,7 +71,7 @@ export function Weather({ onlyCity = false }: { onlyCity?: boolean }): JSX.Eleme
   }, []);
 
   if (!process.env.NEXT_PUBLIC_WEATHER_API_KEY) {
-    return <> {person.location} </>;
+    return <> <Flex hide="s">{person.location}</Flex> </>;
   }
 
   if (loading) {
@@ -80,7 +79,7 @@ export function Weather({ onlyCity = false }: { onlyCity?: boolean }): JSX.Eleme
   }
 
   if (!data) {
-    return <p>Data cuaca tidak tersedia.</p>;
+    return null;
   }
 
   if (onlyCity) {
@@ -93,14 +92,14 @@ export function Weather({ onlyCity = false }: { onlyCity?: boolean }): JSX.Eleme
 
   const tempCelsius = ((data.main.temp - 32) * 5) / 9;
   const weatherMain = data.weather[0]?.main || '';
-  const weatherIcon = icons[weatherMain] || 'rain';
+  const weatherIcon = icons[weatherMain] || 'resfresh';
 
   return (
-    <Flex gap="4" fillWidth justifyContent="center" alignItems="center" direction="row">
-      <Icon name={weatherIcon} size="xs" />
-      <Text variant="body-default-s" align="center">
-        {tempCelsius.toFixed(0)}°C {names[weatherMain] ?? weatherMain}
+    <Row gap="4" fillWidth horizontal="center" vertical="center">
+      <Icon onBackground="neutral-weak" name={weatherIcon} size="xs" />
+      <Text onBackground="neutral-weak" variant="body-default-s" align="center">
+        {tempCelsius.toFixed(0)}°C <Flex hide="s" style={{ display: 'inline' }}>  {names[weatherMain] ?? weatherMain}</Flex>
       </Text>
-    </Flex>
+    </Row>
   );
 }

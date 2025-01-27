@@ -1,88 +1,76 @@
 "use client";
 
-import { Flex, Heading, SmartImage, SmartLink, Tag, Text } from '@/once-ui/components';
-import styles from './Posts.module.scss';
-import { formatDate } from '@/app/utils/formatDate';
+import { Column, Flex, Heading, SmartImage, SmartLink, Tag, Text } from "@/once-ui/components";
+import styles from "./Posts.module.scss";
+import { formatDate } from "@/app/utils/formatDate";
 
 interface PostProps {
-    post: any;
-    thumbnail: boolean;
+  post: any;
+  thumbnail: boolean;
 }
 
 export default function Post({ post, thumbnail }: PostProps) {
-    const dateToDisplay = post.metadata.updatedAt || post.metadata.publishedAt;
-
-    return (
-        <SmartLink
-            className={styles.hover}
-            style={{
-                textDecoration: 'none',
-                margin: '0',
-                height: 'fit-content',
-            }}
-            key={post.slug}
-            href={`/blog/${post.slug}`}>
-            <Flex
-                position="relative"
-                mobileDirection="column"
-                fillWidth paddingY="12" paddingX="16" gap="32">
-                {post.metadata.image && thumbnail && (
-                    <Flex
-                        maxWidth={20} fillWidth
-                        className={styles.image}>
-                        <SmartImage
-                            priority
-                            sizes="640px"
-                            style={{
-                                cursor: 'pointer',
-                                border: '1px solid var(--neutral-alpha-weak)'
-                            }}
-                            radius="m"
-                            src={post.metadata.image}
-                            alt={post.metadata.title}
-                            aspectRatio="16 / 9"
-                        />
-                    </Flex>
-                )}
-                <Flex
-                    position="relative"
-                    fillWidth gap="8"
-                    direction="column" justifyContent="center">
-                    <Heading
-                        as="h2"
-                        variant="heading-strong-l"
-                        wrap="balance">
-                        {post.metadata.title}
-                    </Heading>
-                    <Text
-                        variant="label-default-s"
-                        onBackground="neutral-weak">
-                        {formatDate(dateToDisplay, false)}
-                    </Text>
-                    {post.metadata.tag && (
-                        <Flex gap="2" wrap>
-                            {(Array.isArray(post.metadata.tag) ? post.metadata.tag : [post.metadata.tag]).map((tag: string) => (
-                                <SmartLink
-                                    key={tag}
-                                    href={`/blog/tag/${tag}`}
-                                    style={{
-                                        textDecoration: 'none',
-                                        margin: '0',
-                                        height: 'fit-content',
-                                        width: 'fit-content',
-                                    }}
-                                >
-                                    <Tag
-                                        className="mt-8"
-                                        label={tag}
-                                        variant="neutral"
-                                    />
-                                </SmartLink>
-                            ))}
-                        </Flex>
-                    )}
-                </Flex>
-            </Flex>
-        </SmartLink>
-    );
+  return (
+    <SmartLink
+      fillWidth
+      className={styles.hover}
+      unstyled
+      key={post.slug}
+      href={`/blog/${post.slug}`}
+    >
+      <Flex
+        position="relative"
+        mobileDirection="column"
+        fillWidth
+        paddingY="12"
+        paddingX="16"
+        gap="32"
+      >
+        {post.metadata.image && thumbnail && (
+          <SmartImage
+            priority
+            maxWidth={20}
+            className={styles.image}
+            sizes="640px"
+            border="neutral-alpha-weak"
+            cursor="interactive"
+            radius="m"
+            src={post.metadata.image}
+            alt={"Thumbnail of " + post.metadata.title}
+            aspectRatio="16 / 9"
+          />
+        )}
+        <Column position="relative" fillWidth gap="8" vertical="center">
+          <Heading as="h2" variant="heading-strong-l" wrap="balance">
+            {post.metadata.title}
+          </Heading>
+          <Text variant="label-default-s" onBackground="neutral-weak">
+            {formatDate(post.metadata.publishedAt, false)}
+          </Text>
+          {post.metadata.tag && (
+              <Flex gap="2" wrap>
+                  {(Array.isArray(post.metadata.tag) ? post.metadata.tag : [post.metadata.tag]).map((tag: string) => (
+                      <SmartLink
+                          key={tag}
+                          href={`/blog/tag/${tag}`}
+                          style={{
+                              textDecoration: 'none',
+                              margin: '0',
+                              height: 'fit-content',
+                              width: 'fit-content',
+                          }}
+                      >
+                          <Tag
+                              className="mt-8"
+                              label={tag}
+                              variant="neutral"
+                          />
+                      </SmartLink>
+                  ))}
+              </Flex>
+          )}
+        </Column>
+      </Flex>
+    </SmartLink>
+  );
 }

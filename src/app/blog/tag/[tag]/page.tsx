@@ -1,4 +1,4 @@
-import { Button, Flex, Heading, Text } from '@/once-ui/components';
+import { Button, Column, Heading, Text } from '@/once-ui/components';
 import { getPosts } from '@/app/utils/utils';
 import { Posts } from '@/components/blog/Posts';
 
@@ -30,13 +30,7 @@ export async function generateMetadata({ params }: { params: { tag: string } }) 
 export default function TagBlog({ params }: { params: { tag: string } }) {
   const { tag } = params;
   return (
-    <Flex
-      as="section"
-      fillWidth
-      maxWidth="m"
-      direction="column"
-      gap="m"
-    >
+    <Column maxWidth="s">
       <Button
         href="/blog"
         variant="tertiary"
@@ -50,8 +44,7 @@ export default function TagBlog({ params }: { params: { tag: string } }) {
       <Text variant="body-default-xs" onBackground="neutral-weak">
         Semua artikel dengan tag {tag}.
       </Text>
-      <Flex
-        as="div"
+      <div
         style={{
           borderBottom: '1px solid',
           margin: '16px 0',
@@ -59,6 +52,6 @@ export default function TagBlog({ params }: { params: { tag: string } }) {
       />
       <Posts range={[1, 2]} tag={tag} thumbnail />
       <Posts range={[3]} columns="2" tag={tag} />
-    </Flex>
+    </Column>
   );
 }

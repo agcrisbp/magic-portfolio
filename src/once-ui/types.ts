@@ -8,7 +8,6 @@ export type StaticSpacingToken =
   | "16"
   | "20"
   | "24"
-  | "30"
   | "32"
   | "40"
   | "48"
@@ -51,3 +50,57 @@ export type TextWeight = "default" | "strong";
 export type TextSize = TShirtSizes;
 
 export type TextVariant = `${TextType}-${TextWeight}-${TextSize}`;
+
+export type gridColumns =
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9"
+  | "10"
+  | "11"
+  | "12"
+  | 1
+  | 2
+  | 3
+  | 4
+  | 5
+  | 6
+  | 7
+  | 8
+  | 9
+  | 10
+  | 11
+  | 12;
+
+export type flex =
+  | "0"
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9"
+  | "10"
+  | "11"
+  | "12"
+  | 0
+  | 1
+  | 2
+  | 3
+  | 4
+  | 5
+  | 6
+  | 7
+  | 8
+  | 9
+  | 10
+  | 11
+  | 12;

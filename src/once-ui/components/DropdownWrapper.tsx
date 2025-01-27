@@ -6,7 +6,7 @@ import { Flex, Dropdown, DropdownProps, DropdownOptions } from '.';
 import styles from './Select.module.scss';
 import classNames from 'classnames';
 
-interface DropdownWrapperProps {
+export interface DropdownWrapperProps {
     children: ReactNode;
     dropdownOptions: DropdownOptions[];
     dropdownProps?: Omit<DropdownProps, 'options'> & { onOptionSelect?: (option: DropdownOptions) => void };

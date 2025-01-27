@@ -2,11 +2,13 @@
 
 import React, { forwardRef, useEffect, useState } from 'react';
 import classNames from 'classnames';
+import { Icon } from '.';
 import styles from './StatusIndicator.module.scss';
 
 interface StatusIndicatorProps {
     size: 's' | 'm' | 'l';
-    userId: string;
+    color?: string;
+    userId?: string;
     className?: string;
     style?: React.CSSProperties;
     ariaLabel?: string;
@@ -16,6 +18,7 @@ const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
 const StatusIndicator = forwardRef<HTMLDivElement, StatusIndicatorProps>(({
     size,
+    color,
     userId,
     className,
     style,
@@ -73,7 +76,9 @@ const StatusIndicator = forwardRef<HTMLDivElement, StatusIndicatorProps>(({
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
         >
-            <div className={styles.indicatorCircle} />
+            <div className={styles.indicatorCircle}>
+                <Icon name="discord" onBackground="neutral-medium" size="xs" className={styles.indicatorCircle} />
+            </div>
             {hovered && (
                 <div className={classNames(styles.popUp, 'custom-tooltip')}>
                     {capitalize(data.discord_status)} on{' '}

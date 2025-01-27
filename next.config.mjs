@@ -1,40 +1,52 @@
-import mdx from '@next/mdx';
+import mdx from "@next/mdx";
 
 const withMDX = mdx({
   extension: /\.mdx?$/,
   options: {},
 });
 
-/**
- * @type {import('next').NextConfig}
- */
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  
   experimental: {
     turbo: {
-      // Set memory limit for Turbo
-      memoryLimit: 4 * 1024 * 1024 * 1024,
-      // Enable tree shaking for removing unused code
+      memoryLimit: 2 * 1024 * 1024 * 1024,
+      resolveExtensions: [
+        '.mdx',
+        '.tsx',
+        '.ts',
+        '.jsx',
+        '.js',
+        '.mjs',
+      ],
       treeShaking: true,
-      // Enable SWC for faster JavaScript and TypeScript compilation
       useSwc: true,
-      // Enable caching to speed up builds and development
       cache: true,
-      // Customize the module ID strategy (options: 'named', 'deterministic')
-      moduleIdStrategy: 'deterministic', // Ensures long-term caching
-      // Enable React's strict mode in development
+      moduleIdStrategy: 'deterministic',
+      rules: {
+        '*.mdx': [
+          {
+            loader: '@mdx-js/loader',
+            options: {},
+          },
+        ],
+        '*.svg': [
+          {
+            loader: '@svgr/webpack',
+            options: {},
+          },
+        ],
+      },
+      resolveAlias: {
+        components: './src/components',
+        utils: './src/app/utils',
+      },
       reactStrictMode: true,
-      // Set up specific loaders for CSS (can use SWC for CSS handling)
       useSwcCss: true,
-      // Enable Webpack 5 support for certain configurations
       webpack5: true,
-      // Enable incremental compilation (improves performance)
       incremental: true,
     },
   },
-  
   pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
-  
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'i.ibb.co' },
@@ -45,13 +57,13 @@ const nextConfig = {
       { protocol: 'https', hostname: 'image-cdn-fa.spotifycdn.com' },
       { protocol: 'https', hostname: 'mosaic.scdn.co' },
       { protocol: 'https', hostname: 'avatars.githubusercontent.com' },
+      { protocol: 'https', hostname: 'raw.githubusercontent.com' },
     ],
   },
-
   async redirects() {
     return [
-      { source: '/example', destination: 'https://example.com', permanent: true },
       { source: '/email', destination: '/api/email', permanent: true },
+      { source: '/example', destination: 'https://example.com/', permanent: true },
     ];
   },
 };

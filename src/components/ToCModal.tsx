@@ -131,7 +131,7 @@ export function ToCModal({ headings }: ToCModalProps) {
           }}
         >
           <Flex direction="column" padding="16" gap="12" fillWidth>
-            <Flex justifyContent="space-between" alignItems="center">
+            <Flex horizontal="space-between" vertical="center">
               <Text variant="body-default-l">Daftar Isi</Text>
               <IconButton icon="close" variant="secondary" size="s" onClick={toggleModal} />
             </Flex>

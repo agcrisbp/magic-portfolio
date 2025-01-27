@@ -5,7 +5,16 @@
 
 ul {
     margin: 0;
-    padding: 0 0 0 var(--static-space-12);
+    padding: 0 0 0 var(--static-space-16);
+    max-width: var(--responsive-width-xs);
+    width: 100%;
+}
+
+ol {
+    margin: 0;
+    padding: 0 0 0 var(--static-space-16);
+    max-width: var(--responsive-width-xs);
+    width: 100%;
 }
 
 li {

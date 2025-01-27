@@ -1,21 +1,22 @@
-import { InlineCode, SmartLink, Text } from "@/once-ui/components";
+import { SmartLink } from "@/once-ui/components";
 
 const person = {
-    firstName: 'Agcrismanto',
-    lastName:  'Budhi Praswastyka',
+    firstName: 'Agcrismanto Budhi',
+    lastName:  'Praswastyka',
+    shortName:  'Aghea',
     get name() {
         return `${this.firstName} ${this.lastName}`;
     },
-    role:      'Aghea',
+    role:      'Web Developer & Cybersecurity',
     avatar:    '/images/avatar.jpg',
-    location:  'Asia/Jakarta',        // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+    location:  'DKI Jakarta',
     languages: []  // optional: Leave the array empty if you don't want to display languages
 }
 
 const newsletter = {
-    display: true,
-    title: <>Berlangganan Artikel Baru {person.role}</>,
-    description: <>Artikel yang Ia tulis adalah dokumentasi dari opininya untuk bahan pembelajaran maupun bacaan semata. Beberapa artikel Ia tulis dalam Bahasa Inggris agar dapat bermanfaat dan dibaca oleh teman-teman dari mancanegara.</>
+    display: false,
+    title: <>Subscribe to {person.firstName}'s Newsletter</>,
+    description: <>I occasionally write about design, technology, and share thoughts on the intersection of creativity and engineering.</>
 }
 
 const social = [
@@ -24,22 +25,22 @@ const social = [
     {
         name: 'GitHub',
         icon: 'github',
-        link: '/example',
+        link: '/github',
     },
     {
         name: 'LinkedIn',
         icon: 'linkedin',
-        link: '/example',
+        link: '/linkedin',
     },
     {
         name: 'YouTube',
         icon: 'youtube',
-        link: '/example',
+        link: '/youtube',
     },
     {
         name: 'Signal',
         icon: 'signal',
-        link: '/example',
+        link: '/signal',
     },
     {
         name: 'Email',
@@ -51,15 +52,15 @@ const social = [
 const home = {
     label: 'Beranda',
     title: `${person.name}`,
-    description: 'A programmer who aware of the tiny moments in a persons life that reveal greater truths.',
+    description: `Portfolio website showcasing my work as a ${person.role}`,
     headline: <>Do what you love, love what you do.</>,
-    subline: <>Agcrismanto Budhi Praswastyka, dikenal sebagai Cris atau Aghea, adalah profesional di bidang Pengembangan Web dan Keamanan Siber sejak 2011 dengan fokus pada pengembangan aplikasi web yang aman. Selain itu, Ia juga memiliki pengalaman di industri makanan dan minuman.</>
+    subline: <>Agcrismanto Budhi Praswastyka, atau yang dikenal sebagai Cris atau Aghea, adalah seorang Web Developer dan Cybersecurity sejak 2011 dengan fokus pada pengembangan aplikasi web yang aman. Selain itu, Ia juga memiliki pengalaman di industri makanan dan minuman.</>
 }
 
 const about = {
     label: 'Tentang',
     title: 'Tentang',
-    description: `Perkenalkan ${person.name} dari ${person.location}`,
+    description: `Perkenalkan ${person.name}, ${person.role} dari ${person.location}`,
     tableOfContent: {
         display: true,
         subItems: true
@@ -68,22 +69,18 @@ const about = {
         display: true
     },
     calendar: {
-        display: true,
-        link: 'https://cal.com'
+        display: false,
+        link: 'https://cal.com/'
     },
     resume: {
-        display: true // edit src/components/resumeModal.tsx
+        display: true
     },
     intro: {
         display: true,
-        title: 'Perkenalan',
-        description: (
-            <>
-Agcrismanto Budhi Praswastyka, yang lebih dikenal dengan nama Cris atau Aghea, adalah seorang Web Developer dan Cybersecurity. Dengan pengalaman yang dimilikinya sejak tahun 2011, Ia telah menguasai berbagai bahasa pemrograman, seperti Python, JavaScript, React, serta HTML/CSS, dan memiliki fokus yang mendalam dalam memperkuat langkah-langkah keamanan di dunia digital. Pekerjaan utamanya melibatkan pengembangan aplikasi web yang aman serta perlindungan sistem dari ancaman siber. Selain itu, Ia juga pernah berkecimpung di industri makanan dan minuman selama beberapa tahun.<br/><br/>
-
-Di luar pekerjaannya, Ia mengeksplorasi minat kreatifnya sebagai musisi dan pegiat hukum, serta mengisi waktu luangnya dengan bermain gim. Ia juga penggemar film, terutama yang bergenre komedi, aksi, dan horor. Rasa ingin tahu dan komitmennya untuk terus mengikuti perkembangan teknologi menjadi bagian penting dari pertumbuhan pribadi dan profesionalnya.
-            </>
-        )
+        title: 'Pengantar',
+        description: <>Agcrismanto Budhi Praswastyka, yang lebih dikenal dengan nama Cris atau Aghea, adalah seorang individu dengan latar belakang yang kuat dalam pengembangan web dan keamanan siber sejak tahun 2011. Memiliki keahlian dalam berbagai bahasa pemrograman, seperti Python, JavaScript, React, serta HTML/CSS, dengan fokus khusus pada pengembangan aplikasi web yang aman dan perlindungan sistem dari ancaman siber. Selain keahliannya di dunia teknologi, Ia juga memiliki pengalaman dalam industri makanan dan minuman selama beberapa tahun.
+          <br/><br/>
+          Di luar pekerjaannya, Ia mengeksplorasi minat kreatifnya sebagai musisi dan pegiat hukum, serta mengisi waktu luangnya dengan bermain gim. Ia juga penggemar film, terutama yang bergenre komedi, aksi, dan horor. Rasa ingin tahu dan komitmennya untuk terus mengikuti perkembangan teknologi menjadi bagian penting dari pertumbuhan pribadi dan profesionalnya.</>
     },
     work: {
         display: true,
@@ -95,9 +92,9 @@ Di luar pekerjaannya, Ia mengeksplorasi minat kreatifnya sebagai musisi dan pegi
                 role: 'Web Developer & Cybersecurity',
                 location: 'Denmark',
                 achievements: [
-                    "Merancang dan mengembangkan fitur utama platform berbasis esports, termasuk antarmuka pengguna yang intuitif serta sistem pengelolaan turnamen yang efisien, menggunakan teknologi seperti React, Next.js, TypeScript, dan Node.js untuk menciptakan aplikasi web yang dinamis dan responsif.",
-                    "Mengimplementasikan langkah-langkah keamanan untuk melindungi data pengguna dan informasi turnamen, dengan memastikan sistem bebas dari kerentanannya melalui pengujian penetrasi (penetration testing), serta pengelolaan akses yang ketat.",
-                    "Mengoptimalkan performa website agar dapat menangani banyak pengguna secara simultan, terutama pada saat turnamen besar, dengan fokus pada kecepatan dan skalabilitas sistem."
+                    <>Merancang dan mengembangkan fitur utama platform berbasis esports, termasuk antarmuka pengguna yang intuitif serta sistem pengelolaan turnamen yang efisien, menggunakan teknologi seperti React, Next.js, TypeScript, dan Node.js untuk menciptakan aplikasi web yang dinamis dan responsif.</>,
+                    <>Mengimplementasikan langkah-langkah keamanan untuk melindungi data pengguna dan informasi turnamen, dengan memastikan sistem bebas dari kerentanannya melalui pengujian penetrasi (penetration testing), serta pengelolaan akses yang ketat.</>,
+                    <>Mengoptimalkan performa website agar dapat menangani banyak pengguna secara simultan, terutama pada saat turnamen besar, dengan fokus pada kecepatan dan skalabilitas sistem.</>
                 ],
                 images: [
                     {
@@ -114,11 +111,11 @@ Di luar pekerjaannya, Ia mengeksplorasi minat kreatifnya sebagai musisi dan pegi
                 role: 'Cybersecurity Consultant',
                 location: 'Purworejo, Jawa Tengah',
                 achievements: [
-                    "Mengawasi dan memastikan keamanan infrastruktur jaringan dan melakukan konfigurasi firewall dan sistem deteksi intrusi (IDS/IPS).",
-                    "Melakukan penilaian kerentanan pada aplikasi dan jaringan untuk mengidentifikasi risiko, serta mengaudit sistem secara berkala untuk memastikan kepatuhan terhadap standar keamanan.",
-                    "Melakukan simulasi serangan siber (Penetration Testing) untuk mengidentifikasi potensi celah keamanan pada sistem pemerintah.",
-                    "Merespons dan menangani insiden keamanan siber, seperti serangan ransomware, phishing, atau malware, dengan membuat laporan insiden serta memberikan rekomendasi mitigasi.",
-                    "Melaksanakan pelatihan untuk staf mengenai keamanan data, perlindungan privasi, serta praktik terbaik dalam penggunaan teknologi informasi untuk memastikan kepatuhan terhadap standar keamanan yang berlaku.",
+                    <>Mengawasi dan memastikan keamanan infrastruktur jaringan dan melakukan konfigurasi firewall dan sistem deteksi intrusi (IDS/IPS).</>,
+                    <>Melakukan penilaian kerentanan pada aplikasi dan jaringan untuk mengidentifikasi risiko, serta mengaudit sistem secara berkala untuk memastikan kepatuhan terhadap standar keamanan.</>,
+                    <>Melakukan simulasi serangan siber (Penetration Testing) untuk mengidentifikasi potensi celah keamanan pada sistem pemerintah.</>,
+                    <>Merespons dan menangani insiden keamanan siber, seperti serangan ransomware, phishing, atau malware, dengan membuat laporan insiden serta memberikan rekomendasi mitigasi.</>,
+                    <>Melaksanakan pelatihan untuk staf mengenai keamanan data, perlindungan privasi, serta praktik terbaik dalam penggunaan teknologi informasi untuk memastikan kepatuhan terhadap standar keamanan yang berlaku.</>,
                 ],
                 images: [ ]
             },
@@ -128,10 +125,10 @@ Di luar pekerjaannya, Ia mengeksplorasi minat kreatifnya sebagai musisi dan pegi
                 role: 'Moderation Staff',
                 location: 'Remote',
                 achievements: [
-                    "Memantau dan memastikan interaksi pemain dan penggemar di saluran komunikasi resmi Team SoloMid tetap sesuai dengan pedoman dan kebijakan komunitas.",
-                    "Menangani laporan pelanggaran, seperti perilaku buruk, pelecehan, dan kecurangan dalam game, serta mengambil tindakan yang diperlukan, termasuk memberi peringatan atau pemblokiran akun.",
-                    "Berkolaborasi dengan tim manajemen untuk mengembangkan kebijakan moderasi yang efektif dan responsif terhadap tren dan isu-isu komunitas yang baru muncul.",
-                    "Membantu dalam pelaksanaan acara dan streaming langsung, memastikan pengalaman positif bagi penggemar dan partisipan."
+                    <>Memantau dan memastikan interaksi pemain dan penggemar di saluran komunikasi resmi Team SoloMid tetap sesuai dengan pedoman dan kebijakan komunitas.</>,
+                    <>Menangani laporan pelanggaran, seperti perilaku buruk, pelecehan, dan kecurangan dalam game, serta mengambil tindakan yang diperlukan, termasuk memberi peringatan atau pemblokiran akun.</>,
+                    <>Berkolaborasi dengan tim manajemen untuk mengembangkan kebijakan moderasi yang efektif dan responsif terhadap tren dan isu-isu komunitas yang baru muncul.</>,
+                    <>Membantu dalam pelaksanaan acara dan streaming langsung, memastikan pengalaman positif bagi penggemar dan partisipan.</>
                 ],
                 images: []
             },
@@ -141,10 +138,10 @@ Di luar pekerjaannya, Ia mengeksplorasi minat kreatifnya sebagai musisi dan pegi
                 role: 'Data Analyst',
                 location: 'DKI Jakarta',
                 achievements: [
-                    "Mengumpulkan, menganalisis, dan menginterpretasi data untuk memberikan wawasan yang berguna bagi pengambilan keputusan strategis perusahaan.",
-                    "Membuat laporan analisis data yang membantu tim manajemen dalam memahami tren pasar, perilaku konsumen, dan kinerja produk.",
-                    "Menggunakan alat analisis data seperti Excel, Python, atau SQL untuk memproses dan menganalisis data dalam jumlah besar.",
-                    "Melakukan verifikasi dan validasi data untuk memastikan keakuratan dan kelengkapan informasi yang digunakan dalam laporan bisnis."
+                    <>Mengumpulkan, menganalisis, dan menginterpretasi data untuk memberikan wawasan yang berguna bagi pengambilan keputusan strategis perusahaan.</>,
+                    <>Membuat laporan analisis data yang membantu tim manajemen dalam memahami tren pasar, perilaku konsumen, dan kinerja produk.</>,
+                    <>Menggunakan alat analisis data seperti Excel, Python, atau SQL untuk memproses dan menganalisis data dalam jumlah besar.</>,
+                    <>Melakukan verifikasi dan validasi data untuk memastikan keakuratan dan kelengkapan informasi yang digunakan dalam laporan bisnis.</>
                 ],
                 images: []
             },
@@ -162,9 +159,9 @@ Di luar pekerjaannya, Ia mengeksplorasi minat kreatifnya sebagai musisi dan pegi
                 role: 'PPIC',
                 location: 'Bandung, Jawa Barat',
                 achievements: [
-                    "Menyusun rencana produksi bulanan dan mingguan untuk memastikan ketersediaan produk yang cukup untuk memenuhi permintaan pasar.",
-                    "Mengelola dan mengawasi tingkat persediaan bahan baku dan produk jadi, serta memastikan bahwa persediaan tetap berada pada tingkat optimal untuk menghindari kekurangan atau kelebihan stok.",
-                    "Berkoordinasi dengan tim produksi untuk memastikan jadwal produksi berjalan sesuai rencana dan dapat memenuhi target waktu yang ditetapkan.",
+                    <>Menyusun rencana produksi bulanan dan mingguan untuk memastikan ketersediaan produk yang cukup untuk memenuhi permintaan pasar.</>,
+                    <>Mengelola dan mengawasi tingkat persediaan bahan baku dan produk jadi, serta memastikan bahwa persediaan tetap berada pada tingkat optimal untuk menghindari kekurangan atau kelebihan stok.</>,
+                    <>Berkoordinasi dengan tim produksi untuk memastikan jadwal produksi berjalan sesuai rencana dan dapat memenuhi target waktu yang ditetapkan.</>,
                 ],
                 images: [ ]
             },
@@ -182,8 +179,8 @@ Di luar pekerjaannya, Ia mengeksplorasi minat kreatifnya sebagai musisi dan pegi
                 role: 'Helper & Waiter',
                 location: 'Kebumen, Jawa Tengah',
                 achievements: [
-                  "Membantu tim dapur dalam menyiapkan bahan makanan dan kebutuhan operasional sehari-hari.",
-                  "Berperan aktif dalam mengelola dan memastikan ketersediaan inventaris bahan makanan serta peralatan makan untuk mendukung kelancaran operasional."
+                  <>Membantu tim dapur dalam menyiapkan bahan makanan dan kebutuhan operasional sehari-hari.</>,
+                  <>Berperan aktif dalam mengelola dan memastikan ketersediaan inventaris bahan makanan serta peralatan makan untuk mendukung kelancaran operasional.</>
                 ],
                 images: [ ]
             }
@@ -193,6 +190,10 @@ Di luar pekerjaannya, Ia mengeksplorasi minat kreatifnya sebagai musisi dan pegi
         display: false, // set to false to hide this section
         title: 'Studies',
         institutions: [
+            {
+                name: 'University of Jakarta',
+                description: <>Studied software engineering.</>,
+            },
             {
                 name: 'Build the Future',
                 description: <>Studied online marketing and personal branding.</>,

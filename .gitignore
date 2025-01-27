@@ -15,7 +15,6 @@
 
 # production
 /build
-/.turbo/
 
 # misc
 .DS_Store
@@ -29,13 +28,15 @@ yarn-error.log*
 # local env files
 .env
 .env*.local
-lastUpdated.json
 
 # vercel
 .vercel
 
+# Local Netlify folder
+.netlify
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-# Local Netlify folder
-.netlify
+# Turborepo
+.turbo

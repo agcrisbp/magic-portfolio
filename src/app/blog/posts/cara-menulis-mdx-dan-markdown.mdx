@@ -9,7 +9,7 @@ tag: 'Tutorial'
 
 # Ikhtisar
 
-Beberapa format penulisan MDX dan MD di sini adalah templat yang sudah dimodifikasi oleh **[Aghea](https://aghea.vercel.app/github)**, bukan versi asli dari [Once UI](https://aghea.vercel.app/once-ui), repository untuk templat ini dapat kamu akses di [github/agcrisbp/magic-portfolio](https://aghea.vercel.app/magic-portfolio).
+Beberapa format penulisan MDX dan MD di sini adalah templat yang sudah dimodifikasi oleh **[Aghea]({baseURL}/github)**, bukan versi asli dari [Once UI]({baseURL}/once-ui), repository untuk templat ini dapat kamu akses di [github/agcrisbp/magic-portfolio]({baseURL}/magic-portfolio).
 
 Jika kamu memilih untuk tidak menggunakan MDX (Markdown JSX), kamu dapat menggunakan Markdown biasa (MD), dengan beberapa pengecualian.
 
@@ -275,22 +275,22 @@ console.log(greeting);`,
 
 <CodeBlock className="my-24" compact codeInstances={[ { code: `<a href="https://ibb.co.com/7S8rkQ8"><img src="https://i.ibb.co.com/51tsKkt/image.jpg" width="100" height="100"/></a>
 
-<img src="/images/gallery/img-01.jpg" width="100" height="170" />`, label: 'MDX', language: 'mdx' }, ]} copyButton />
+<img src="/images/gallery/img-01.jpg" width="100" height="220" />`, label: 'MDX', language: 'mdx' }, ]} copyButton />
 
 <a href="https://ibb.co.com/7S8rkQ8"><img src="https://i.ibb.co.com/51tsKkt/image.jpg" width="100" height="100"/></a>
 
-<img src="/images/gallery/img-01.jpg" width="100" height="170" />
+<img src="/images/gallery/img-01.jpg" width="100" height="220" />
 
 #### Inline Images
 
 <CodeBlock className="my-24" compact codeInstances={[ { code: `<InlineImages>
     <a href="https://ibb.co.com/7S8rkQ8"><img src="https://i.ibb.co.com/51tsKkt/image.jpg" width="100" height="100"/></a>
-    <img src="/images/gallery/img-01.jpg" width="100" height="170" />
+    <img src="/images/gallery/img-01.jpg" width="100" height="220" />
 </InlineImages>`, label: 'MDX', language: 'mdx' }, ]} copyButton />
 
 <InlineImages>
     <a href="https://ibb.co.com/7S8rkQ8"><img src="https://i.ibb.co.com/51tsKkt/image.jpg" width="100" height="100"/></a>
-    <img src="/images/gallery/img-01.jpg" width="100" height="170" />
+    <img src="/images/gallery/img-01.jpg" width="100" height="220" />
 </InlineImages>
 
 ---
@@ -313,12 +313,76 @@ console.log(greeting);`,
 
 <BlockMath math="a^2 + b^2 = c^2" />
 
-    - Block Equation Kompleks: Persamaan Kuadrat
+#### Block Equation Kompleks
 
 <CodeBlock className="my-24" compact codeInstances={[ 
   { code: `<BlockMath math="x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}" />`, label: 'LaTeX', language: 'latex' }, 
 ]} copyButton />
 
 <BlockMath math="x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}" />
+
+<CodeBlock className="my-24" compact codeInstances={[ 
+  { 
+    code: `<BlockMath math={\`\\begin{aligned}
+        & \\text{1. Persamaan Integral:} \\\\
+        & I = \\int_{0}^{\\infty} \\frac{e^{-x^2}}{1 + x^2} \\, dx \\\\
+        \\\\
+        & \\text{2. Teorema Cauchy:} \\\\
+        & \\oint_{C} \\frac{f(z)}{z - z_0} \, dz = 2\\pi i \, f(z_0), \\quad
+        \\text{untuk } C \\text{ yang mengelilingi } z_0 \\\\
+        \\\\
+        & \\text{3. Transformasi Fourier:} \\\\
+        & F(\\omega) = \\int_{-\\infty}^{\\infty} f(t) e^{-i\\omega t} \, dt \\\\
+        \\\\
+        & \\text{4. Persamaan Diferensial Parsial:} \\\\
+        & \\frac{\\partial^2 u}{\\partial t^2} - c^2 \\frac{\\partial^2 u}{\\partial x^2} = 0, \\quad
+        \\text{untuk gelombang pada medium elastis} \\\\
+        \\\\
+        & \\text{5. Persamaan Laplace:} \\\\
+        & \\nabla^2 \\phi = 0, \\quad \\text{dimana} \\ \\phi \\text{ adalah potensial skalarnya} \\\\
+        \\\\
+        & \\text{6. Deret Taylor:} \\\\
+        & f(x) = f(a) + (x - a) f'(a) + \\frac{(x - a)^2}{2!} f''(a) + \\cdots \\\\
+        \\\\
+        & \\text{7. Persamaan Maxwell:} \\\\
+        & \\nabla \\cdot \\mathbf{E} = \\frac{\\rho}{\\epsilon_0}, \\quad
+        \\nabla \\cdot \\mathbf{B} = 0, \\quad 
+        \\nabla \\times \\mathbf{E} = - \\frac{\\partial \\mathbf{B}}{\\partial t}, \\quad 
+        \\nabla \\times \\mathbf{B} = \\mu_0 \\mathbf{J} + \\mu_0 \\epsilon_0 \\frac{\\partial \\mathbf{E}}{\\partial t}
+    \\end{aligned}\` } />`,
+    label: 'LaTeX', 
+    language: 'latex' 
+  }, 
+]} copyButton />
+
+<BlockMath math={`
+\\begin{aligned}
+        & \\text{1. Persamaan Integral:} \\\\
+        & I = \\int_{0}^{\\infty} \\frac{e^{-x^2}}{1 + x^2} \\, dx \\\\
+        \\\\
+        & \\text{2. Teorema Cauchy:} \\\\
+        & \\oint_{C} \\frac{f(z)}{z - z_0} \, dz = 2\\pi i \, f(z_0), \\quad
+        \\text{untuk } C \\text{ yang mengelilingi } z_0 \\\\
+        \\\\
+        & \\text{3. Transformasi Fourier:} \\\\
+        & F(\\omega) = \\int_{-\\infty}^{\\infty} f(t) e^{-i\\omega t} \, dt \\\\
+        \\\\
+        & \\text{4. Persamaan Diferensial Parsial:} \\\\
+        & \\frac{\\partial^2 u}{\\partial t^2} - c^2 \\frac{\\partial^2 u}{\\partial x^2} = 0, \\quad
+        \\text{untuk gelombang pada medium elastis} \\\\
+        \\\\
+        & \\text{5. Persamaan Laplace:} \\\\
+        & \\nabla^2 \\phi = 0, \\quad \\text{dimana} \\ \phi \\text{ adalah potensial skalarnya} \\\\
+        \\\\
+        & \\text{6. Deret Taylor:} \\\\
+        & f(x) = f(a) + (x - a) f'(a) + \\frac{(x - a)^2}{2!} f''(a) + \\cdots \\\\
+        \\\\
+        & \\text{7. Persamaan Maxwell:} \\\\
+        & \\nabla \\cdot \\mathbf{E} = \\frac{\\rho}{\\epsilon_0}, \\quad
+        \\nabla \\cdot \\mathbf{B} = 0, \\quad 
+        \\nabla \\times \\mathbf{E} = - \\frac{\\partial \\mathbf{B}}{\\partial t}, \\quad 
+        \\nabla \\times \\mathbf{B} = \\mu_0 \\mathbf{J} + \\mu_0 \\epsilon_0 \\frac{\\partial \\mathbf{E}}{\\partial t}
+    \\end{aligned}
+`} />
 
 ---

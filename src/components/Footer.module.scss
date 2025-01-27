@@ -24,11 +24,13 @@
 .footerRight {
   text-align: center;
   padding-top: 20px;
-  flex-grow: 1;
-  min-width: 200px;
-  max-width: 33%;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  flex-grow: 1; /* Kolom bisa mengisi ruang */
+
+  min-width: 200px; /* Minimum width untuk kolom */
+  max-width: 33%; /* Menentukan lebar maksimal kolom */
+  
+  white-space: nowrap; /* Menjaga teks tidak terpotong di satu baris */
+  text-overflow: ellipsis; /* Menambahkan ... jika konten terlalu panjang */
 }
 
 .footerLeft {
@@ -36,6 +38,11 @@
   gap: 8px;
   justify-content: flex-start;
   text-align: left;
+}
+
+.footerCenter {
+  display: flex;
+  justify-content: center;
 }
 
 .footerRight {
@@ -56,14 +63,4 @@
     justify-content: center; /* Pusatkan konten dalam kolom */
     max-width: 100%; /* Membuat kolom memenuhi lebar pada layar kecil */
   }
-}
-
-.link {
-    color: var(--primary-color);
-    text-decoration: underline;
-    cursor: pointer;
-
-    &:hover {
-        color: var(--primary-color-hover);
-    }
 }

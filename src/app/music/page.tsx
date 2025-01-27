@@ -1,10 +1,9 @@
-import { Flex } from "@/once-ui/components";
+import { Column } from "@/once-ui/components";
 import MusicIndex from "@/components/music/Music";
-import { baseURL, renderContent } from "@/app/resources";
+import { baseURL } from "@/app/resources";
+import { music, person } from "@/app/resources/content";
 
 export async function generateMetadata() {
-	const { music } = renderContent();
-
 	const title = music.title;
 	const description = music.description;
 	const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
@@ -34,15 +33,8 @@ export async function generateMetadata() {
 }
 
 export default function Music() {
-	const { music, person } = renderContent();
 	return (
-		<Flex
-      as="section"
-      fillWidth
-      maxWidth="m"
-      direction="column"
-      gap="m"
-    >
+		<Column maxWidth="m">
 			<script
 				type="application/ld+json"
 				suppressHydrationWarning
@@ -65,6 +57,6 @@ export default function Music() {
 				}}
 			/>
 			<MusicIndex />
-		</Flex>
+		</Column>
 	);
 }

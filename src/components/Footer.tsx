@@ -1,10 +1,10 @@
-import { baseURL, renderContent } from '@/app/resources';
+import { baseURL } from '@/app/resources';
 import { Flex, IconButton, SmartLink, Spotify, Text } from "@/once-ui/components";
 import styles from './Footer.module.scss';
+import { person, social } from "@/app/resources/content";
 
 export const Footer = () => {
     const currentYear = new Date().getFullYear();
-    const { person, social } = renderContent();
 
     return (
         <Flex
@@ -12,7 +12,7 @@ export const Footer = () => {
             position="relative"
             padding="8"
             fillWidth
-            justifyContent="center"
+            horizontal="center"
             mobileDirection="column">
             <Flex
                 className={`${styles.mobile} ${styles.footerGrid}`}
@@ -21,44 +21,55 @@ export const Footer = () => {
                 paddingY="8"
                 paddingX="16"
                 gap="16"
-                justifyContent="space-between"
-                alignItems="center">
-              
-              {process.env.SPOTIFY_CLIENT_ID && (<>
-                  <Flex className={styles.footerLeft}>
-                     <Spotify />
-                  </Flex>
-              </>)}
-              
-              <Flex className={process.env.SPOTIFY_CLIENT_ID ? undefined : styles.footerLeft} gap="16">
-                {social.map((item) =>
-                  item.link && (
-                    <IconButton
-                      key={item.name}
-                      href={item.link}
-                      icon={item.icon}
-                      tooltip={item.name}
-                      size="s"
-                      variant="ghost"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    />
-                  )
-                )}
-              </Flex>
-              
-              <Flex className={styles.footerRight}>
-                <Text variant="body-default-s" onBackground="neutral-strong">
-                  <Text onBackground="neutral-weak">
-                    © {currentYear}{' '}
-                  </Text>
-                  <Text onBackground="neutral-strong">{person.name}</Text>
-                  <br />
-                  <Text onBackground="neutral-weak" style={{ display: 'inline-flex' }} >
-                    Powered by<SmartLink href={`https://${baseURL}/once-ui`}><img src="/trademark/OnceUIxCH.svg" width="auto" height="17" style={{ pointerEvents: 'none' }} /></SmartLink>
-                  </Text>
-                </Text>
-              </Flex>
+                horizontal="space-between"
+                vertical="center">
+                
+                {/* Left Section */}
+                <div className={styles.footerLeft}>
+                    <Spotify />
+                </div>
+
+                {/* Center Section */}
+                <Flex className={styles.footerCenter} gap="16">
+                    {social.map((item) =>
+                        item.link && (
+                            <IconButton
+                                key={item.name}
+                                href={item.link}
+                                icon={item.icon}
+                                tooltip={item.name}
+                                size="s"
+                                variant="ghost"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            />
+                        )
+                    )}
+                </Flex>
+
+                {/* Right Section */}
+                <div className={styles.footerRight}>
+                    <Text variant="body-default-s" onBackground="neutral-strong">
+                        <Text onBackground="neutral-weak">
+                            <SmartLink href="/terms-of-use">
+                                Syarat Ketentuan
+                            </SmartLink>{' '}
+                            &{' '}
+                            <SmartLink href="/privacy-policy">
+                                Kebijakan Privasi
+                            </SmartLink>
+                        </Text>
+                        <br/>
+                        <Text onBackground="neutral-weak">
+                            © {currentYear}{' '}
+                        </Text>
+                        <Text onBackground="neutral-strong">{person.name}</Text>
+                        <br />
+                        <Text onBackground="neutral-weak" style={{ display: 'inline-flex' }} >
+                            Powered by<SmartLink href={`https://${baseURL}/once-ui`}><img src="/trademark/OnceUIxCH.svg" width="auto" height="17" style={{ pointerEvents: 'none' }} /></SmartLink>
+                        </Text>
+                    </Text>
+                </div>
             </Flex>
             <Flex height="80" show="s"></Flex>
         </Flex>

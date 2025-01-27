@@ -1,13 +1,12 @@
 "use client";
 
-import { Flex, Heading, Tag, Text } from '@/once-ui/components';
+import { Column, Flex, Heading, SmartImage, Tag, Text } from '@/once-ui/components';
 import { useEffect, useState } from "react";
 import type { TopMusicResponseSuccess } from "@/pages/api/topMusic";
 import { TrackList } from "@/components";
 import Masonry from 'react-masonry-css';
-import { SmartImage } from "@/once-ui/components";
 import musStyles from "@/components/gallery/Gallery.module.scss";
-import { renderContent } from '@/app/resources';
+import { music } from "@/app/resources/content";
 
 type PlaylistsInfo = {
   name: string;
@@ -18,7 +17,6 @@ type PlaylistsInfo = {
 
 export default function MusicPage() {
   const [topMusic, setTopMusic] = useState<TopMusicResponseSuccess | null>(null);
-  const { music } = renderContent();
   const breakpointColumnsObj = {
     default: 4,
     1440: 3,
@@ -45,7 +43,7 @@ export default function MusicPage() {
   }, []);
 
   return (
-    <Flex fillWidth flex={1} direction="column">
+    <Column fillWidth flex={1}>
       <Heading marginBottom="s" variant="display-strong-s">
         Musik
       </Heading>
@@ -61,10 +59,9 @@ export default function MusicPage() {
         </Flex>
       )}
       
-      <Flex
-        as="div"
+      <div
         style={{
-          borderBottom: '1px solid var(--neutral-weak)',
+          borderBottom: '1px solid var(--accent-border-medium)',
           margin: '16px 0',
         }}
       />
@@ -86,31 +83,30 @@ export default function MusicPage() {
         ))}
       </Masonry>
       
-      {topMusic && (<>
-        <Text variant="body-default-xs" onBackground="neutral-weak" paddingTop="16" paddingBottom="16">
-          <TrackList playlists={topMusic?.playlists} />
-        </Text>
-        
-        <Text variant="body-default-xs" onBackground="neutral-weak" paddingBottom="16">
-          <TrackList tracks={topMusic?.short.items} period="short" priority={true} />
-        </Text>
-        
-        <Text variant="body-default-xs" onBackground="neutral-weak" paddingBottom="16">
-          <TrackList tracks={topMusic?.medium.items} period="medium" />
-        </Text>
-        
-        <Text variant="body-default-xs" onBackground="neutral-weak" paddingBottom="16">
-          <TrackList tracks={topMusic?.long.items} period="long" />
-        </Text>
-        
-        <Text variant="body-default-xs" onBackground="neutral-weak" paddingBottom="16">
-          <TrackList
-            topArtists={topMusic?.topArtists}
-            artist={true}
-            priority={true}
-          />
-        </Text>
-      </>)}
-    </Flex>
+      {/* Pass the playlists fetched from API */}
+      <Text variant="body-default-xs" onBackground="neutral-weak" paddingTop="16" paddingBottom="16">
+        <TrackList playlists={topMusic?.playlists} />
+      </Text>
+      
+      <Text variant="body-default-xs" onBackground="neutral-weak" paddingBottom="16">
+        <TrackList tracks={topMusic?.short.items} period="short" priority={true} />
+      </Text>
+      
+      <Text variant="body-default-xs" onBackground="neutral-weak" paddingBottom="16">
+        <TrackList tracks={topMusic?.medium.items} period="medium" />
+      </Text>
+      
+      <Text variant="body-default-xs" onBackground="neutral-weak" paddingBottom="16">
+        <TrackList tracks={topMusic?.long.items} period="long" />
+      </Text>
+      
+      <Text variant="body-default-xs" onBackground="neutral-weak" paddingBottom="16">
+        <TrackList
+          topArtists={topMusic?.topArtists}
+          artist={true}
+          priority={true}
+        />
+      </Text>
+    </Column>
   );
 }

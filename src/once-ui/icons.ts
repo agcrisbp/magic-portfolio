@@ -79,6 +79,7 @@ import {
   SiBluesky,
   SiSignal,
   SiStatuspage,
+  SiYoutubemusic,
 } from "react-icons/si";
 
 import {
@@ -88,7 +89,7 @@ import {
   MdWaves, MdOutlineGrain,
 } from "react-icons/md";
 
-import { IoRainy } from 'react-icons/io5';
+import { IoRainy, IoLanguageOutline } from 'react-icons/io5';
 
 export const iconLibrary: Record<string, IconType> = {
   
@@ -122,7 +123,6 @@ export const iconLibrary: Record<string, IconType> = {
   // Font Awesome 5
   clear: FaSun,                   // Clear weather
   clouds: FaCloud,                // Clouds
-  rain: IoRainy,                  // Rain
   drizzle: FaCloudShowersHeavy,   // Drizzle
   thunderstorm: FaBolt,           // Thunderstorm
   snow: FaSnowflake,              // Snow
@@ -147,10 +147,15 @@ export const iconLibrary: Record<string, IconType> = {
   sand: GiSandstorm,              // Sand
   ash: GiVolcano,                 // Ash
   
+  // Ion Icons
+  lang: IoLanguageOutline,
+  rain: IoRainy,                  // Rain
+  
   // Simple Icons
   bluesky: SiBluesky,
   signal: SiSignal,
   status: SiStatuspage,
+  ytm: SiYoutubemusic,
   
   // Material Design Icons
   important: MdNotificationImportant,

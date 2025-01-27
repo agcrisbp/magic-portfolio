@@ -1,4 +1,3 @@
-// react-katex.d.ts
 declare module 'react-katex' {
     import { CSSProperties } from 'react';
 

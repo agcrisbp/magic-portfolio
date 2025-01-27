@@ -1,12 +1,18 @@
-import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc';
-import React, { ReactNode } from 'react';
+import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
+import React, { ReactNode } from "react";
+
+import { Accordion, Button, Carousel, Flex, SmartImage, SmartLink, Tag, Text } from "@/once-ui/components";
+import { CodeBlock } from "@/once-ui/modules";
+import { HeadingLink } from "@/components";
+import { ProjectInfo } from "@/components/work/ProjectInfo";
+
 import { InlineMath as OriginalInlineMath, BlockMath as OriginalBlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-import { Button, Flex, SmartImage, SmartLink, Tag, Text } from '@/once-ui/components';
-import { CodeBlock } from '@/once-ui/modules';
-import { HeadingLink } from '@/components';
-import { baseURL } from '@/app/resources';
+import { baseURL } from '@/app/resources/config';
+
+import { TextProps } from "@/once-ui/interfaces";
+import { SmartImageProps } from "@/once-ui/components/SmartImage";
 
 type TableProps = {
     data: {
@@ -92,24 +98,28 @@ function Table({ data, collapse = false }: TableProps) {
 }
 
 type CustomLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
-    href: string;
-    children: ReactNode;
+  href: string;
+  children: ReactNode;
 };
 
 function CustomLink({ href, children, ...props }: CustomLinkProps) {
-    if (href.startsWith('/')) {
-        return (
-            <SmartLink href={href} {...props}>
-                {children}
-            </SmartLink>
-        );
-    }
+  if (href.startsWith("/")) {
+    return (
+      <SmartLink href={href} {...props}>
+        {children}
+      </SmartLink>
+    );
+  }
 
-    if (href.startsWith('#')) {
-        return <a href={href} {...props}>{children}</a>;
-    }
-
-    const decodedHref = decodeURIComponent(href);
+  if (href.startsWith("#")) {
+    return (
+      <a href={href} {...props}>
+        {children}
+      </a>
+    );
+  }
+  
+  const decodedHref = decodeURIComponent(href);
     if (decodedHref.includes('{baseURL}')) {
         const updatedHref = decodedHref.replace('{baseURL}', `https://${baseURL}`);
         return (
@@ -124,29 +134,30 @@ function CustomLink({ href, children, ...props }: CustomLinkProps) {
         );
     }
 
-    return (
-        <a href={href} target="_blank" rel="noopener noreferrer" {...props}>
-            {children}
-        </a>
-    );
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" {...props}>
+      {children}
+    </a>
+  );
 }
 
-function createImage({ alt, src, ...props }: { alt: string, src: string }) {
-    if (!src) {
-        console.error("SmartImage requires a valid 'src' property.");
-        return null;
-    }
+function createImage({ alt, src, ...props }: SmartImageProps & { src: string }) {
+  if (!src) {
+    console.error("SmartImage requires a valid 'src' property.");
+    return null;
+  }
 
-    return (
-        <SmartImage
-            className="my-20"
-            enlarge
-            radius="m"
-            aspectRatio="16 / 9"
-            alt={alt}
-            src={src}
-            {...props}/>
-    );
+  return (
+    <SmartImage
+      className="my-20"
+      enlarge
+      radius="m"
+      aspectRatio="16 / 9"
+      alt={alt}
+      src={src}
+      {...props}
+    />
+  );
 }
 
 function InlineImages({ children }: { children: ReactNode }) {
@@ -157,52 +168,86 @@ function InlineImages({ children }: { children: ReactNode }) {
     );
 }
 
-
 function slugify(str: string): string {
-    return str
-        .toString()
-        .toLowerCase()
-        .trim() // Remove whitespace from both ends of a string
-        .replace(/\s+/g, '-') // Replace spaces with -
-        .replace(/&/g, '-and-') // Replace & with 'and'
-        .replace(/[^\w\-]+/g, '') // Remove all non-word characters except for -
-        .replace(/\-\-+/g, '-') // Replace multiple - with single -
+  return str
+    .toString()
+    .toLowerCase()
+    .trim() // Remove whitespace from both ends of a string
+    .replace(/\s+/g, "-") // Replace spaces with -
+    .replace(/&/g, "-and-") // Replace & with 'and'
+    .replace(/[^\w\-]+/g, "") // Remove all non-word characters except for -
+    .replace(/\-\-+/g, "-"); // Replace multiple - with single -
 }
 
 function createHeading(level: 1 | 2 | 3 | 4 | 5 | 6) {
-    const CustomHeading = ({ children, ...props }: { children: ReactNode }) => {
-        const slug = slugify(children as string);
-        return (
-            <HeadingLink
-                style={{marginTop: 'var(--static-space-24)', marginBottom: 'var(--static-space-12)'}}
-                level={level}
-                id={slug}
-                {...props}>
-                {children}
-            </HeadingLink>
-        );
-    };
-  
-    CustomHeading.displayName = `Heading${level}`;
-  
-    return CustomHeading;
+  const CustomHeading = ({ children, ...props }: TextProps) => {
+  const slug = slugify(children as string);
+      return (
+          <HeadingLink
+              style={{
+                  marginTop: 'var(--static-space-24)',
+                  marginBottom: 'var(--static-space-12)',
+                  maxWidth: 'var(--responsive-width-xs)',
+                  width: '100%'
+              }}
+              className="fill-width"
+              level={level}
+              id={slug}
+              {...props}>
+              {children}
+          </HeadingLink>
+      );
+  };
+
+  CustomHeading.displayName = `Heading${level}`;
+
+  return CustomHeading;
 }
 
-function createParagraph({ children }: { children: ReactNode }) {
-    return (
-        <Text style={{lineHeight: '175%'}}
-            variant="body-default-m"
-            onBackground="neutral-medium"
-            marginTop="8"
-            marginBottom="12">
-            {children}
-        </Text>
-    );
+function createParagraph({ children }: TextProps) {
+  return (
+      <Text
+          style={{
+              lineHeight: '175%',
+              maxWidth: 'var(--responsive-width-xs)',
+          }}
+          className="fill-width"
+          variant="body-default-m"
+          onBackground="neutral-medium"
+          marginTop="8"
+          marginBottom="12">
+          {children}
+      </Text>
+  );
 };
+
+function createBlockquote({ children }: { children: ReactNode }) {
+  return (
+    <Flex
+      background="neutral-alpha-weak"
+      paddingX="16"
+      paddingY="16"
+      radius="m"
+      marginY="24"
+      style={{
+        maxWidth: 'var(--responsive-width-xs)',
+        width: '100%'
+    }}
+    >
+      <Text
+        variant="body-default-m"
+        onBackground="neutral-strong"
+        style={{ lineHeight: "175%" }}
+      >
+        {children}
+      </Text>
+    </Flex>
+  );
+}
 
 const InlineMath = ({ math, style }: { math: string, style?: React.CSSProperties }) => (
     <Flex
-        justifyContent="flex-start"
+        align="start"
         overflowX="auto"
         marginTop="8"
         marginBottom="8"
@@ -229,7 +274,7 @@ const InlineMath = ({ math, style }: { math: string, style?: React.CSSProperties
 
 const BlockMath = ({ math, style }: { math: string, style?: React.CSSProperties }) => (
     <Flex
-        justifyContent="flex-start"
+        align="start"
         overflowX="auto"
         marginTop="8"
         marginBottom="8"
@@ -255,34 +300,38 @@ const BlockMath = ({ math, style }: { math: string, style?: React.CSSProperties 
 );
 
 const components = {
-    p: createParagraph as any,
-    h1: createHeading(1) as any,
-    h2: createHeading(2) as any,
-    h3: createHeading(3) as any,
-    h4: createHeading(4) as any,
-    h5: createHeading(5) as any,
-    h6: createHeading(6) as any,
-    img: createImage as any,
-    a: CustomLink as any,
-    Table,
-    CodeBlock,
-    Button,
-    Tag,
-    InlineMath,
-    BlockMath,
-    InlineImages,
+  p: createParagraph as any,
+  h1: createHeading(1) as any,
+  h2: createHeading(2) as any,
+  h3: createHeading(3) as any,
+  h4: createHeading(4) as any,
+  h5: createHeading(5) as any,
+  h6: createHeading(6) as any,
+  img: createImage as any,
+  a: CustomLink as any,
+  blockquote: createBlockquote as any,
+  Table,
+  CodeBlock,
+  Button,
+  Carousel,
+  Accordion,
+  Flex,
+  Text,
+  ProjectInfo,
+  SmartImage,
+  Tag,
+  InlineMath,
+  BlockMath,
+  InlineImages,
 };
 
 type CustomMDXProps = MDXRemoteProps & {
-    components?: typeof components;
+  components?: typeof components;
 };
 
 export function CustomMDX(props: CustomMDXProps) {
-    return (
-        // @ts-ignore: Suppressing type error for MDXRemote usage
-        <MDXRemote
-            {...props}
-            components={{ ...components, ...(props.components || {}) }}
-        />
-    );
+  return (
+    // @ts-ignore: Suppressing type error for MDXRemote usage
+    <MDXRemote {...props} components={{ ...components, ...(props.components || {}) }} />
+  );
 }

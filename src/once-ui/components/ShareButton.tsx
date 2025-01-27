@@ -49,8 +49,8 @@ const ShareButton: React.FC<ShareButtonProps> = ({ baseURL, dir, slug }) => {
     <Flex
       ref={containerRef}
       gap="8"
-      justifyContent="flex-start"
-      alignItems="center"
+      horizontal="start"
+      vertical="center"
       fillWidth
       zIndex={0}
     >
@@ -65,8 +65,8 @@ const ShareButton: React.FC<ShareButtonProps> = ({ baseURL, dir, slug }) => {
       <Flex
         wrap
         gap="8"
-        alignItems="center"
-        justifyContent="flex-start"
+        vertical="center"
+        horizontal="start"
         className={`${showIcons ? styles.visible : styles.hidden}`}
       >
         <IconButton

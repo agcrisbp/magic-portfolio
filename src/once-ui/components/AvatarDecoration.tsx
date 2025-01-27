@@ -40,19 +40,10 @@ const AvatarDecoration: React.FC<AvatarDecorationProps> = forwardRef<HTMLDivElem
     const [lanyardLoading, setLanyardLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
-    // Ensure USER_ID is not undefined or empty
-    const USER_ID = UserID;
-
     useEffect(() => {
-        if (!USER_ID) {
-            setError("USER_ID is missing or invalid");
-            setLanyardLoading(false);
-            return;
-        }
-
         const fetchData = async () => {
             try {
-                const res = await fetch(`https://api.lanyard.rest/v1/users/${USER_ID}`);
+                const res = await fetch(`https://api.lanyard.rest/v1/users/${UserID}`);
                 if (!res.ok) {
                     throw new Error("Failed to fetch data");
                 }
@@ -72,13 +63,13 @@ const AvatarDecoration: React.FC<AvatarDecorationProps> = forwardRef<HTMLDivElem
         }, 5000);
 
         return () => clearInterval(interval);
-    }, [USER_ID]); // Watch for USER_ID changes
+    }, []);
 
-    // If USER_ID is missing or there's an error
-    if (error) return <div>{error}</div>;
     if (lanyardLoading) return null;
+    if (error) return <div>{error}</div>;
 
     const { data } = lanyardData || {};
+
     const isEmpty = empty || (!src && !value);
 
     if (loading || lanyardLoading) {
@@ -145,11 +136,11 @@ const AvatarDecoration: React.FC<AvatarDecorationProps> = forwardRef<HTMLDivElem
             ref={ref}
             role="img"
             position="relative"
-            justifyContent="center"
-            alignItems="center"
+            horizontal="center"
+            vertical="center"
             radius="full"
             border="neutral-strong"
-            borderStyle="solid-1"
+            borderStyle="solid"
             background="surface"
             style={style}
             className={`${styles.avatarWrapper} ${className || ''}`}
@@ -170,7 +161,7 @@ const AvatarDecoration: React.FC<AvatarDecorationProps> = forwardRef<HTMLDivElem
             {data?.discord_user?.id && (
                 <StatusIndicator
                     size="l"
-                    userId={USER_ID}
+                    userId={UserID}
                     className={styles.indicator}
                 />
             )}

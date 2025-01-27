@@ -1,6 +1,6 @@
 'use client';
 
-import { Flex, Icon, Tooltip, Text } from '.';
+import { Icon, Text } from '.';
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import useSWR from "swr";

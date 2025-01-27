@@ -33,7 +33,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
                     return routes[pathname as keyof typeof routes];
                 }
 
-                const dynamicRoutes = ['/blog', '/work'] as const;
+                const dynamicRoutes = ["/blog", "/work", "/invite"] as const;
                 for (const route of dynamicRoutes) {
                     if (pathname?.startsWith(route) && routes[route]) {
                         return true;
@@ -82,7 +82,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
 
     if (loading) {
         return (
-        <Flex fillWidth paddingY="128" justifyContent="center">
+        <Flex fillWidth paddingY="128" horizontal="center">
             <Spinner />
         </Flex>
         );
@@ -90,7 +90,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
 
     if (!isRouteEnabled) {
         return (
-        <Flex fillWidth paddingY="128" justifyContent="center">
+        <Flex fillWidth paddingY="128" horizontal="center">
             <Spinner />
         </Flex>
         );
@@ -100,11 +100,11 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
         return (
             <Flex
                 fillWidth paddingY="128" maxWidth={24} gap="24"
-                justifyContent="center" direction="column" alignItems="center">
+                horizontal="center" direction="column" vertical="center">
                 <Heading align="center" wrap="balance">
                     Halaman ini dilindungi kata sandi
                 </Heading>
-                <Flex alignItems="center" position="relative">
+                <Flex vertical="center" position="relative">
                     <Input
                         id="password"
                         type={isPasswordVisible ? "text" : "password"}
@@ -114,8 +114,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
                             setPassword(e.target.value);
                             setError(undefined);
                         }}
-                        error={error}
-                        style={{ paddingRight: "40px" }}
+                        errorMessage={error}
                     />
                     {password && (
                         <IconButton 
