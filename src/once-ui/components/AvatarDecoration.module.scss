@@ -17,10 +17,10 @@
 
 .avatarDecoration {
     position: absolute;
-    top: -18px;
-    left: -18px;
-    width: calc(var(--static-space-160) + 35px);
-    height: calc(var(--static-space-160) + 35px);
+    top: -15px;
+    left: -15px;
+    width: calc(var(--static-space-160) + 30px);
+    height: calc(var(--static-space-160) + 30px);
     z-index: 2;
     object-fit: contain;
 }

@@ -149,7 +149,7 @@ const AvatarDecoration: React.FC<AvatarDecorationProps> = forwardRef<HTMLDivElem
                 {renderContent()}
             </div>
             {data?.discord_user?.avatar_decoration_data?.asset && (
-                <a href="/discord">
+                <a href={`https://discord.com/users/${UserID}`} target="_blank">
                     <img
                         src={`https://cdn.discordapp.com/avatar-decoration-presets/${data.discord_user.avatar_decoration_data.asset}.png?size=100&passthrough=true`}
                         alt="Avatar Decoration"
