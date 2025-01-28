@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Heading, Flex, Text, Button, Avatar, RevealFx, Arrow, Column } from "@/once-ui/components";
+import { Projects } from "@/components/work/Projects";
 
 import { baseURL, routes } from "@/app/resources";
 import { home, about, person, newsletter } from "@/app/resources/content";
@@ -105,6 +106,18 @@ export default function Home() {
           </Flex>
           <Flex flex={3} paddingX="20">
             <Posts range={[1, 2]} columns="2" />
+          </Flex>
+        </Flex>
+      )}
+      {routes["/work"] && (
+        <Flex fillWidth gap="24" mobileDirection="column">
+          <Flex flex={1} paddingLeft="l">
+            <Heading as="h2" variant="display-strong-xs" wrap="balance">
+              Proyek Terbaru
+            </Heading>
+          </Flex>
+          <Flex flex={3} paddingX="20">
+            <Projects range={[1, 2]} />
           </Flex>
         </Flex>
       )}
