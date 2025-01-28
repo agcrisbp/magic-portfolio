@@ -133,7 +133,7 @@ export default function Blog({ params }: BlogParams) {
         {/*}
         {avatars.length > 0 && <AvatarGroup size="s" avatars={avatars} />}
         */}
-          {person.avatar && <Avatar size="s" src="/images/logo.png" />}
+          <Avatar size="s" src={person.avatar} />
           <Text variant="body-default-s" onBackground="neutral-weak">
             {formatDate(post.metadata.publishedAt)}
           </Text>
